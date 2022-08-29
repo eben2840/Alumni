@@ -126,20 +126,7 @@ class Program(db.Model):
 
 #routes 
 #GET and POST method is working
-''''
-@app.route('/',methods=['GET','POST'])
-def index():
-    persons=Person.query.all() 
-    if request.method=='POST':
-        print(request.json['name'])
-        print(request.json['age'])
-        print(request.json['gender'])
-        newentry=Person(name=request.json['name'], age=request.json['age'], gender=request.json['gender'])
-        db.session.add(newentry)
-        db.session.commit()
-        return redirect(url_for('base'))
-    return render_template('base.html')
-'''
+
 
 @app.route('/test')
 def test():
@@ -244,7 +231,7 @@ def home():
 
 #login routes for admin
 #login
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         session.pop('user_id', None)
