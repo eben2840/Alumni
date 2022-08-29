@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<h1 style="margin: 5px 0 6px 100px;">Graphical Representation of Alumni Per Schools. </h1>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+
+    var data = google.visualization.arrayToDataTable([
+      ['Schools', 'Graduates'],
+
+      ['FACULTY OF LAW',     5],
+        
+      ['SCHOOL OF PHARMACY',      2],
+
+      ['FACULTY OF ARTS AND SOCIAL SCIENCES',  1],
+
+      ['CENTRAL BUSINESS SCHOOL', 3],
+
+      ['SCHOOL OF MEDICINE AND HEALTH SCIENCES', 7],
+
+      ['SCHOOL OF ENGINEERING AND TECHNOLOGY', 4],
+
+      ['SCHOOL OF ARCHITECTURE AND DESIGN',    2]
+    ]);
+
+    var options = {
+      
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+  }
+</script>
+
+
+ <div id="piechart" class="chart"></div>
+
+
+
+
+
+
+
+
+{% endblock body %}

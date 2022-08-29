@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block body %}
+
+{%for n in name %}
+<h4>{{n.name}} {{n.gender}}
+</h4>
+{% endfor %}
+
+
+
+{% for n in name  %}
+<h1>{{n.id}}</h1>
+{% endfor %}
+     
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Lastname</th>
+            <th>Othername</th>
+            <th>Gender</th>
+            <th>Name of School</th>
+            <th>Primary Contact</th>
+            <th>#</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td data-label="lname"><span>Softlife</span></td>
+            <td data-label="oname"><span>Kojo</span></td>
+            <td data-label="gender"><span>Male</span></td>
+            <td data-label="NoS"><span>Central Business School</span></td>
+            <td data-label="pcontact"><span>0504488484</span></td>
+            <td data-label="#"><a href="#" class="btn"> Review</a></td>
+        </tr>
+        {% for person in persons %}
+        
+        <tr>
+            <td data-label="lname"><span>{{person.lastname}}</span></td>
+            <td data-label="oname"><span>{{person.Othername}}</span></td>
+            <td data-label="gender"><span>{{person.Gender}}</span></td>
+            <td data-label="NoS"><span>{{person.school}}</span></td>
+            <td data-label="pcontact"><span>{{person.Primary}}</span></td>
+            <td data-label="#"><a href="#" class="btn"> Review</a></td>
+        </tr>
+        {% endfor %}
+        
+    </tbody>
+    
+</table>
+{% endblock body %}
