@@ -1,6 +1,7 @@
 from crypt import methods
+from sre_constants import SUCCESS
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, redirect, render_template, url_for,request,jsonify
+from flask import Flask, redirect, render_template, url_for,request,jsonify,get_flashed_messages, flash
 import os
 from forms import *
 from flask_migrate import Migrate
@@ -130,10 +131,12 @@ class Program(db.Model):
 
 @app.route('/test')
 def test():
+    flash("welcome sir")
     return render_template('test.html')
 
 @app.route('/base')
 def base():
+    
     return render_template('base.html')
 
 @app.route('/report')
@@ -172,14 +175,11 @@ def form():
         print (form.Current.data)
         print (form.Nationality.data)
         print (form.Guardian.data)
-       
-    
-        
         new=Person(lastname=form.lastname.data, Othername=form.Othername.data, Gender=form.Gender.data, Primary=form.Primary.data,)
-        
         db.session.add(new)
         db.session.commit()
         return redirect('information')
+    flash("welcome to add new memeber")
     return render_template("form.html", form=form)
 
 @app.route('/information')
@@ -240,16 +240,12 @@ def login():
         user = [x for x in users if x.username == username][0]
         if user and user.password == password:
             session['user_id'] = user.id
+            flash("SUCCESS")
             return redirect(url_for('test'))
+        else:
+            flash("wrong password-try again!")
         return redirect(url_for('login'))
     return render_template('login.html')
-
-@app.route('/profile')
-def profile():
-    if not g.user:
-        return redirect(url_for('login'))
-    return render_template('profile.html' )
-
 
 if __name__ == '__main__':
     #DEBUG is SET to TRUE. CHANGE FOR PROD
