@@ -95,7 +95,25 @@
 
 <!-- Middle Here -->
 <div class="content">
-          {% block body %}{% endblock body %}
+
+  <div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+              {% if category == 'message' %}
+                <div class="alert alert-warning" role="alert">
+              {% else %}
+                <div class="alert alert-{{ category }}" role="alert">
+              {% endif %}
+                {{ message }}
+              </div>
+          {% endfor %}
+        {% endif %}
+    {% endwith %}
+  </div>
+          {% block body %}
+
+          {% endblock body %}
         
 
         

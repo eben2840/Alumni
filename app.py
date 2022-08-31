@@ -131,7 +131,7 @@ class Program(db.Model):
 
 @app.route('/test')
 def test():
-    flash("welcome sir")
+    flash("Welcome to the CentralAlumina", "SUCCESS")
     return render_template('test.html')
 
 @app.route('/base')
@@ -179,7 +179,7 @@ def form():
         db.session.add(new)
         db.session.commit()
         return redirect('information')
-    flash("welcome to add new memeber")
+    flash("Please a new user", "success")
     return render_template("form.html", form=form)
 
 @app.route('/information')
