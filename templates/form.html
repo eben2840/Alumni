@@ -23,10 +23,13 @@
                       </div>
                        
                 </div>
+                
+                   
+         
         
                     <div class="row1">
                             <div class="input-group">
-                                {{form.Gender(class="input-group", placeholder="Gender")}}
+                                {{form.Gender(class="input-group", placeholder="Gender. eg, male or female")}}
                                      <label for="gender"></label>
                             </div>
                             <div class="input-group">
@@ -35,11 +38,11 @@
                             </div>
                             <div class="input-group">
         
-                                {{form.Primary(class="input-group", placeholder="Primary Contact")}}
+                                {{form.Primary(class="input-group", placeholder="Primary Contact. eg,0241135627")}}
                                 <label for="name"></label>
                             </div>
                             <div class="input-group">
-                                {{form.Other(class="input-group", placeholder="Other Contact")}}
+                                {{form.Other(class="input-group", placeholder="Other Contact. eg,0241135627")}}
                                 <label for="name"></label>
                     </div>
                     </div>
@@ -57,7 +60,7 @@
         
                 <div class="row4">
                      <div class="input-group">
-                        {{form.Home(class="input-group", placeholder="Home Address")}}
+                        {{form.Home(class="input-group", placeholder="Home Address. eg,GolfCity23 Bt")}}
                         <label for="name"></label>
                      </div>   
                      <div class="input-group">
@@ -71,31 +74,17 @@
                 </div>
         
                 <div class="row5"> 
-                     <div class="input-group">
-                        {{form.Guardian(class="input-group", placeholder="Guardian")}}
-                        <label for="name"></label>
-                     </div>
-        
-                     <div class="input-group">
-                        <label for="name"></label> 
-                        <select id="">
-                            
-                          <option value="" disabled selected >Status</option>
-                          <option value="dead">Dead</option>
-                          <option value="alive">Alive</option>  
-                        </select>
-                      </div>
-                      
-                     <div class="input-group">
-                        {{form.Year(class="input-group", placeholder="Year Joined")}}
-                        <label for="name"></label>
-                     </div>
+                    
+
+                   
+                     
                 </div>
                 <div class="row6">
                     <div class="input-group">
-                        {{form.Marital(class="input-group", placeholder="Marital Status")}}
+                        {{form.Marital(class="input-group", placeholder="Marital Status. eg,married, single, divored")}}
                         <label for="name"></label>
                     </div>  
+
                     <div class="input-group">
                         {{form.Health(class="input-group", placeholder="Health Status")}}
                         <label for="name"></label>
@@ -103,9 +92,13 @@
                 </div>  
                 <div class="row7">
                     <div class="input-group">
-                        {{form.Extra(class="input-group", placeholder="Extra Curicullum Activities")}}
+                        {{form.Extra(class="input-group", placeholder="Extra Curicullum Activities. eg,volleyball, basketball")}}
                         <label for="name"></label>
                     </div>
+                    <div class="input-group">
+                        {{form.el4(class="input-group", placeholder="Othername")}}
+                        <label for="name"></label>
+                      </div>
                     <div>
                         {{form.Program}}
                     </div>

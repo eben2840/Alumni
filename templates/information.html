@@ -19,29 +19,42 @@
             <th>Lastname</th>
             <th>Othername</th>
             <th>Gender</th>
-            <th>Name of School</th>
             <th>Primary Contact</th>
-            <th>#</th>
+            <th>Other Contact</th>
+            <th>Next of King</th>
+            <th>Relationship with Next of Kin</th>
+            <th>Home Address</th>
+            <th>PLace of Work</th>
+            <th>Nationality</th>
+            <th>Marital Status</th>
+            <th>Health Status</th>
+            <th>Extra Curicullum Activities</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td data-label="lname"><span>Softlife</span></td>
-            <td data-label="oname"><span>Kojo</span></td>
-            <td data-label="gender"><span>Male</span></td>
-            <td data-label="NoS"><span>Central Business School</span></td>
-            <td data-label="pcontact"><span>0504488484</span></td>
-            <td data-label="#"><a href="#" class="btn"> Review</a></td>
-        </tr>
+      
         {% for person in persons %}
         
         <tr>
             <td data-label="lname"><span>{{person.lastname}}</span></td>
             <td data-label="oname"><span>{{person.Othername}}</span></td>
             <td data-label="gender"><span>{{person.Gender}}</span></td>
-            <td data-label="NoS"><span>{{person.school}}</span></td>
             <td data-label="pcontact"><span>{{person.Primary}}</span></td>
-            <td data-label="#"><a href="#" class="btn"> Review</a></td>
+
+            <td data-label="No"><span>{{person.Other}}</span></td>
+            <td data-label="NS"><span>{{person. Kin}}</span></td>
+            <td data-label="oS"><span>{{person. Relationship }}</span></td>
+            <td data-label="home"><span>{{person. Home }}</span></td>
+            <td data-label="ceuurnt"><span>{{person.Current }}</span></td>
+            <td data-label="Nat"><span>{{person.Nationality }}</span></td>
+            
+            <td data-label="Mar"><span>{{person.Marital }}</span></td>
+            <td data-label="Hea"><span>{{person. Health }}</span></td>
+            <td data-label="Extr"><span>{{person. Extra }}</span></td>
+
+            <td data-label="#"><a href="/delete/{{person.id}}"class="btn"> Delete</a></td>
+            <td data-label="#"><a href="/update/{{person.id}}"class="btn"> Update</a></td>
+           
         </tr>
         {% endfor %}
         

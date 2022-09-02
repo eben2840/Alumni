@@ -1,8 +1,6 @@
-from crypt import methods
-from sre_constants import SUCCESS
 from flask_sqlalchemy import SQLAlchemy
-from flask import Flask, redirect, render_template, url_for,request,jsonify,get_flashed_messages, flash
-import os
+from flask import Flask, redirect, render_template, url_for,request,jsonify,get_flashed_messages
+
 from forms import *
 from flask_migrate import Migrate
 import json
@@ -58,16 +56,18 @@ class Person(db.Model):
     lastname= db.Column(db.String(200), nullable=True, unique=True)
     Gender= db.Column(db.String(10), nullable=True)
     Othername = db.Column(db.Integer(),nullable = True)  
-    Primary = db.Column(db.Integer(),nullable = True)  
+    Primary = db.Column(db.Integer(),nullable = True) 
+    
     Other = db.Column(db.Integer(),nullable = True)  
     Kin = db.Column(db.Integer(),nullable = True)  
     Relationship = db.Column(db.Integer(),nullable = True)  
     Home = db.Column(db.Integer(),nullable = True)  
     Current = db.Column(db.Integer(),nullable = True)  
     Nationality = db.Column(db.Integer(),nullable = True)  
-    Guardian = db.Column(db.Integer(),nullable = True)  
-     
-  
+    
+    
+
+
     
     def __repr__(self):
         return f"Person('{self.id}', {self.lastname}', {self.Othername})"
@@ -114,7 +114,6 @@ class Program(db.Model):
     
     def __repr__(self):
         return f"Course('{self.id}', {self.name}',)"
-
 
 
 #postman  
@@ -169,13 +168,20 @@ def form():
         print(form.Othername.data)
         print(form.Gender.data)
         print (form.Primary.data)
+        
+        print (form.Other.data)
         print (form.Kin.data)
         print (form.Relationship.data)
         print (form.Home.data)
         print (form.Current.data)
         print (form.Nationality.data)
-        print (form.Guardian.data)
-        new=Person(lastname=form.lastname.data, Othername=form.Othername.data, Gender=form.Gender.data, Primary=form.Primary.data,)
+        
+        print (form.Marital.data)
+        print (form.Health .data)
+        print (form.Extra.data)
+
+        new=Person(lastname=form.lastname.data, Othername=form.Othername.data, Gender=form.Gender.data, Primary=form.Primary.data,
+                   Other=form.Other.data, Kin=form.Kin.data, Relationship=form.Relationship.data, Home=form.Home.data, Current=form.Current.data, Nationality=form.Nationality.data)
         db.session.add(new)
         db.session.commit()
         return redirect('information')
@@ -192,15 +198,15 @@ def information():
 
 
 #upgrade method 
-@app.route("//<int:id>", methods=['PUT'])
+@app.route("/update/<int:id>")
 def update(id):
     user=Person.query.get_or_404(id)
     if request.method== 'POST':
-        print(user.name)
-        user.name=request.form['name']
-        try:
+        print(user.lastname)
+        user.lastname=form.lastname.data
+        try:    
             db.session.commit()
-            return redirect('/') 
+            return redirect('form') 
         except:
             return"errrrror"
     else:
@@ -209,13 +215,13 @@ def update(id):
     
     
 #delete method
-@app.route("//<int:id>",methods=['DELETE'])
+@app.route("/delete/<int:id>")
 def delete(id):
     delete=Person.query.get_or_404(id)
     try:
             db.session.delete(delete)
             db.session.commit()
-            return redirect('/') 
+            return redirect('form') 
     except: 
         return "errrrrorrr"
     
@@ -240,10 +246,10 @@ def login():
         user = [x for x in users if x.username == username][0]
         if user and user.password == password:
             session['user_id'] = user.id
-            flash("SUCCESS")
             return redirect(url_for('test'))
+        
         else:
-            flash("wrong password-try again!")
+                flash("wrong password-try again!")
         return redirect(url_for('login'))
     return render_template('login.html')
 
