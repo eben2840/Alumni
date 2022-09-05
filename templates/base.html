@@ -16,6 +16,8 @@
 <body>
   <div class="container">
   
+
+   
     <section id="content">
         <nav>
           
@@ -36,19 +38,23 @@
           <div class="nav-profile">
             <img  src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png" onclick="toggleNavDown()">
             <ul id="nav-dropdown" class="profile-link">
-              <li> <a href=""><i class='bx bxs-user-circle icon' ></i> Profile</a></li>
+              <li> <a href=""><i class='bx bxs-user-circle icon' ></i> Dashboard</a></li>
               <li> <a href=""><i class='bx bx-brightness icon'></i> Settings</a></li>
-              <li> <a href=""><i class='bx bx-log-out-circle icon' ></i> Logout</a></li>
+              <li> <a href="/"><i class='bx bx-log-out-circle icon' ></i> Logout</a></li>
             </ul>
           </div>
         </nav>
     </section>
+    {% block div %}
+
+  
+  
 
     <aside>
       <div id="sidebar">
         <img src="https://www.central.edu.gh/virgin/images/Central-Uni-logo.png" alt="">
         <ul class="side-menu">
-          <li class="divider">Main</li>
+          <li class="divider">Admin </li>
           <li><a href="/test" class="active"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
           <li>
             <a href="/schools"><i class='bx bxs-bar-chart-square icon'></i> Schools</a>
@@ -58,8 +64,6 @@
             <a id="side-dropdown-list" onclick="toggleDropDown()"><i class='bx bxs-calendar icon' ></i> Year Groups <i class='bx bx-chevron-right' ></i></a>
             <ul id="side-dropdown-lists" class="side-dropdown-none">
               <li><a href="#"> Year - 2022</a></li>
-              <li><a href="#"> Year - 2021</a></li>
-              <li><a href="#"> Year - 2020</a></li>
             </ul>
           </li>
           
@@ -92,6 +96,10 @@
           <i class='bx bx-log-out bx-sm icon'></i>
         </div>
       </div>
+     
+
+      {% endblock div %}
+    
 
 <!-- Middle Here -->
 <div class="content">

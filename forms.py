@@ -1,5 +1,3 @@
-import imp
-from sqlite3 import ProgrammingError
 from wtforms import Form, BooleanField, StringField, PasswordField, validators, SubmitField, SelectField
 from flask_wtf import FlaskForm
 from app import Person
@@ -11,13 +9,13 @@ class RegistrationForm(FlaskForm):
     Gender = StringField('Gender')
     Primary = StringField('Primary')
     
-    
     Other = StringField('Other')
     Kin = StringField('Kin')
     Relationship = StringField('Relationship')
     Home = StringField('Home')
     Current  = StringField('Current ')
     Nationality = StringField('Nationality')
+  
     
     Marital = StringField('Marital')
     Health = StringField('Health')

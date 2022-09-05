@@ -1,4 +1,56 @@
 {% extends 'base.html' %}
+{%block div%}
+
+
+<aside>
+    <div id="sidebar">
+      <img src="https://www.central.edu.gh/virgin/images/Central-Uni-logo.png" alt="">
+      <ul class="side-menu">
+        <li class="divider">Admin </li>
+        <li><a href="/test" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
+        <li>
+          <a href="/schools"><i class='bx bxs-bar-chart-square icon'></i> Schools</a>
+        </li>
+        <li><a href="/information"><i class='bx bx-group icon' ></i> Members</a></li>
+        <li>
+          <a id="side-dropdown-list" onclick="toggleDropDown()"><i class='bx bxs-calendar icon' ></i> Year Groups <i class='bx bx-chevron-right' ></i></a>
+          <ul id="side-dropdown-lists" class="side-dropdown-none">
+            <li><a href="#"> Year - 2022</a></li>
+          </ul>
+        </li>
+        
+        <li class="divider">Shortcuts</li>
+        <li><a href="/form" ><i class='bx bx-add-to-queue icon' ></i> Add Alumni</a></li>
+        <li><a href="/report" class="active"><i class='bx bxs-report icon' ></i> Report</a></li>
+        <li><a href="#"><i class='bx bx-brightness icon' ></i>Settings</a></li>
+      </ul>
+      <div class="ads">
+        <div class="wrapper">
+          <div class="top">
+            <h4>Storage</h4>
+            <h4><a href="" style="color: blue;">Upgrade</a></h4>
+          </div>
+          <p style="font-size: 14px; color: white; margin: 8px 0 10px 0;">3.4 GB of 15 Gb</p>
+          <div style="width: 100%; height: 4px; background-color: blue; border-radius: 5px">
+            <div style="width: 60%; height: 4px; background-color: white; border-radius: 5px"></div>
+          </div>
+        </div>
+      </div>
+      <div class="profile-details">
+        <div class="profile-content">
+          <img src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png" alt="profile">
+        </div>
+        
+        <div class="name-job">
+          <div class="profile-name"><strong>Softlife</strong> </div>
+          <div class="title">Administrator</div>
+        </div>
+        <i class='bx bx-log-out bx-sm icon'></i>
+      </div>
+    </div>
+   
+
+{%endblock div%}
 {% block body %}
 
 <h1 style="margin: 5px 0 6px 100px;">Graphical Representation of Alumni Per Schools. </h1>

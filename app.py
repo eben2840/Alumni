@@ -1,6 +1,6 @@
+from telnetlib import LOGOUT
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, redirect, render_template, url_for,request,jsonify,get_flashed_messages
-
 from forms import *
 from flask_migrate import Migrate
 import json
@@ -24,6 +24,9 @@ migrate = Migrate(app, db)
 ma = Marshmallow(app)
 
 ''''''
+
+
+
 #login for admin
 class User:
     def __init__(self, id, username, password):
@@ -35,7 +38,7 @@ class User:
         return f'<User: {self.username}>'
 
 users = []
-users.append(User(id=1, username='mills', password='password'))
+users.append(User(id=1, username='admin', password='central'))
 users.append(User(id=2, username='likem', password='likem'))
 users.append(User(id=3, username='john', password='some'))
 
@@ -64,10 +67,7 @@ class Person(db.Model):
     Home = db.Column(db.Integer(),nullable = True)  
     Current = db.Column(db.Integer(),nullable = True)  
     Nationality = db.Column(db.Integer(),nullable = True)  
-    
-    
-
-
+  
     
     def __repr__(self):
         return f"Person('{self.id}', {self.lastname}', {self.Othername})"
@@ -130,7 +130,7 @@ class Program(db.Model):
 
 @app.route('/test')
 def test():
-    flash("Welcome to the CentralAlumina", "SUCCESS")
+    flash("Welcome to the CentralAlumina", "success")
     return render_template('test.html')
 
 @app.route('/base')
@@ -138,6 +138,10 @@ def base():
     
     return render_template('base.html')
 
+@app.route('/logout')
+def logout():
+     return (url_for("login.html"))
+ 
 @app.route('/report')
 def report():
     return render_template('report.html')
@@ -255,6 +259,6 @@ def login():
 
 if __name__ == '__main__':
     #DEBUG is SET to TRUE. CHANGE FOR PROD
-    app.run(host='0.0.0.0', port=5000,debug=True)
+    app.run(host='0.0.0.0', port=50000,debug=True)
     
     
