@@ -22,7 +22,7 @@
         <li class="divider">Shortcuts</li>
         <li><a href="/form" ><i class='bx bx-add-to-queue icon' ></i> Add Alumni</a></li>
         <li><a href="/report" ><i class='bx bxs-report icon' ></i> Report</a></li>
-        <li><a href="#"><i class='bx bx-brightness icon' ></i>Settings</a></li>
+        
       </ul>
       <div class="ads">
         <div class="wrapper">
@@ -68,19 +68,20 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Lastname</th>
-            <th>Othername</th>
-            <th>Gender</th>
-            <th>Primary Contact</th>
-            <th>Other Contact</th>
-            <th>Next of King</th>
-            <th>Relationship with Next of Kin</th>
-            <th>Home Address</th>
-            <th>PLace of Work</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Year Completed</th>
             <th>Nationality</th>
-            <th>Marital Status</th>
-            <th>Health Status</th>
-            <th>Extra Curicullum Activities</th>
+            <th>Contact</th>
+            <th>Email</th>
+            <th>Faculty</th>
+            <th>Halls</th>
+            
+     
+        
+
+            <th>Delete</th>
+            <th>Update</th>
         </tr>
     </thead>
     <tbody>
@@ -88,22 +89,15 @@
         {% for person in persons %}
         
         <tr>
-            <td data-label="lname"><span>{{person.lastname}}</span></td>
-            <td data-label="oname"><span>{{person.Othername}}</span></td>
-            <td data-label="gender"><span>{{person.Gender}}</span></td>
-            <td data-label="pcontact"><span>{{person.Primary}}</span></td>
-
-            <td data-label="No"><span>{{person.Other}}</span></td>
-            <td data-label="NS"><span>{{person. Kin}}</span></td>
-            <td data-label="oS"><span>{{person. Relationship }}</span></td>
-            <td data-label="home"><span>{{person. Home }}</span></td>
-            <td data-label="ceuurnt"><span>{{person.Current }}</span></td>
-            <td data-label="Nat"><span>{{person.Nationality }}</span></td>
-            
-            <td data-label="Mar"><span>{{person.Marital }}</span></td>
-            <td data-label="Hea"><span>{{person. Health }}</span></td>
-            <td data-label="Extr"><span>{{person. Extra }}</span></td>
-
+          <td data-label="lname"><span>{{person.id}} </span></td>
+            <td data-label="Nat"><span>{{person.name }}</span></td>
+            <td data-label="NS"><span>{{person.yearCompleted}}</span></td>
+            <td data-label="Nat"><span>{{person.nationality }}</span></td>
+            <td data-label="NS"><span>{{person.contact}}</span></td>
+            <td data-label="NS"><span>{{person.email}}</span></td>
+            <td data-label="NS"><span>{{person.faculty}}</span></td>
+            <td data-label="NS"><span>{{person.hallofresidence}}</span></td>
+           
             <td data-label="#"><a href="/delete/{{person.id}}"class="btn"> Delete</a></td>
             <td data-label="#"><a href="/update/{{person.id}}"class="btn"> Update</a></td>
            

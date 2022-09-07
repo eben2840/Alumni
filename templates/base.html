@@ -70,7 +70,7 @@
           <li class="divider">Shortcuts</li>
           <li><a href="/form"><i class='bx bx-add-to-queue icon' ></i> Add Alumni</a></li>
           <li><a href="/report"><i class='bx bxs-report icon' ></i> Report</a></li>
-          <li><a href="#"><i class='bx bx-brightness icon' ></i>Settings</a></li>
+         
         </ul>
         <div class="ads">
           <div class="wrapper">
@@ -104,8 +104,18 @@
 <!-- Middle Here -->
 <div class="content">
 
-  <div>
-    {% with messages = get_flashed_messages(with_categories=true) %}
+ 
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-danger mb-3" role="alert">
+          {{ message }}
+      </div>
+      {% endfor %}
+  {% endif %}
+{% endwith %}
+
+   <!-- {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
           {% for category, message in messages %}
               {% if category == 'message' %}
@@ -117,8 +127,8 @@
               </div>
           {% endfor %}
         {% endif %}
-    {% endwith %}
-  </div>
+    {% endwith %}-->
+
           {% block body %}
 
           {% endblock body %}

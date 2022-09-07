@@ -1,54 +1,80 @@
 {% extends 'base.html' %}
 {% block body %}
      
-<script>
-    function passvalues(){
-        var lastname=document.getElementById("lname").value;
-        localStorage.setItem("textvalue", lastname);
-        return false;
-    }
-</script>
 
-        <div class="middle">
-            <div class="middle-text">
-                <h1 style="margin: 5px 0 6px 5px;">Create New Alumni. </h1>
-                <h5 style="color: #992621; margin-left: 5px; "> Personal Details</h5>
-            </div>
-            
-            <form action="" class="from-groups">
-                {{form.hidden_tag()}}
-                 
-                <div class="row">
-        
-                    <div class="input-group">
-                        
-                        {{form.lastname(class="input-group", placeholder="Lastname", id="lname")}}
+{% block content %}
+<div class="container">
 
-                     <label for="name"></label>
-                    </div>   
-                      
-                       
-                <input type="file" placeholder="Picture">
-    
-                    <button  type="submit" value="Submit" onclick="passvalues();">
-                        <span class="btnText">Submit</span>
-                        <i class='bx bxs-chevrons-right icon'></i>
-                   </button>
-                 
-                
-                
-               </div>
-               
-
-               <!--second form-->
-               
-        
-            </form>
-        
-        </div>
-
-
-
-
-     
+    <form class="form-signin" method="POST" action="/signup">
+      <h2 class="form-signin-heading">Sign Up</h2>
+      {{ form.hidden_tag() }}
+      {{ wtf.form_field(form.username) }}
+      {{ wtf.form_field(form.email) }}
+      {{ wtf.form_field(form.password) }}
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+    </form>
+  
+  </div> <!-- /container -->
 {% endblock body %}
+
+
+
+'''
+@app.route('/', methods=['GET', 'POST'])
+def login():
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(username=form.username.data).first()
+        if user:
+            if check_password_hash(user.password, form.password.data):
+                return redirect(url_for('test'))
+
+        return '<h1>Invalid username or password</h1>'
+        #return '<h1>' + form.username.data + ' ' + form.password.data + '</h1>'
+
+    return render_template('login.html', form=form)
+
+#another signin
+@app.route('/home', methods=['GET', 'POST'])
+def signup():
+    form = RegisterForm()
+
+    if form.validate_on_submit():
+        hashed_password = generate_password_hash(form.password.data, method='sha256')
+        new_user = User(username=form.username.data, email=form.email.data, password=hashed_password)
+        db.session.add(new_user)
+        db.session.commit()
+
+        return render_template('test.html')
+       
+
+    return render_template('home.html', form=form)
+'''
+
+
+'''
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(15), unique=True)
+    email = db.Column(db.String(50), unique=True)
+    password = db.Column(db.String(80))
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+class LoginForm(FlaskForm):
+    username = StringField('username', validators=[DataRequired(), Length(min=4, max=15)])
+    password = PasswordField('password', validators=[DataRequired(), Length(min=8, max=80)])
+
+
+class RegisterForm(FlaskForm):
+    email = StringField('email', validators=[DataRequired(), Length(max=50)])
+    username = StringField('username', validators=[DataRequired(), Length(min=4, max=15)])
+    password = PasswordField('password', validators=[DataRequired(), Length(min=8, max=80)])
+'''

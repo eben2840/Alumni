@@ -1,53 +1,46 @@
+
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="venue.css" />
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css')}}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-  </head>
-  <body>
-   {% with message = get_flashed_messages%}
-   {%if messages%}
-   {%for message in messages%}
-   {{message}}
-   {%endfor%}
-   {%endif%}
-   {%endwith%}
-    <nav class="navbar">
-   <img src="https://www.central.edu.gh/virgin/images/Central-Uni-logo.png" class="logo">
-    </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/stylee.css')}}">
+  <title>Login Form </title>
+</head>
+<body>
 
-    <div class="login-box">
-  <h2>Login</h2>
+  <div class="login-wrapper">
+    <form action=" " class="form" method="POST", "GET"> 
+        <img src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png">
+      <h2>Login</h2>
+      <div class="input-group">
 
-  <form action="" method="POST", "GET">
-    <div class="user-box">
-      <input type="text" name="username" required="" placeholder="username">
-      
+        <input type="text" name="username"  required>
+        <label for="loginUser">User Name</label>
+      </div>
+      <div class="input-group">
+        <input type="password" name="password" required>
+        <label for="loginPassword">Password</label>
+      </div>
+
+
+      <input type="submit" value="Login" class="submit-btn">
+      <a href="#forgot-pw" class="forgot-pw">Forgot Password?</a>
+    </form>
+
+    <div id="forgot-pw">
+      <form action="" class="form">
+        <a href="#" class="close">&times;</a>
+        <h2>Reset Password</h2>
+        <div class="input-group">
+          <input type="email" name="email" id="email" required>
+          <label for="email">Email</label>
+        </div>
+        <input type="submit" value="Submit" class="submit-btn">
+      </form>
     </div>
-
-    <div class="user-box">
-      <input type="password" name="password" required="" placeholder="password">
-      
-    </div>
-
-
-    <button type="submit" <a href="#">
-      Submit
-    </a></button
-        
-         
-   
-
-  </form>
-</div>
-
-
-
-  <div class="icon-1">
-  <a href=""> <i class="bi bi-envelope-exclamation-fill"></i></a>
   </div>
-
-
 </body>
 </html>

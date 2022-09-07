@@ -22,7 +22,7 @@
         <li class="divider">Shortcuts</li>
         <li><a href="/form" class="active"><i class='bx bx-add-to-queue icon' ></i> Add Alumni</a></li>
         <li><a href="/report" ><i class='bx bxs-report icon' ></i> Report</a></li>
-        <li><a href="#"><i class='bx bx-brightness icon' ></i>Settings</a></li>
+       
       </ul>
       <div class="ads">
         <div class="wrapper">
@@ -56,248 +56,82 @@
         <div class="middle">
             <div class="middle-text">
                 <h1 style="margin: 5px 0 6px 5px;">Create New Alumni. </h1>
-                <h5 style="color: #992621; margin-left: 5px; "> Personal Details</h5>
+              
             </div>
-            
-            <form action="" method="post" class="from-groups">
+          
+           
+            <form action='' method="post" class="from-groups">
                 {{form.hidden_tag()}}
-                 
-                <div class="row">
-        
-                    <div class="input-group">
-                        {{form.lastname(class="input-group", placeholder="Lastname")}}
-                     <label for="name"></label>
-                    </div>   
-                      
-                       <div class="input-group">
-                        {{form.Othername(class="input-group", placeholder="Othername")}}
-                        <label for="name"></label>
-                      </div>
-                       
-                </div>
-                
-                   
-         
-        
-                    <div class="row1">
-                            <div class="input-group">
-                                {{form.Gender(class="input-group", placeholder="Gender. eg, male or female")}}
-                                     <label for="gender"></label>
-                            </div>
-                            <div class="input-group">
-                                {{form.Gender(class="input-group", placeholder="mm/dd/yyyy")}}
-                                <label for="name"></label>
-                                          
-                            </div>
-                            <div class="input-group">
-        
-                                {{form.Primary(class="input-group", placeholder="Primary Contact. eg,0241135627")}}
-                                <label for="name"></label>
-                            </div>
-                            <div class="input-group">
-                                {{form.Other(class="input-group", placeholder="Other Contact. eg,0241135627")}}
-                                <label for="name"></label>
-                    </div>
-                    </div>
-                                    
-               <div class="row3">
-                       <div class="input-group">
-                        {{form.Kin(class="input-group", placeholder="Next of Kin")}}
-                        <label for="nxtkin"></label>
-                       </div>
-                       <div class="input-group">
-                        {{form.Relationship(class="input-group", placeholder="Relationship With Next Of Kin")}}
-                        <label for="R-nxtkin"></label>
-                         </div> 
-                </div>
-        
-                <div class="row4">
-                     <div class="input-group">
-                        {{form.Home(class="input-group", placeholder="Home Address. eg,GolfCity23 Bt")}}
-                        <label for="name"></label>
-                     </div>   
-                     <div class="input-group">
-                        {{form.Current(class="input-group", placeholder="Current Place Of Work")}}
-                        <label for="place of work"></label>
-                     </div>  
-                     <div class="input-group">
-                        {{form.Nationality(class="input-group", placeholder="Nationality")}}
-                        <label for="name"></label>
-                     </div>  
-                </div>
-        
-                <div class="row5"> 
-                    
+               
+              <div class="row">
 
-                   
+                  <h5 style="color: #992621; margin-left: 5px; "> IDENTIFACATION NUMBER * </h5>
+                  <div class="input-group">
+                      {{form.id(class="input-group", placeholder="e.g: 20013037")}}
+                   <label for="name"></label>
+                  </div>   
+                  <h5 style="color: #992621; margin-left: 5px; "> FULL NAME *</h5>
+                     <div class="input-group">
+                      {{form.name(class="input-group", placeholder="Full Name")}}
+                      <label for="name"></label>
+                    </div>
                      
-                </div>
-                <div class="row6">
-                    <div class="input-group">
-                        {{form.Marital(class="input-group", placeholder="Marital Status. eg,married, single, divored")}}
-                        <label for="name"></label>
-                    </div>  
+              </div>
 
-                    <div class="input-group">
-                        {{form.Health(class="input-group", placeholder="Health Status")}}
-                        <label for="name"></label>
-                    </div> 
-                </div>  
-                <div class="row7">
-                    <div class="input-group">
-                        {{form.Extra(class="input-group", placeholder="Extra Curicullum Activities. eg,volleyball, basketball")}}
-                        <label for="name"></label>
-                    </div>
-                    <div class="input-group">
-                        {{form.el4(class="input-group", placeholder="Othername")}}
+              <h5 style="color: #992621; margin-left: 5px; "> YEAR COMPLETED *</h5>
+                  <div class="row">
+                          <div class="input-group">
+                              {{form.yearCompleted(class="input-group", placeholder="yearCompleted")}}
+                                   <label for="gender"></label>
+                          </div>
+                         
+                          <div class="input-group">
+                            <h5 style="color: #992621; margin-left: 5px; "> NATIONALITY *</h5>
+                              {{form.nationality(class="input-group", placeholder="e.g: Ghanaian")}}
+                              <label for="name"></label>
+                          </div>
+
+                         
+                          <div class="input-group">
+                            <h5 style="color: #992621; margin-left: 5px; ">CONTACT *</h5>
+                              {{form.contact(class="input-group", placeholder="e.g: 02xxxxxxxx")}}
+                              <label for="name"></label>
+                  </div>
+                  </div>
+                          
+
+
+               
+                  <div class="row">
+                    
+                    <h5 style="color: #992621; margin-left: 5px; "> E-MAIL *</h5>
+                       <div class="input-group">
+                        {{form.email(class="input-group", placeholder="e.g: someone@gmail.com")}}
                         <label for="name"></label>
                       </div>
-                    <div>
-                        {{form.Program}}
-                    </div>
-    
-                </div> 
-
-                
-                 
-                <!--Second form-->
-
-                <div class="middle-text">
-                    
-                    <h5 style="color: #992621; margin: 2px 0 5px 5px; font-size: 16px;"> Year Group</h5>
-                </div>
-
-        
-                    <div class="row1">
-                        <div class="input-group" style="flex-basis: 28%;">
-                            <label for="name"></label> 
-                            <select id="">
-                                
-                              <option value="" disabled selected >Year </option>
-                              <option value="alive">2022</option>
-                              <option value="dead">2021</option>
-                              <option value="alive">2020</option>
-                              <option value="dead">2019</option>
-                              <option value="dead">2018</option>
-                            </select>
-                        </div>
-                            <div class="input-group">
-                                        <input type="number" placeholder="Total Number"  name="total-number">
-                                        <label for="name"></label>   
-                            </div>
-                            <div class="input-group">
-        
-                                <input type="number" placeholder="Student Admitted"  name="people-admitted">
-                                <label for="name"></label>
-                            </div>
-                            <div class="input-group">
-                                <input type="number" placeholder="Student Completed"  name="people-completed">
-                                <label for="name"></label>
-                            </div>
-                        
-
-                    </div>
-
-
-
-                <div class="middle-text">
-                        <h5 style="color: #992621; margin: 2px 0 5px 5px; font-size: 16px;"> Schools</h5>
-                </div>      
-                <div class="row5" > 
-       
-                    <div class="input-group" style="flex-basis: 65%;">
-                       <label for="name"></label> 
-                       <select id="">
-                           
-                         <option value="" disabled selected >Name of Schools</option>
-                         <option value="dead">FACULTY OF LAW</option>
-                         <option value="alive">FACULTY OF ARTS AND SOCIAL SCIENCES</option>  
-                         <option value="dead">CENTRAL BUSINESS SCHOOL</option>
-                         <option value="alive">SCHOOL OF PHARMACY</option>
-                         <option value="dead">SCHOOL OF ARCHITECTURE AND DESIGN</option>
-                         <option value="alive">SCHOOL OF ENGINEERING AND TECHNOLOGY</option>
-                         <option value="dead">SCHOOL OF MEDICINE AND HEALTH SCIENCES</option>
-                         
-                       </select>
-                     </div>
                        
-                     <div class="input-group" style="flex-basis: 30%;">
-                        <input type="number" placeholder="Total Number"  name="total-number">
-                        <label for="name"></label>   
-                    </div>
-
-               </div>
-                
-                <div class="middle-text">
-                    <h5 style="color: #992621; margin: 2px 0 5px 5px; font-size: 16px;"> Program</h5>
-                </div> 
-
-                <div class="row1">
-                    <div class="input-group" style="flex-basis: 40%;">
-                        <label for="name"></label> 
-                        <select id="">
-                            
-                          <option value="" disabled selected >Program Name</option>
-                          <option value="dead">Bachelor of Science in Economics</option>
-                          <option value="alive">Bachelor of Arts in Environment and Development Studies</option>
-                          <option value="dead">Bachelor of Arts in Communication Studies</option>
-                          <option value="alive">Bachelor of Arts in Theology</option>
-                          <option value="dead">Bachelor of Science in Psychology</option>
-                          <option value="alive">Bachelor of Arts in Sociology</option>
-                          <option value="dead">Bachelor of Arts in Social Work</option>
-                          <option value="alive">Bachelor of Arts in French</option>
-                          <option value="dead">Bachelor of Science in Management Studies</option>
-                          <option value="alive">Bachelor of Science in Agribusiness</option>
-                          <option value="dead">Bachelor of Science in Banking and Finance</option>
-                          <option value="alive">Bachelor of Science in Business Administration with option in Marketing</option>
-                          <option value="dead">Human Resource Management and Accounting</option>
-                          <option value="alive">Doctor of Pharmacy</option>
-                          <option value="dead">Bachelor of Architecture</option>
-                          <option value="alive">Bachelor of Science in Planning</option>
-                          <option value="dead">Bachelor of Science in Real Estate</option>
-                          <option value="alive">Bachelor of Science in Graphic Design</option>
-                          <option value="dead">Bachelor of Science in Fashion Design</option>
-                          <option value="alive">Bachelor of Science in Landscape Design</option>
-                          <option value="dead">Bachelor of Science in Interior Design</option>
-                          <option value="alive">Bachelor of Science in Computer Science</option>
-                          <option value="dead">Bachelor of Science in Civil Engineering</option>
-                          <option value="alive">Bachelor of Science in Information Technology</option>
-                          <option value="dead">Bachelor of Science in Nursing</option>
-                          <option value="alive">Bachelor of Science in Physician Assistantship</option>
-                          <option value="dead">Bachelor of Science in Public Health</option>
-                           
-                        </select>
-                    </div>
-
-                    <div class="input-group" style="flex-basis: 35%;">
-                        <label for="name"></label> 
-                        <select id="">
-                            
-                          <option value="" disabled selected >Program Department</option>
-                          <option value="dead">Bachelor of Science in Economics</option>
-                          <option value="alive">Bachelor of Arts in Environment and Development Studies</option>
-                          <option value="dead">Bachelor of Arts in Communication Studies</option>
-                          <option value="alive">Bachelor of Arts in Theology</option>
-                          <option value="dead">Bachelor of Science in Psychology</option>
-                          
-                        </select>
-                    </div>
-
-                    <div class="input-group" style="flex-basis: 23%;">
-                        <input type="text" placeholder="Program Code"  name="program-code">
-                        <label for="name"></label>
-                    </div>
-
-                    
-
-
+                      <h5 style="color: #992621; margin-left: 5px; "> FACULTY * </h5>
+                      <div class="input-group">
+                        {{form.faculty(class="input-group", placeholder="faculty")}}
+                       <label for="name"></label>
+                      </div>   
+                      <h5 style="color: #992621; margin-left: 5px; "> HALL OF RESIDENCE *</h5>
+                         <div class="input-group">
+                          {{form.hallofresidence(class="input-group", placeholder="hallofresidence")}}
+                          <label for="name"></label>
+                        </div>
+                         
                 </div>
-                
+
+
+
+
+
                 <button  type="submit">
                     <span class="btnText">Register</span>
                     <i class='bx bxs-chevrons-right icon' style="margin-left: 10px;"></i>
                </button>
-                
+              </div>
                </div>
                
                
