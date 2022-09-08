@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, redirect, render_template, url_for,request,jsonify,get_flashed_messages
 from flask_migrate import Migrate
 import json
+from flask_login import login_user,logout_user,current_user,UserMixin, LoginManager
 from flask_marshmallow import Marshmallow
 from flask import(
 Flask,g,redirect,render_template,request,session,url_for,flash,jsonify
@@ -21,7 +22,15 @@ ma = Marshmallow(app)
 
 from forms import *
 
-''''''
+
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 
@@ -61,7 +70,7 @@ class Person(db.Model):
     name= db.Column(db.String(200), nullable=True, unique=True)
     yearCompleted= db.Column(db.String(200), nullable=True, unique=True)
     nationality= db.Column(db.String(200), nullable=True, unique=True)
-    contact= db.Column(db.String(200), nullable=True, unique=True)
+    contact= db.Column(db.Integer(), nullable=True, unique=True)
     email= db.Column(db.String(200), nullable=True, unique=True)
     faculty= db.Column(db.String(200), nullable=True, unique=True)
     hallofresidence= db.Column(db.String(200), nullable=True, unique=True)
@@ -71,19 +80,7 @@ class Person(db.Model):
 
 
 
-    
-
-
-
-    class ProductSchema(ma.Schema):
-        class Meta:
-            fields = ("id","name", "age", "gender")
-    product_schema = ProductSchema()
-    products_schema = ProductSchema(many =True)
-
-
 #routes 
-
 @app.route('/test')
 def test():
     flash("Welcome to the CentralAlumina", "success")
@@ -138,7 +135,7 @@ def form():
         db.session.add(new)
         db.session.commit()
         return redirect('information')
-        
+       
     flash("please fill this form", "success")
     print(form.errors)
     return render_template("form.html", form=form)
@@ -203,17 +200,17 @@ def login():
         username = request.form['username']
         password = request.form['password']
         user = [x for x in users if x.username == username][0]
-        if user:
-            if user.password == password:
-                return redirect(url_for('test'))
-            else:
-                flash("wrong password-try again!")
+        if user and user.password == password:
+            return redirect(url_for('test'))
         else:
             flash("wrong password-try again!")
+
         return redirect(url_for('login'))
+    else:
+        flash("wrong password-try again!" "danger")
     return render_template('login.html')
 if __name__ == '__main__':
     #DEBUG is SET to TRUE. CHANGE FOR PROD
-    app.run(host='0.0.0.0', port=4000,debug=True)
+    app.run(host='0.0.0.0', port=3000,debug=True)
     
     

@@ -9,11 +9,11 @@ class RegistrationForm(FlaskForm):
     name = StringField('name', validators=[(DataRequired() )])
     yearCompleted= SelectField('yearCompleted', choices=[(2021,2021)])
     nationality = StringField('nationality',validators=[DataRequired()] )
-    contact= StringField('contact',validators=[ DataRequired(), Length(min=10, max=15, message="Your number shouldn't be less than 10")])
-    
+    contact= StringField('contact',validators=[ DataRequired(), Length(min=10, max=10, message="Your number shouldn't be less than 10")])
     email = StringField('email',validators=[(DataRequired() )])
-    faculty =SelectField('faculty', choices=[(2021,2021)])
-    hallofresidence = SelectField('hallofresidence', choices=[(2021,2021)])
+    faculty = SelectField('faculty', validators=[DataRequired()], choices=[('Faculty/School','Faculty/School'),('Joy Otabil', 'Joy Otabil'), ('Faith','Faith'), ('Freedom','Freedom'), ('Kathryl Kuhlman ', 'Kathryl Kuhlman '), ('Justice','Justice'), ('Billy Graham','Billy Graham'),('Billy Graham','Billy Graham'),  ('Chancellor', 'Chancellor'),('Integerity','Integerity'), ], default=None )
+    
+    hallofresidence = SelectField('hallofresidence', validators=[DataRequired()], choices=[('Halls','Halls'),('Joy Otabil', 'Joy Otabil'), ('Faith','Faith'), ('Freedom','Freedom'), ('Kathryl Kuhlman ', 'Kathryl Kuhlman '), ('Justice','Justice'), ('Billy Graham','Billy Graham'),('Billy Graham','Billy Graham'),  ('Chancellor', 'Chancellor'),('Integerity','Integerity'), ], default=None )
     
     
     
