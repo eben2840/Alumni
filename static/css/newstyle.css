@@ -37,9 +37,30 @@ body {
     color: black;
     
 }
-.elipse {
+
+.profile-details {
+    border-radius: 10px;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    
+   
+    
+}
+.elipse img{
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-image: url("https://www.central.edu.gh/virgin/images/Central-Uni-logo.png") ;
+    
+}
+.profile-name {
+    color: #992621;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+.title {
+    font-size: 12px;
+    color: #992621;
+    font-weight: 400;
 }
