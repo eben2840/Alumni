@@ -20,25 +20,25 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 ma = Marshmallow(app)
 
+
+
+login_manager = LoginManager(app)
+login_manager.login_view = "login"
+login_manager.login_message_category = "info"
+migrate = Migrate(app, db)
 from forms import *
-
-
-
-login_manager = LoginManager()
-login_manager.init_app(app)
-login_manager.login_view = 'login'
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return Person.query.get(int(user_id))
 
 
-
+''''
 #login for admin
 class User:
     username = StringField('username', validators=[DataRequired(), Length(min=4, max=15)])
     password = PasswordField('password', validators=[DataRequired(), Length(min=8, max=80)])
-
+    submit = SubmitField('Login')
     def __init__(self, id, username, password):
         self.id = id
         self.username = username
@@ -61,7 +61,7 @@ def before_request():
     if 'user_id' in session:
         user = [x for x in users if x.id == session['user_id']][0]
         g.user = user
-
+'''
 
 #DATABASE MODEL
 #person table
@@ -191,7 +191,7 @@ def delete(id):
 
 
 
-
+''''
 #login routes for admin
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -202,15 +202,29 @@ def login():
         user = [x for x in users if x.username == username][0]
         if user and user.password == password:
             return redirect(url_for('test'))
-        else:
-            flash("wrong password-try again!")
 
         return redirect(url_for('login'))
     else:
         flash("wrong password-try again!" "danger")
     return render_template('login.html')
+'''
+
+@app.route('/', methods=['POST','GET'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = Person.query.filter_by(name = form.name.data).first()
+        if user:
+            login_user(user, remember=True)
+            flash (f' ' + user.name + ',You have been logged in successfully ' ,'success')
+            return redirect(url_for('index'))
+            # next = request.args.get('next')
+        else:
+            flash (f'The account cant be found', 'danger')
+    return render_template('login.html', form=form)
+
 if __name__ == '__main__':
     #DEBUG is SET to TRUE. CHANGE FOR PROD
-    app.run(host='0.0.0.0', port=3000,debug=True)
+    app.run(host='0.0.0.0', port=2000,debug=True)
     
     
