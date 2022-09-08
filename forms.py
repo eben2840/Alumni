@@ -18,15 +18,14 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Register')
     
 class LoginForm(FlaskForm):
-    name = StringField('Phone', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('Login')
  
 class Registration(FlaskForm):
-    name= StringField('name')
-    email = StringField('Email')
+    #indexNumber= StringField('indexNumber', validators=[DataRequired()])
+    email = StringField('Email', validators=[DataRequired()])
     phone = StringField('Phone', validators=[DataRequired()])
-    password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('SignUp')  
     
     # el4 = SelectField('el4', default='None', choices=[(user.lastname, user.lastname) for user in Person.query.all()])
