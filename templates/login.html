@@ -13,22 +13,21 @@
 
   <div class="login-wrapper">
     <form action=" " class="form" method="POST", "GET"> 
+      {{form.hidden_tag()}}
         <img src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png">
       <h2>Login</h2>
       <div class="input-group">
 
-        <input type="text" name="username"  required>
-        <label for="loginUser">User Name</label>
+        {{form.name(class="input-group")}}
+        <label for="loginUser">Name</label>
       </div>
       <div class="input-group">
-        <input type="password" name="password" required>
+        {{form.password(class="input-group")}}
         <label for="loginPassword">Password</label>
       </div>
 
-
-      <input type="submit" value="Login" class="submit-btn">
-      <a href="#forgot-pw" class="forgot-pw">Forgot Password?</a>
-    </form>
+      {{form.submit(class="submit-btn")}}
+      <h6 class="">Are you new here? <a href="{{url_for('signup')}}">Signup</a></h6>    </form>
 
     <div id="forgot-pw">
       <form action="" class="form">

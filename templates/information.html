@@ -76,8 +76,11 @@
             <th>Email</th>
             <th>Faculty</th>
             <th>Halls</th>
+            <th>Password</th>
+            <th>username</th>
+            <th>phone</th>
             
-     
+            
         
 
             <th>Delete</th>
@@ -97,7 +100,9 @@
             <td data-label="NS"><span>{{person.email}}</span></td>
             <td data-label="NS"><span>{{person.faculty}}</span></td>
             <td data-label="NS"><span>{{person.hallofresidence}}</span></td>
-          
+            <td data-label="NS"><span>{{person.password}}</span></td>
+                      <td data-label="NS"><span>{{person.phone}}</span></td>
+            
             <td data-label="#"><a href="/delete/{{person.id}}"class="btn">   <i class='bx bxs-bell bi bi-trash3' style="animation-iteration-count: 2;"></i></a>
               <a href="/update/{{person.id}}"class="btn">   <i class='bx bxs-bell bi bi-trash3' style="animation-iteration-count: 2;"></i></a></td>
             

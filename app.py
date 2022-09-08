@@ -10,6 +10,7 @@ Flask,g,redirect,render_template,request,session,url_for,flash,jsonify
 )
 from flask_cors import CORS
 
+
 app=Flask(__name__)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
@@ -65,7 +66,7 @@ def before_request():
 
 #DATABASE MODEL
 #person table
-class Person(db.Model):
+class Person(db.Model, UserMixin):
     id= db.Column(db.Integer, primary_key=True)
     name= db.Column(db.String(200), nullable=True, unique=True)
     yearCompleted= db.Column(db.String(200), nullable=True, unique=True)
@@ -74,6 +75,9 @@ class Person(db.Model):
     email= db.Column(db.String(200), nullable=True, unique=True)
     faculty= db.Column(db.String(200), nullable=True, unique=True)
     hallofresidence= db.Column(db.String(200), nullable=True, unique=True)
+    password= db.Column(db.String(20), nullable=True, unique=True)
+    email= db.Column(db.String(20), nullable=True, unique=True)
+    phone= db.Column(db.String(10), nullable=True, unique=True)
     
     def __repr__(self):
         return f"Person('{self.id}', {self.name}', {self.yearCompleted})"
@@ -81,10 +85,10 @@ class Person(db.Model):
 
 
 #routes 
-@app.route('/test')
-def test():
+@app.route('/dashboard')
+def dashboard():
     flash("Welcome to the CentralAlumina", "success")
-    return render_template('test.html')
+    return render_template('dashboard.html')
 
 @app.route('/base')
 def base():
@@ -93,8 +97,10 @@ def base():
 
 @app.route('/logout')
 def logout():
-     return (url_for("login.html"))
- 
+    logout_user()
+    flash(f'You have been logged out.','danger')
+    return redirect(url_for("login"))
+
 @app.route('/report')
 def report():
     return render_template('report.html')
@@ -131,7 +137,7 @@ def form():
         new=Person(name=form.name.data, yearCompleted=form.yearCompleted.data,
                    nationality=form.nationality.data, 
                    contact=form.contact.data, email=form.email.data,faculty=form.faculty.data,
-                   hallofresidence=form.hallofresidence.data)
+                   hallofresidence=form.hallofresidence.data, password=form.password.data)
         db.session.add(new)
         db.session.commit()
         return redirect('information')
@@ -161,9 +167,10 @@ def update(id):
         form.contact.data = user.contact
         form.email.data = user.email
         form.faculty.data = user.faculty
+        form.password.data = user.password
         form.hallofresidence.data = user.hallofresidence    
     if request.method== 'POST':
-        new=Person(id=form.id.data, name=form.name.data, 
+        new=Person(id=form.id.data, password=form.password.data,name=form.name.data, 
                    yearCompleted=form.yearCompleted.data, 
                    nationality=form.nationality.data,
                    contact=form.contact.data,email=form.email.data,faculty=form.faculty.data,
@@ -212,19 +219,40 @@ def login():
 @app.route('/', methods=['POST','GET'])
 def login():
     form = LoginForm()
+    print ('try')
+
     if form.validate_on_submit():
+        print("form Validator")
         user = Person.query.filter_by(name = form.name.data).first()
         if user:
-            login_user(user, remember=True)
+            login_user(user)
             flash (f' ' + user.name + ',You have been logged in successfully ' ,'success')
-            return redirect(url_for('index'))
+            return redirect(url_for('dashboard'))
             # next = request.args.get('next')
         else:
             flash (f'The account cant be found', 'danger')
     return render_template('login.html', form=form)
 
+
+#signup route
+@app.route('/signup', methods=['POST','GET'])
+def signup():
+    form = Registration()
+    if form.validate_on_submit():
+        print('Success')
+        user = Person(email = form.email.data, name =form.name.data,phone = form.phone.data, password = form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        login_user(user, remember=True)
+        print(current_user)
+        flash(f'' + user.email +', your account has been created ', 'success')
+        return redirect(url_for('login'))
+    else:
+        print('yawa')
+    return render_template('signup.html', form=form)
+
 if __name__ == '__main__':
     #DEBUG is SET to TRUE. CHANGE FOR PROD
-    app.run(host='0.0.0.0', port=2000,debug=True)
+    app.run(host='0.0.0.0', port=4000,debug=True)
     
     
