@@ -16,18 +16,31 @@
       {{form.hidden_tag()}}
         <img src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png">
       <h2>Login</h2>
+     
       <div class="input-group">
-
-        {{form.name(class="input-group")}}
-        <label for="loginUser">Name</label>
+        {{form.email(class="input-group")}}
+        <label for="loginUser">email</label>
       </div>
+      <div class="input-group">
+        {{form.name(class="input-group")}}
+        <label for="loginUser">name</label>
+      </div>
+
+      <div class="input-group">
+        {{form.phone(class="input-group")}}
+        <label for="loginUser">phone</label>
+      </div>
+
+     
       <div class="input-group">
         {{form.password(class="input-group")}}
         <label for="loginPassword">Password</label>
       </div>
 
       {{form.submit(class="submit-btn")}}
-      <h6 class="">Are you new here? <a href="{{url_for('signup')}}">Signup</a></h6>    </form>
+      <h6 class="">Are you new here? <a href="{{url_for('login')}}">login</a></h6>    </form>
+
+           </form>
 
     <div id="forgot-pw">
       <form action="" class="form">
