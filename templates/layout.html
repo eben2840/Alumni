@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/newstyle.css')}}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <title>Bootstrap demo</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
+    <script>
+      AOS.init();
+    </script>
+
+    <nav class="navbar navbar-expand-lg sticky-top" style="background: #fff;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="https://www.central.edu.gh/virgin/images/Central-Uni-logo.png" alt="" width="15%">
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse me-2" id="navbarSupportedContent" style="width: 100%;">
+            
+            <form class="d-flex" role="search">
+              <input class="form-control " type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+      </nav>
+
+
+
+    
+    
+      
+      
+    
+      <div class="container-fluid" >
+        <div class="row" >
+            <div class="col-3 px-1 position-fixed" id="sticky-sidebar">
+              <div class="container" >                
+            
+              
+                <div id="sidebar">
+                  
+                  <div class="side-menu">
+                    <h6 class="divider"><b>Admin </b></h6>
+                    <div class="side-nav-button-active">
+                      <i class='bx bxs-dashboard icon'></i>
+                      <h6 class="side-nav-button-text">Dashboard</h6>
+                    </div>
+                    <div class="side-nav-button">
+                      <i class='bx bxs-bar-chart-square icon'></i>
+                      <h6 class="side-nav-button-text">Schools</h6>
+                    </div>
+                    <div class="side-nav-button">
+                      <i class='bx bx-group icon' ></i>
+                      <h6 class="side-nav-button-text">Members</h6>
+                    </div>
+                    <div class="side-nav-button">
+                      <i class='bx bxs-calendar icon' ></i>
+                      <h6 class="side-nav-button-text">Year Group</h6>
+                    </div>
+                  </div>
+                  <div class="side-menu">
+                    <h6 class="divider"><b>Shortcuts</b> </h6>
+                    <div class="side-nav-button-active">
+                      <i class='bx bx-add-to-queue icon' ></i>
+                      <h6 class="side-nav-button-text">Add Alumni</h6>
+                    </div>
+                    <div class="side-nav-button">
+                      <i class='bx bxs-report icon' ></i>
+                      <h6 class="side-nav-button-text">Report</h6>
+                    </div>
+
+                    <div style="position: fixed; bottom: 20px;">
+                      <div class="elipse">
+                       
+                        <img src="https://www.central.edu.gh/virgin/images/Central-Uni-logo.png" alt="" width="100%">
+                      </div>
+                      <div class="side-nav-button-active" >
+                        <i class='bx bx-add-to-queue icon' ></i>
+                        <h6 class="side-nav-button-text">Add Alumni</h6>
+
+                      </div>
+                    </div>
+                    
+                  </div>
+                  
+                  
+                    
+                    
+                    
+                  
+                </div>
+        </div>
+            </div>
+            <div class="col offset-3" id="main">
+              
+          
+              {% block body %}
+              {% endblock%}
+            </div>
+        </div>
+    </div>
+     
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+</body>
+</html>

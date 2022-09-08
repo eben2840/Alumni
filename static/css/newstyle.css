@@ -1,0 +1,45 @@
+body {
+    background: #f2f2f2;
+}
+.side-nav-button {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    color: #992621;
+    display: flex;
+    align-items: center;
+}
+
+.side-nav-button-text{
+    margin: 0;
+    padding-left: 10px;
+}
+.side-nav-button-active {
+    padding: 20px;
+    background-color: #992621;
+    border-radius: 10px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+.dashboard-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    color: #fff;
+    margin: 0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-bottom: 10vh;
+}
+
+.dashboard-item-text{
+    margin-top: 0;
+    color: black;
+    
+}
+.elipse {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-image: url("https://www.central.edu.gh/virgin/images/Central-Uni-logo.png") ;
+}
