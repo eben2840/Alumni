@@ -90,10 +90,38 @@ def dashboard():
     flash("Welcome to the CentralAlumina", "success")
     return render_template('dashboard.html')
 
+@app.route('/addalumni', methods=['GET', 'POST'])
+def addalumni():
+    return render_template('addAlumni.html')
+
+
+@app.route('/department', methods=['GET', 'POST'])
+def department():
+    return render_template('department.html')
+
+@app.route('/newreport')
+def newreport():
+    return render_template('newreport.html')
+
+
+
+@app.route('/year', methods=['GET', 'POST'])
+def year():
+    return render_template('year.html')
+
+
+@app.route('/list', methods=['GET', 'POST'])
+def list():
+    return render_template('list.html')
+
 @app.route('/base')
 def base():
-    
     return render_template('base.html')
+
+@app.route('/newschools', methods=['GET', 'POST'])
+def newschools():
+    return render_template('newschools.html')
+
 
 @app.route('/logout')
 def logout():
