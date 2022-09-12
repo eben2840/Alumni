@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, redirect, render_template, url_for,request,jsonify,get_flashed_messages
 from flask_migrate import Migrate
 import json
-from flask_login import login_user,logout_user,current_user,UserMixin, LoginManager
+from flask_login import login_required,login_user,logout_user,current_user,UserMixin, LoginManager
 from flask_marshmallow import Marshmallow
 from flask import(
 Flask,g,redirect,render_template,request,session,url_for,flash,jsonify
@@ -86,8 +86,12 @@ class Person(db.Model, UserMixin):
 
 #routes 
 @app.route('/dashboard')
+@login_required
 def dashboard():
-    flash("Welcome to the CentralAlumina", "success")
+    if current_user != None:
+        flash("Welcome to the CentralAlumina" + current_user.email, "success")
+    else:
+        flash(f"There was a problem")
     return render_template('dashboard.html')
 
 @app.route('/base')
@@ -97,8 +101,12 @@ def base():
 
 @app.route('/logout')
 def logout():
-    logout_user()
-    flash(f'You have been logged out.','danger')
+    if current_user:
+        logout_user()
+        print(current_user.email)
+    else:
+        print("Well that didnt work")
+    print('You have been logged out.','danger')
     return redirect(url_for("login"))
 
 @app.route('/report')
@@ -220,13 +228,18 @@ def login():
 def login():
     form = LoginForm()
     print ('try')
-
+    print(form.email.data)
+    print(form.password.data)
+    
     if form.validate_on_submit():
-        print("form Validator")
-        user = Person.query.filter_by(name = form.name.data).first()
-        if user:
+        print("form Validated successfully")
+        user = Person.query.filter_by(email = form.email.data).first()
+        print("user:" + user.email + "found")
+        print(user.password)
+        if user and form.password.data == user.password:
+            print(user.email + "validored successfully")
             login_user(user)
-            flash (f' ' + user.name + ',You have been logged in successfully ' ,'success')
+            flash (f' ' + user.email + ',You have been logged in successfully ' ,'success')
             return redirect(url_for('dashboard'))
             # next = request.args.get('next')
         else:
@@ -238,17 +251,21 @@ def login():
 @app.route('/signup', methods=['POST','GET'])
 def signup():
     form = Registration()
-    if form.validate_on_submit():
-        print('Success')
-        user = Person(email = form.email.data, name =form.name.data,phone = form.phone.data, password = form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        login_user(user, remember=True)
-        print(current_user)
-        flash(f'' + user.email +', your account has been created ', 'success')
-        return redirect(url_for('login'))
-    else:
-        print('yawa')
+    print(form.phone.data)
+    print(form.email.data)
+    if request.method == "POST": 
+        if form.validate_on_submit():
+            print('Success')
+            user =Person(password="central@123", email=form.email.data, phone=form.phone.data)
+            db.session.add(user)
+            db.session.commit()
+            login_user(user, remember=True)
+            print(current_user)
+            flash(f'' + user.email +', your account has been created ', 'success')
+            return redirect(url_for('login'))
+        else:
+            print(form.errors)
+            
     return render_template('signup.html', form=form)
 
 if __name__ == '__main__':

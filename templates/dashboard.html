@@ -3,7 +3,7 @@
 {% block body %}
 
 {% if current_user.is_authenticated %}
-Hi {{ current_user.name }}!
+  Hi {{ current_user.email }}!
 {% endif %}
 
 <div class="container" style="background-color: #f2f2f2; padding: 20px; border-radius: 20px 0 0 0;">
