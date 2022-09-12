@@ -17,9 +17,9 @@
       AOS.init();
     </script>
 
-    <nav class="navbar navbar-expand-lg sticky-top" style="background: #fff;">
+      <nav class="navbar navbar-expand-lg sticky-top" style="background: #fff; ">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#">
+          <a class="navbar-brand" href="/dashboard">
             <img src="https://www.central.edu.gh/virgin/images/Central-Uni-logo.png" alt="" width="15%">
           </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,12 +27,16 @@
           </button>
           <div class="collapse navbar-collapse me-2" id="navbarSupportedContent" style="width: 100%;">
             
-            <form class="d-flex" role="search">
+            <form class="d-flex " role="search">
               <input class="form-control " type="search" placeholder="Search" aria-label="Search">
               <button class="btn btn-outline-success" type="submit">Search</button>
               <a href="{{url_for('login')}}">Logout</a>    </form>
 
             </form>
+            <button class="btn" style="color: #fff; background: #992621; border: none; margin-left: 3px;" type="logout">
+              <a href="{{url_for('login')}}" style="text-decoration: none; color: #fff;">Logout</a>
+            </button>
+            
           </div>
         </div>
       </nav>
@@ -41,8 +45,7 @@
 
     
     
-      
-      
+
     
       <div class="container-fluid" >
         <div class="row" >
@@ -56,30 +59,30 @@
                     <h6 class="divider"><b>Admin </b></h6>
                     <div class="side-nav-button-active">
                       <i class='bx bxs-dashboard icon'></i>
-                      <h6 class="side-nav-button-text">Dashboard</h6>
+                      <a href="/dashboard" class="side-nav-button-text">Dashboard</a>
                     </div>
                     <div class="side-nav-button">
                       <i class='bx bxs-bar-chart-square icon'></i>
-                      <h6 class="side-nav-button-text">Schools</h6>
+                      <a href="/newschools" class="side-nav-button-text">Schools</a>
                     </div>
                     <div class="side-nav-button">
                       <i class='bx bx-group icon' ></i>
-                      <h6 class="side-nav-button-text">Members</h6>
+                      <a href="/list" class="side-nav-button-text">Members</a>
                     </div>
                     <div class="side-nav-button">
                       <i class='bx bxs-calendar icon' ></i>
-                      <h6 class="side-nav-button-text">Year Group</h6>
+                      <a href="/year" class="side-nav-button-text">Year Group</a>
                     </div>
                   </div>
                   <div class="side-menu">
                     <h6 class="divider"><b>Shortcuts</b> </h6>
                     <div class="side-nav-button">
                       <i class='bx bx-add-to-queue icon' ></i>
-                      <h6 class="side-nav-button-text">Add Alumni</h6>
+                      <a href="/addalumni" class="side-nav-button-text">Add Alumni</a>
                     </div>
                     <div class="side-nav-button">
                       <i class='bx bxs-report icon' ></i>
-                      <h6 class="side-nav-button-text">Report</h6>
+                      <a href="/newreport" class="side-nav-button-text">Report</a>
                     </div>
 
                     
@@ -110,10 +113,13 @@
         </div>
             </div>
             <div class="col offset-3" id="main">
+              <div class="container" style="background-color: #f2f2f2; padding: 20px; border-radius: 20px 0 0 0;">
               
           
               {% block body %}
               {% endblock%}
+
+              </div>
             </div>
         </div>
     </div>

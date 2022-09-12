@@ -2,7 +2,7 @@ body {
     background: #f2f2f2;
 }
 .side-nav-button {
-    padding: 20px;
+    padding: 16px;
     background-color: #fff;
     border-radius: 10px;
     color: #992621;
@@ -10,6 +10,9 @@ body {
     align-items: center;
 }
 
+h4 {
+    color: black;
+}
 .side-nav-button-text{
     margin: 0;
     padding-left: 10px;
@@ -22,6 +25,20 @@ body {
     display: flex;
     align-items: center;
 }
+.side-nav-button a {
+    text-decoration: none;
+    color: #992621;
+}
+.side-nav-button a:hover {
+    color: #992621;
+}
+.side-nav-button-active a {
+    text-decoration: none;
+    color: #fff;
+}
+.side-nav-button-active a:hover {
+    color: #fff;
+}
 .dashboard-item {
     background-color: #fff;
     padding: 30px;
@@ -29,12 +46,35 @@ body {
     color: #fff;
     margin: 0;
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    margin-bottom: 10vh;
+    margin-bottom: 5vh;
+    justify-content: space-between;
 }
+.department-item {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    color: #fff;
+    margin: 0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-bottom: 5vh;
+    justify-content: space-between;
+}
+
+.department-item-active {
+    background-color: #992621;
+    padding: 30px;
+    border-radius: 15px;
+    color: #fff;
+    margin: 0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-bottom: 5vh;
+    justify-content: space-between;
+}
+
 
 .dashboard-item-text{
     margin-top: 0;
-    color: black;
+    color: #992621;
     
 }
 
@@ -47,6 +87,7 @@ body {
    
     
 }
+
 .elipse img{
     width: 50px;
     height: 50px;
@@ -63,4 +104,25 @@ body {
     font-size: 12px;
     color: #992621;
     font-weight: 400;
+}
+.school-item {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    color: #fff;
+    margin: 0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-bottom: 10vh;
+}
+.names {
+    text-transform: uppercase;
+    color: black;
+}
+.names-active {
+    text-transform: uppercase;
+    color: #fff;
+}
+.info-more {
+    margin-bottom: 3vh;
+    
 }
