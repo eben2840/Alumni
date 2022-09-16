@@ -88,11 +88,11 @@ class Person(db.Model, UserMixin):
 @app.route('/dashboard')
 def dashboard():
     flash("Welcome to the CentralAlumina", "success")
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', title="dashboard")
 
 @app.route('/addalumni', methods=['GET', 'POST'])
 def addalumni():
-    return render_template('addAlumni.html')
+    return render_template('addAlumni.html', title="addalumni")
 
 
 @app.route('/department', methods=['GET', 'POST'])
@@ -101,18 +101,24 @@ def department():
 
 @app.route('/newreport')
 def newreport():
-    return render_template('newreport.html')
+    return render_template('newreport.html', title="newreport")
 
+@app.route('/usersignup')
+def usersignup():
+    return render_template('usersignup.html', title="usersignup")
 
+@app.route('/userlogin')
+def userlogin():
+    return render_template('userlogin.html', title="userlogin")
 
 @app.route('/year', methods=['GET', 'POST'])
 def year():
-    return render_template('year.html')
+    return render_template('year.html', title="year")
 
 
 @app.route('/list', methods=['GET', 'POST'])
 def list():
-    return render_template('list.html')
+    return render_template('list.html', title="list")
 
 @app.route('/base')
 def base():
@@ -120,7 +126,7 @@ def base():
 
 @app.route('/newschools', methods=['GET', 'POST'])
 def newschools():
-    return render_template('newschools.html')
+    return render_template('newschools.html', title="newschools")
 
 
 @app.route('/logout')
@@ -129,9 +135,9 @@ def logout():
     flash(f'You have been logged out.','danger')
     return redirect(url_for("login"))
 
-@app.route('/report')
-def report():
-    return render_template('report.html')
+@app.route('/userlanding')
+def userlanding():
+    return render_template('userlanding.html')
 
 @app.route('/newforms')
 def newforms():
@@ -157,22 +163,9 @@ def members():
 def schools():
     return render_template('schools.html')
 
-@app.route('/form', methods=['POST', 'GET'])
-def form():
-    form=RegistrationForm()
-    if form.validate_on_submit():
-       
-        new=Person(name=form.name.data, yearCompleted=form.yearCompleted.data,
-                   nationality=form.nationality.data, 
-                   contact=form.contact.data, email=form.email.data,faculty=form.faculty.data,
-                   hallofresidence=form.hallofresidence.data, password=form.password.data)
-        db.session.add(new)
-        db.session.commit()
-        return redirect('information')
-       
-    flash("please fill this form", "success")
-    print(form.errors)
-    return render_template("form.html", form=form)
+@app.route('/useryeargroup', methods=['POST', 'GET'])
+def useryeargroup():
+    return render_template("useryeargroup.html", title="useryeargroup")
 
 @app.route('/information')
 def information():
