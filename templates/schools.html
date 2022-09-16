@@ -1,143 +1,84 @@
-{% extends 'base.html' %}
-{%block div%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/newstyle.css')}}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <title>Bootstrap demo</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body>
 
 
-<aside>
-    <div id="sidebar">
-      <img src="https://www.central.edu.gh/virgin/images/Central-Uni-logo.png" alt="">
-      <ul class="side-menu">
-        <li class="divider">Admin </li>
-        <li><a href="/test" ><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
-        <li>
-          <a href="/schools" class="active"><i class='bx bxs-bar-chart-square icon'></i> Schools</a>
-        </li>
-        <li><a href="/information"><i class='bx bx-group icon' ></i> Members</a></li>
-        <li>
-          <a id="side-dropdown-list" onclick="toggleDropDown()"><i class='bx bxs-calendar icon' ></i> Year Groups <i class='bx bx-chevron-right' ></i></a>
-          <ul id="side-dropdown-lists" class="side-dropdown-none">
-            <li><a href="#"> Year - 2022</a></li>
-          </ul>
-        </li>
-        
-        <li class="divider">Shortcuts</li>
-        <li><a href="/form" ><i class='bx bx-add-to-queue icon' ></i> Add Alumni</a></li>
-        <li><a href="/report" ><i class='bx bxs-report icon' ></i> Report</a></li>
-      
-      </ul>
-      <div class="ads">
-        <div class="wrapper">
-          <div class="top">
-            <h4>Storage</h4>
-            <h4><a href="" style="color: blue;">Upgrade</a></h4>
-          </div>
-          <p style="font-size: 14px; color: white; margin: 8px 0 10px 0;">3.4 GB of 15 Gb</p>
-          <div style="width: 100%; height: 4px; background-color: blue; border-radius: 5px">
-            <div style="width: 60%; height: 4px; background-color: white; border-radius: 5px"></div>
-          </div>
-        </div>
-      </div>
-      <div class="profile-details">
-        <div class="profile-content">
-          <img src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png" alt="profile">
-        </div>
-        
-        <div class="name-job">
-          <div class="profile-name"><strong>Softlife</strong> </div>
-          <div class="title">Administrator</div>
-        </div>
-        <i class='bx bx-log-out bx-sm icon'></i>
-      </div>
+<div class="container" style=" border-radius: 5px; padding: 20px; background: #fff;">
+  <div class="row">
+    <div class="col" style="display: flex; justify-content: space-between;">
+      <h6 class="text-muted">2021 - CCSITA</h6>
+      <i class='bx bxs-cog bx-sm icon'></i>
     </div>
-   
-
-{%endblock div%}
-{% block body %}
-
-<h1>Schools</h1>
-
-  <div class="inner-content" >
-    
-    <a href="" class="cards" style="background: #fff;">
-      <div class="card">
-        <h4>School :</h4>
-        <h2>FACULTY OF ARTS AND SOCIAL SCIENCES</h2>
-      </div>
-      <div class="card-image">
-        <img  src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png">
-      </div>
-      
-    </a>
-    <a href="" class="cards" style="background: #fff;">
-      <div class="card">
-        <h4>School :</h4>
-        <h2>CENTRAL BUSINESS SCHOOL</h2>
-      </div>
-      <div class="card-image">
-        <img  src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png">
-      </div>
-      
-    </a>
-    <a href="" class="cards" style="background: #fff">
-      <div class="card">
-        <h4>School :</h4>
-        <h2>SCHOOL OF PHARMACY</h2>
-      </div>
-      <div class="card-image">
-        <img  src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png">
-      </div>
-      
-    </a>
-    <a href="" class="cards" style="background: #fff">
-      <div class="card">
-        <h4>School :</h4>
-        <h2>SCHOOL OF ARCHITECTURE AND DESIGN</h2>
-      </div>
-      <div class="card-image">
-        <img  src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png">
-      </div>
-      
-    </a>
-    <a href="" class="cards" style="background: #fff">
-      <div class="card">
-        <h4>School :</h4>
-        <h2>SCHOOL OF ENGINEERING AND TECHNOLOGY</h2>
-      </div>
-      <div class="card-image">
-        <img  src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png">
-      </div>
-      
-    </a>
-    <a href="" class="cards" style="background: #fff">
-      <div class="card">
-        <h4>School :</h4>
-        <h2>FACULTY OF LAW</h2>
-      </div>
-      <div class="card-image">
-        <img  src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png">
-      </div>
-      
-    </a>
-    <a href="" class="cards" style="background: #fff">
-      <div class="card">
-        <h4>School:</h4>
-        <h2>SCHOOL OF MEDICINE AND HEALTH SCIENCES</h2>
-      </div>
-      <div class="card-image">
-        <img src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png">
-      </div>
-      
-    </a>
-    
+    <h1>Department</h1>
+    <h6>16 entries</h6>
 
     
+
+    <form class="d-flex " role="search" style="margin-top: 3vh; margin-bottom: 5vh;">
+      <input class="form-control " type="search" placeholder="Search a particular person or category" aria-label="Search">
+      <button class="btn" style="color: #fff; background: #992621; border: none; margin-left: 2vw;" type="submit"><i class='bx bx-search-alt icon'></i></button>
+        
+    </form>  
+  </div>
+  <br>
+
+    <div style="display: flex; border-bottom: 3px solid #f2f2f2;">
+        <div class="user-pic" style="padding-right: 10px;">
+            <img src="static/img/memoji.png" >
+        </div>
+        <div class="user-text">
+            <div>
+              <a href="/base" style="text-decoration: none;">
+                <h4>Information Technology</h4>
+              </a> 
+              <h6 class="text-muted">200 Graduates</h6> 
+            </div>
+        </div>
+    </div>
+    
+    <div style="display: flex; border-bottom: 3px solid #f2f2f2;">
+      <div class="user-pic" style="padding-right: 10px;">
+          <img src="static/img/memoji.png" >
+      </div>
+      <div class="user-text">
+          <div>
+            <a href="/base" style="text-decoration: none;">
+              <h4>Computer Science</h4>
+            </a>
+            <h6 class="text-muted">200 Graduates</h6>
+          </div>
+      </div>
   </div>
 
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   
 
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+
+</body>
+</html>
 
 
 
-{% endblock body %}
+
+
+
+
 
 
 

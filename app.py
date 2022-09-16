@@ -179,7 +179,7 @@ def department():
 @app.route('/newreport')
 @login_required
 def newreport():
-    return render_template('newreport.html')
+    return render_template('newreport.html', title="newreport")
 
 @app.context_processor
 def base():
@@ -226,6 +226,9 @@ def usersearch():
             print(posts)   
     return render_template("usersearch.html", form=form, posts=posts)
 
+@app.route('/userlogin')
+def userlogin():
+    return render_template('userlogin.html', title="userlogin")
 
 @app.route('/year', methods=['GET', 'POST'])
 @login_required
@@ -261,7 +264,7 @@ def base():
 
 @app.route('/newschools', methods=['GET', 'POST'])
 def newschools():
-    return render_template('newschools.html')
+    return render_template('newschools.html', title="newschools")
 
 
 @app.route('/logout')

@@ -162,3 +162,37 @@ h4 {
     margin-bottom: 2vh;
 }
 
+
+
+.form-floating:focus {
+    color: grey;
+}
+
+.user-box {
+    background: #fff;
+    padding: 20px;
+    border-radius: 15px;
+    margin: 0;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    margin-bottom: 5vh;
+    justify-content: space-between;
+    
+}
+.user-box-items {
+    color: black;
+}
+
+.user-pic img {
+    width: 70px; 
+    height: 70px;
+}
+.user-text {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 15px;
+}
+.user-profile-text {
+    margin-bottom: 2vh;
+}
+

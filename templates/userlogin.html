@@ -18,7 +18,7 @@
 <div class="container" style=" border-radius: 5px;  background: white; height: 100vh;">
     
       <div >
-        <form action=" " class="form" method="POST", "GET"> 
+        <form action=" " class="form" method="POST"> 
             {{form.hidden_tag()}}
         <img src="static/img/user.jpeg" alt="" width="100%" style="height: 50vh; max-height: 50vh; object-fit: cover;" >
       </div>
@@ -28,11 +28,11 @@
 
         <div style="margin-top: 5vh;">
             <div class="form-floating mb-3" >
-                {{form.email(class="form-control", placeholder="Email")}}
-                <label for="floatingInput" class="text-muted">Email</label>
+                <input type="name" class="form-control" id="floatingInput" placeholder="John Doe">
+                <label for="floatingInput" class="text-muted">Username</label>
             </div> 
             <div class="form-floating mb-3" >
-                {{form.password(class="form-control", placeholder="Username")}}
+                <input type="name" class="form-control" id="floatingInput" placeholder="John Doe">
                 <label for="floatingInput" class="text-muted">Password</label>
             </div>
                   
@@ -45,12 +45,12 @@
 
 
         <div style="margin-top: 5vh;">
-         
-            {{form.submit(class="btn btn-lg",style="width: 90%; background: #992621; color: #fff; padding: 12px 20px; font-weight: 300; border: none; border-radius: 10px; font-weight: bold;")}}
-                
+          <a href="/useryeargroup">
+            <button type="button" class="btn btn-lg" style="width: 90%; background: #992621; color: #fff; padding: 12px 20px; font-weight: 300; border: none; border-radius: 10px; font-weight: bold;">SIGN IN</button>       
+          </a>
         </div>
 
-    </form>
+        
     
       
 </div>
@@ -63,4 +63,15 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 

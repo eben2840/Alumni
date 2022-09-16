@@ -18,35 +18,16 @@
 <div class="container" style=" border-radius: 5px; padding: 20px; background: #fff;">
   <div class="row">
     <div class="col" style="display: flex; justify-content: space-between;">
-
-      {% with messages = get_flashed_messages() %}
-      {% if messages %}
-          {% for message in messages %}
-          <div class="alert alert-danger mb-3" role="alert">
-            Hello {{current_user.name}} {{ message }} 
-              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-          
-          {% endfor %}
-      {% endif %}
-  {% endwith %}
-
-    {% block body %}
-    {% endblock%}
-
-     <!--<h6 class="text-muted"> Hello {{current_user.name}},</h6>-->
-      <!--<i class='bx bxs-cog bx-sm icon'></i>-->
-      <a href="{{url_for('userlogin')}}"><h6>Logout</h6></a> 
+      <h6 class="text-muted"> Central Alumni Platform </h6>
+      <i class='bx bxs-cog bx-sm icon'></i>
     </div>
     <h1>Year Groups</h1>
     <h6 class="text-muted">18 entries</h6>
 
     
 
-    <form class="d-flex " role="search" style="margin-top: 3vh; margin-bottom: 5vh;" method='POST' action='{{url_for('usersearch')}}'>
-      {{form.hidden_tag()}}
+    <form class="d-flex " role="search" style="margin-top: 3vh; margin-bottom: 5vh;">
       <input class="form-control " type="search" placeholder="Search a particular person or category" aria-label="Search">
-
       <button class="btn" style="color: #fff; background: #992621; border: none; margin-left: 2vw;" type="submit"><i class='bx bx-search-alt icon'></i></button>
         
     </form>  
@@ -56,7 +37,7 @@
   <div class="row" style="text-align: center; margin: auto;">
     <div class="col-md-2 col-6">
       <div class="user-box">
-        <a href="/usernewform" style="text-decoration: none;">
+        <a href="/newforms" style="text-decoration: none;">
           <h1 class="user-box-items" style="margin-bottom: 3vh; font-weight: bold;">2022</h1>
         </a>
           <h6 class="text-muted">1248 Graduates</h6> 
@@ -64,7 +45,7 @@
     </div>
     <div class="col-md-2 col-6">
       <div class="user-box">
-        <a href="/usernewform" style="text-decoration: none;">
+        <a href="/newforms" style="text-decoration: none;">
           <h1 class="user-box-items" style="margin-bottom: 3vh; font-weight: bold;">2021</h1>
         </a>
           <h6 class="text-muted">3000 Graduates</h6> 
@@ -72,7 +53,7 @@
     </div>
     <div class="col-md-2 col-6">
       <div class="user-box">
-        <a href="/usernewform" style="text-decoration: none;">
+        <a href="/newforms" style="text-decoration: none;">
           <h1 class="user-box-items" style="margin-bottom: 3vh; font-weight: bold;">2020</h1>
         </a>
           <h6 class="text-muted">2465 Graduates</h6> 
@@ -80,7 +61,7 @@
     </div>
     <div class="col-md-2 col-6">
       <div class="user-box">
-        <a href="/usernewform" style="text-decoration: none;">
+        <a href="/newforms" style="text-decoration: none;">
           <h1 class="user-box-items" style="margin-bottom: 3vh; font-weight: bold;">2019</h1>
         </a>
           <h6 class="text-muted">1002 Graduates</h6> 
@@ -102,3 +83,15 @@
 
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
