@@ -17,8 +17,11 @@
     </div>
     <div class="info" style="margin-top: 2vh; text-align: center;">
       <div class="info-pic">
-        {{profile.image_file}}
-        <img src="{{ image_file }}" style="  width: 20%; background: #992621; border-radius: 70%;" > 
+        {% if profile.image_file %}
+          {{profile.image_file}}
+          {% else %}
+          <img src="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png" style="  width: 20%; background: #992621; border-radius: 70%;" > 
+        {% endif %}
              
       </div>
       <a href="/update/{{profile.id}}" style="text-decoration: none;">Edit </i></a>

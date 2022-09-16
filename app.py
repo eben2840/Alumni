@@ -129,11 +129,10 @@ class User(db.Model,UserMixin):
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    if current_user != None:
-        flash("Welcome to the CentralAlumina " + current_user.email, "Success")
-    else:
+    if current_user == None:
+        # flash("Welcome to the CentralAlumina " + current_user.email, "Success")
         flash(f"There was a problem")
-    return render_template('dashboard.html')
+    return render_template('dashboard.html', title='dashboard')
 
 
 
@@ -168,7 +167,7 @@ def addalumni():
             flash("New Alumni Added", "success")
             return redirect('list')
     print(form.errors)
-    return render_template("addAlumni.html", form=form)
+    return render_template("addAlumni.html", form=form, title='addalumni')
 
 
 @app.route('/department', methods=['GET', 'POST'])
@@ -233,7 +232,7 @@ def userlogin():
 @app.route('/year', methods=['GET', 'POST'])
 @login_required
 def year():
-    return render_template('year.html')
+    return render_template('year.html', title='year')
 
 
 @app.route('/list/<int:userid>', methods=['GET', 'POST'])
@@ -242,7 +241,7 @@ def list(userid):
     print("Fetching one")
     profile=User.query.get_or_404(userid)
     print(current_user)
-    return render_template("profileid.html",current_user=current_user, profile=profile)
+    return render_template("profileid.html",current_user=current_user, profile=profile, title="list")
  
  
  
@@ -253,14 +252,9 @@ def lists():
     users=User.query.order_by(User.id.desc()).all()
     print(users)
     print(current_user)
-    return render_template("list.html", users=users, current_user=current_user)
+    return render_template("list.html", users=users, current_user=current_user, title="list")
  
 
-
-@app.route('/base')
-@login_required
-def base():
-    return render_template('base.html')
 
 @app.route('/newschools', methods=['GET', 'POST'])
 def newschools():
@@ -271,8 +265,8 @@ def newschools():
 @login_required
 def logout():
     if current_user:
-        logout_user()
         print(current_user.email)
+        logout_user()
     else:
         print("Well that didnt work")
     flash('You have been logged out.','danger')
@@ -486,54 +480,12 @@ def signup():
             
     return render_template('signup.html', form=form)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 #user land area
 @app.route('/userlanding')
-@login_required
 def userlanding():
     return render_template('userlanding.html')
 
 @app.route('/usersignup', methods=['POST','GET'])
-@login_required
 def usersignup():
     form = AlumniSignin()
     print(form.indexnumber.data)
@@ -556,8 +508,7 @@ def usersignup():
     return render_template('usersignup.html', form=form)
 
 @app.route('/userlogin', methods=['POST','GET'])
-@login_required
-def userlogin():
+def ulogin():
     form = Alumni()
     print(form.email.data)
     print(form.password.data)
