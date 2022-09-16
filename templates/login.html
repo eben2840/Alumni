@@ -11,6 +11,22 @@
 </head>
 <body>
 
+  {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      {% for message in messages %}
+      <div class="alert alert-danger mb-3" role="alert">
+          {{ message }} 
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      
+      {% endfor %}
+  {% endif %}
+{% endwith %}
+
+{% block body %}
+{% endblock%}
+
+
   <div class="login-wrapper">
     <form action=" " class="form" method="POST", "GET"> 
       {{form.hidden_tag()}}
