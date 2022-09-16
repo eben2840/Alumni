@@ -1,21 +1,31 @@
-from telnetlib import LOGOUT
+
+import os
+from PIL import Image
+import secrets
+import urllib.request, urllib.parse
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask, redirect, render_template, url_for,request,jsonify,get_flashed_messages
 from flask_migrate import Migrate
 import json
+from wtforms import Form, BooleanField, StringField, PasswordField, validators, SubmitField, SelectField, IntegerField,PasswordField, SearchField
 from flask_login import login_required,login_user,logout_user,current_user,UserMixin, LoginManager
 from flask_marshmallow import Marshmallow
 from flask import(
 Flask,g,redirect,render_template,request,session,url_for,flash,jsonify
 )
 from flask_cors import CORS
+#from flask_uploads import UploadSet,IMAGES, configure_uploads
+
 
 
 app=Flask(__name__)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['SECRET_KEY'] =" thisismysecretkey"
+app.config['UPLOADED_PHOTOS_DEST'] ='uploads'
 
+# photos=UploadSet('photos', IMAGES)
+# configure_uploads(app, photos)
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
@@ -68,57 +78,184 @@ def before_request():
 #person table
 class Person(db.Model, UserMixin):
     id= db.Column(db.Integer, primary_key=True)
-    name= db.Column(db.String(200), nullable=True, unique=True)
-    yearCompleted= db.Column(db.String(200), nullable=True, unique=True)
-    nationality= db.Column(db.String(200), nullable=True, unique=True)
-    contact= db.Column(db.Integer(), nullable=True, unique=True)
-    email= db.Column(db.String(200), nullable=True, unique=True)
-    faculty= db.Column(db.String(200), nullable=True, unique=True)
-    hallofresidence= db.Column(db.String(200), nullable=True, unique=True)
-    password= db.Column(db.String(20), nullable=True, unique=True)
-    email= db.Column(db.String(20), nullable=True, unique=True)
-    phone= db.Column(db.String(10), nullable=True, unique=True)
-    
+    name= db.Column(db.String(200), nullable=True)
+    yearCompleted= db.Column(db.String(200), nullable=True)
+    nationality= db.Column(db.String(200), nullable=True)
+    contact= db.Column(db.Integer(), nullable=True)
+    email= db.Column(db.String(200), nullable=True)
+    faculty= db.Column(db.String(200), nullable=True)
+    hallofresidence= db.Column(db.String(200), nullable=True)
+    password= db.Column(db.String(20))
+    email= db.Column(db.String(20), nullable=True)
+    phone= db.Column(db.String(10), nullable=True )
+   
     def __repr__(self):
         return f"Person('{self.id}', {self.name}', {self.yearCompleted})"
 
-
-
-#routes 
+class alumni(db.Model, UserMixin):
+    id= db.Column(db.Integer, primary_key=True)
+    email= db.Column(db.String(20) )
+    name= db.Column(db.String(200) )
+    password= db.Column(db.String(200) )
+    email= db.Column(db.String(20) )
+    indexnumber= db.Column(db.String(10)  )
+  
+    
+    
+class User(db.Model,UserMixin):
+    id= db.Column(db.Integer, primary_key=True)
+    fullname= db.Column(db.String()  )
+    indexnumber= db.Column(db.Integer())
+    gender= db.Column(db.String()    )
+    school= db.Column(db.String()    )
+    department= db.Column(db.String()    )
+    program= db.Column(db.String()   )
+    completed= db.Column(db.Integer()     )
+    admitted= db.Column(db.Integer()  )
+    email= db.Column(db.String()     )
+    telephone= db.Column(db.Integer()     )
+    hall= db.Column(db.String()  )
+    nationality= db.Column(db.String()   )
+    address= db.Column(db.String()   )
+    work= db.Column(db.String()  )
+    guardian= db.Column(db.String()  )
+    kin= db.Column(db.String()   )
+    relationship= db.Column(db.String()  )
+    marital= db.Column(db.String()   )
+    health= db.Column(db.String()    )
+    extra= db.Column(db.String()     )
+    image_file = db.Column(db.String(20))
+    
 @app.route('/dashboard')
 @login_required
 def dashboard():
     if current_user != None:
-        flash("Welcome to the CentralAlumina" + current_user.email, "success")
+        flash("Welcome to the CentralAlumina " + current_user.email, "Success")
     else:
         flash(f"There was a problem")
     return render_template('dashboard.html')
 
+
+
+
 @app.route('/addalumni', methods=['GET', 'POST'])
+@login_required
 def addalumni():
-    return render_template('addAlumni.html')
+    form=Adduser()
+    if form.validate_on_submit():
+  
+            new=User(fullname=form.fullname.data,
+                 indexnumber=form.indexnumber.data,
+                   gender=form.gender.data, 
+                    school=form.school.data,
+                    department=form.department.data,
+                   completed=form.completed.data,
+                   admitted=form.admitted.data,
+                   email=form.email.data,  
+                   telephone=form.telephone.data,  
+                   hall=form.hall.data,  
+                   nationality=form.nationality.data,  
+                   address=form.address.data,  
+                   work=form.work.data,  
+                   guardian=form.guardian.data,  
+                  marital=form.marital.data,
+                  extra=form.extra.data,    
+               image_file=form.image_file.data
+                  )
+       
+            db.session.add(new)
+            db.session.commit()
+            flash("New Alumni Added", "success")
+            return redirect('list')
+    print(form.errors)
+    return render_template("addAlumni.html", form=form)
 
 
 @app.route('/department', methods=['GET', 'POST'])
+@login_required
 def department():
     return render_template('department.html')
 
 @app.route('/newreport')
+@login_required
 def newreport():
     return render_template('newreport.html')
 
+@app.context_processor
+def base():
+    form=Search()
+    return dict(form=form)
+
+@app.route('/newreport')
+def upload_image():
+    return render_template('newreport.html')
+
+@app.route('/')
+def land():
+    return render_template('land.html')
+
+
+
+
+
+@app.route('/search', methods=[ 'POST'])
+def search():
+    form= Search()
+    if request.method == 'POST': 
+        posts =User.query
+        if form.validate_on_submit():
+            postsearched=form.searched.data
+            posts =posts.filter(User.fullname.like('%'+ postsearched + '%') )
+            posts =posts.order_by(User.indexnumber).all() 
+            flash("You searched for "+ postsearched, "success")  
+            print(posts)   
+    return render_template("search.html", form=form, searched =postsearched, posts=posts)
+
+
+#search for user
+@app.route('/usersearch', methods=[ 'POST'])
+def usersearch():
+    form= Search()
+    if request.method == 'POST': 
+        posts =User.query
+        if form.validate_on_submit():
+            postsearched=form.searched.data
+            posts =posts.filter(User.fullname.like('%'+ postsearched + '%') )
+            posts =posts.order_by(User.indexnumber).all() 
+            flash("You searched for "+ postsearched, "success")  
+            print(posts)   
+    return render_template("usersearch.html", form=form, posts=posts)
 
 
 @app.route('/year', methods=['GET', 'POST'])
+@login_required
 def year():
     return render_template('year.html')
 
 
+@app.route('/list/<int:userid>', methods=['GET', 'POST'])
+@login_required
+def list(userid):
+    print("Fetching one")
+    profile=User.query.get_or_404(userid)
+    print(current_user)
+    return render_template("profileid.html",current_user=current_user, profile=profile)
+ 
+ 
+ 
 @app.route('/list', methods=['GET', 'POST'])
-def list():
-    return render_template('list.html')
+@login_required
+def lists():
+    print("Fetching all")
+    users=User.query.order_by(User.id.desc()).all()
+    print(users)
+    print(current_user)
+    return render_template("list.html", users=users, current_user=current_user)
+ 
+
 
 @app.route('/base')
+@login_required
 def base():
     return render_template('base.html')
 
@@ -128,20 +265,42 @@ def newschools():
 
 
 @app.route('/logout')
+@login_required
 def logout():
     if current_user:
         logout_user()
         print(current_user.email)
     else:
         print("Well that didnt work")
-    print('You have been logged out.','danger')
+    flash('You have been logged out.','danger')
     return redirect(url_for("login"))
 
+
+@app.route('/userlogout')
+@login_required
+def userlogout():
+    if current_user:
+        logout_user()
+        print(current_user.email)
+    else:
+        print("Well that didnt work")
+    flash('You have been logged out.','danger')
+    return redirect(url_for("userlogin"))
+
 @app.route('/report')
+@login_required
 def report():
     return render_template('report.html')
 
+
+
+
+
+
+
+
 @app.route('/newforms')
+@login_required
 def newforms():
     form=RegistrationForm()
     if form.validate_on_submit():
@@ -157,11 +316,13 @@ def home():
     return render_template('home.html',persons=persons)
 
 @app.route('/members')
+@login_required
 def members():
     persons=Person.query.all()
     return render_template('members.html', persons=persons)
 
 @app.route('/schools')
+@login_required
 def schools():
     return render_template('schools.html')
 
@@ -178,11 +339,12 @@ def form():
         db.session.commit()
         return redirect('information')
        
-    flash("please fill this form", "success")
+    flash("Added a New Alumni", "success")
     print(form.errors)
     return render_template("form.html", form=form)
 
 @app.route('/information')
+@login_required
 def information():
     persons=Person.query.order_by(Person.id.desc()).all()
     print(persons)
@@ -194,40 +356,62 @@ def information():
 #CRUD(update and delete routes)
 @app.route("/update/<int:id>")
 def update(id):
-    form=RegistrationForm()
-    user=Person.query.get_or_404(id)
+    form=Adduser()
+    user=User.query.get_or_404(id)
     if request.method== 'GET':
-        form.name.data = user.name
-        form.yearCompleted.data = user.yearCompleted
-        form.nationality.data = user.nationality
-        form.contact.data = user.contact
-        form.email.data = user.email
-        form.faculty.data = user.faculty
-        form.password.data = user.password
-        form.hallofresidence.data = user.hallofresidence    
+        form.fullname.data = user.fullname
+        form.indexnumber.data = user.indexnumber
+        form.gender.data = user.gender
+        form.school.data = user.school
+        form.department.data = user.department
+        form.completed.data = user.completed
+        form.admitted.data = user.admitted
+        form.email.data = user.email   
+        form.telephone.data = user.telephone  
+        form.hall.data = user.hall  
+        form.nationality.data = user.nationality   
+        form.address.data = user.address  
+        form.work.data = user.work 
+        form.guardian.data = user.guardian   
+        form.marital.data = user.marital   
+        form.extra.data = user.extra  
+        form.image_file.data = user.image_file 
     if request.method== 'POST':
-        new=Person(id=form.id.data, password=form.password.data,name=form.name.data, 
-                   yearCompleted=form.yearCompleted.data, 
-                   nationality=form.nationality.data,
-                   contact=form.contact.data,email=form.email.data,faculty=form.faculty.data,
-                   hallofresidence=form.hallofresidence.data)
+        new=User(fullname=form.fullname.data,
+                 indexnumber=form.indexnumber.data,
+                   gender=form.gender.data, 
+                    school=form.school.data,
+                    department=form.department.data,
+                   completed=form.completed.data,
+                   admitted=form.admitted.data,
+                   email=form.email.data,  
+                   telephone=form.telephone.data,  
+                   hall=form.hall.data,  
+                   nationality=form.nationality.data,  
+                   address=form.address.data,  
+                   work=form.work.data,  
+                   guardian=form.guardian.data,  
+                  marital=form.marital.data,
+                  extra=form.extra.data,    
+               image_file=form.image_file.data
+                  )
         try:    
             db.session.add(new)
             db.session.commit()
-            return redirect(url_for('information')) 
+            return redirect(url_for('list')) 
         except:
             return"errrrror"
-    return render_template("form.html", form=form)
+    return render_template("addAlumni.html", form=form)
     
     
 #delete route
 @app.route("/delete/<int:id>")
 def delete(id):
-    delete=Person.query.get_or_404(id)
+    delete=User.query.get_or_404(id)
     try:
             db.session.delete(delete)
             db.session.commit()
-            return redirect(url_for('information')) 
+            return redirect(url_for('list')) 
     except: 
         return "errrrrorrr"
     
@@ -252,7 +436,7 @@ def login():
     return render_template('login.html')
 '''
 
-@app.route('/', methods=['POST','GET'])
+@app.route('/login', methods=['POST','GET'])
 def login():
     form = LoginForm()
     print ('try')
@@ -267,34 +451,162 @@ def login():
         if user and form.password.data == user.password:
             print(user.email + "validored successfully")
             login_user(user)
-            flash (f' ' + user.email + ',You have been logged in successfully ' ,'success')
+           # flash (f' ' + user.email + ',You have been logged in successfully ' ,'success')
             return redirect(url_for('dashboard'))
             # next = request.args.get('next')
         else:
-            flash (f'The account cant be found', 'danger')
+            flash (f'The account cant be found', 'success')
     return render_template('login.html', form=form)
 
 
 #signup route
 @app.route('/signup', methods=['POST','GET'])
+
 def signup():
     form = Registration()
     print(form.phone.data)
     print(form.email.data)
+    print(form.name.data)
+    
     if request.method == "POST": 
         if form.validate_on_submit():
             print('Success')
-            user =Person(password="central@123", email=form.email.data, phone=form.phone.data)
+            user =Person(password="central@123", email=form.email.data, phone=form.phone.data, name=form.name.data)
             db.session.add(user)
             db.session.commit()
             login_user(user, remember=True)
             print(current_user)
-            flash(f'' + user.email +', your account has been created ', 'success')
+         
             return redirect(url_for('login'))
         else:
             print(form.errors)
             
     return render_template('signup.html', form=form)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#user land area
+@app.route('/userlanding')
+@login_required
+def userlanding():
+    return render_template('userlanding.html')
+
+@app.route('/usersignup', methods=['POST','GET'])
+@login_required
+def usersignup():
+    form = AlumniSignin()
+    print(form.indexnumber.data)
+    print(form.email.data)
+    print(form.name.data)
+    
+    if request.method == "POST": 
+        if form.validate_on_submit():
+            print('Success')
+            user =alumni(password="central@123", email=form.email.data, indexnumber=form.indexnumber.data, name=form.name.data)
+            db.session.add(user)
+            db.session.commit()
+            login_user(user, remember=True)
+            print(current_user)
+            flash(f'' + user.email +', your account has been created ', 'success')
+            return redirect(url_for('userlogin'))
+        else:
+            print(form.errors)
+            
+    return render_template('usersignup.html', form=form)
+
+@app.route('/userlogin', methods=['POST','GET'])
+@login_required
+def userlogin():
+    form = Alumni()
+    print(form.email.data)
+    print(form.password.data)
+    
+    if form.validate_on_submit():
+        print("form Validated successfully")
+        user = alumni.query.filter_by(email = form.email.data).first()
+        print("user:" + user.email + "found")
+        print(user.password)
+        if user and form.password.data == user.password:
+            print(user.email + "validored successfully")
+            login_user(user)
+            #flash (f' ' + user.email + ',You have been logged in successfully ' ,'success')
+            return redirect(url_for('useryeargroup'))
+            # next = request.args.get('next')
+        else:
+                flash (f'The account cant be found', 'danger')
+    return render_template('userlogin.html', form=form)
+
+
+@app.route('/useryeargroup')
+@login_required
+def useryeargroup():
+    flash("Welcome to   CentralAlumina ", "success")
+    return render_template('useryeargroup.html')
+
+
+@app.route('/usernewform')
+@login_required
+def usernewform():
+    return render_template('usernewform.html')
+
+
+@app.route('/userschool')
+@login_required
+def userschool():
+    return render_template('userschool.html')
+
+
+@app.route('/userbase')
+@login_required
+def userbase():
+    return render_template('userbase.html')
+
+
+@app.route('/userinformation')
+@login_required
+def userinformation():
+    return render_template('userinformation.html')
+#ending user
+
+
 
 if __name__ == '__main__':
     #DEBUG is SET to TRUE. CHANGE FOR PROD

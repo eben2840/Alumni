@@ -6,122 +6,108 @@
 <h4>Add a New Alumni</h4>
 <p class="text-muted" style="margin-bottom: 0;">Please fill in this form :</p>
 <br>
-<form >
+<form action='' method="post" enctype="multipart/form-data">
+  {{form.hidden_tag()}}
+
+
 
   <div class="form-floating mb-3" >
-    <input type="name" class="form-control" id="floatingInput" placeholder="John Doe">
+    {{form.fullname(class="form-control",placeholder="fullname",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">Full Name</label>
   </div>
   
+
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="INT/19/01/5837">
+    {{form.indexnumber(class="form-control",placeholder="INT/19/01/5837",id="floatingInput" )}}
     <label for="floatingInput" class="text-muted">Index Number</label>
   </div>
 
-  <div class="mb-3" >
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" id="inlineCheckbox1" value="male">
-      <label class="form-check-label text-muted" for="inlineCheckbox1"> Male</label>
-    </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" id="inlineCheckbox2" value="female">
-      <label class="form-check-label text-muted" for="inlineCheckbox2"> Female</label>
+
+    <div class="form-floating mb-3">
+      {{form.gender(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
+      <label for="floatingInput" class="text-muted">Gender</label>
     </div>
     
-  </div>
-
-  <div class="form-floating mb-3" >
-    <input type="date" class="form-control" id="floatingInput" placeholder="dateofbirth">
-    <label for="floatingInput" class="text-muted">Date of Birth</label>
-  </div>
-
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="school/faculty">
+    {{form.school(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">School / Faculty</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="department">
+    {{form.department(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">Department</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="program">
+    {{form.program(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">Program</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="number" class="form-control" id="floatingInput" placeholder="yearcompleted">
+    {{form.completed(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">Year Completed</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="number" class="form-control" id="floatingInput" placeholder="yearadmitted">
+    {{form.admitted(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">Year Admitted</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+    {{form.email(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">E-mail</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="tel" class="form-control" id="floatingInput" placeholder="telephone">
+    {{form.telephone(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">Telephone</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="hallofresidence">
+    {{form.hall(class="form-control",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">Hall of Residence</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="nationality">
+    {{form.nationality(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">Nationality</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="homeaddress">
+    {{form.address(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">Home Address</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="currentplacofowrk">
+    {{form.work(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">Current Place of Work</label>
   </div>
 
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="guardian">
-    <label for="floatingInput" class="text-muted">Guardian</label>
+    {{form.guardian(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
+    <label for="floatingInput" class="text-muted">Current Position</label>
   </div>
 
-  <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="nextofkin">
-    <label for="floatingInput" class="text-muted">Next of Kin</label>
-  </div>
+
 
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="relationshipwithnextofkin">
-    <label for="floatingInput" class="text-muted">Relationship with Next of Kin</label>
-  </div>
-
-  <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="maritalstaus">
+    {{form.marital(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">Marital Status</label>
   </div>
 
-  <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="healthstatus">
-    <label for="floatingInput" class="text-muted">Health Status</label>
-  </div>
+  
 
   <div class="form-floating mb-3">
-    <input type="text" class="form-control" id="floatingInput" placeholder="extracuricullumactivities">
+    {{form.extra(class="form-control",placeholder="INT/19/01/5837",id="floatingInput")}}
     <label for="floatingInput" class="text-muted">Extra Curicullum Activities</label>
   </div>
 
   
 
+  <div class="form-floating mb-3">
+    {{form.picture(class="form-control",id="floatingInput" )}}
+
+  </div>
   
 
   <button class="btn" style="color: #fff; background: #992621; border: none;" type="submit">Register</button>

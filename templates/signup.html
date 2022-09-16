@@ -16,7 +16,10 @@
       {{form.hidden_tag()}}
         <img src="https://www.shareicon.net/data/512x512/2016/05/24/770137_man_512x512.png">
       <h2>Login</h2>
-     
+      <div class="input-group">
+        {{form.name(class="input-group")}}
+        <label for="loginUser">name</label>
+      </div>
       <div class="input-group">
         {{form.email(class="input-group")}}
         <label for="loginUser">email</label>
