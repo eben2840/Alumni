@@ -14,21 +14,31 @@
   </head>
   <body>
 
-
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger mb-3" role="alert">
+            {{ message }}  {{current_user.name}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
 <div class="container" style=" border-radius: 5px;  background: white; height: 100vh;">
     
       <div >
         <form action=" " class="form" method="POST", "GET"> 
             {{form.hidden_tag()}}
-        <img src="static/img/user.jpeg" alt="" width="100%" style="height: 50vh; max-height: 50vh; object-fit: cover;" >
-      </div>
+            <img src="static/img/girl.gif" alt="" width="100%" style="height: 50vh; max-height: 50vh; border-radius: 50%; object-fit: contain;" >
+        </div>
       <div style="text-align: center; margin-top: 5vh; ">
         <h2 style=" margin-bottom: 2vh;"> SIGN UP</h2>
         
 
         <div style="margin-top: 2vh;">
             <div class="form-floating mb-3" >
-                {{form.name(class="form-control", placeholder="Username")}}
+                {{form.name(class="form-control", placeholder="Fullname")}}
                 <label for="floatingInput" class="text-muted">Full Name</label>
             </div> 
             <div class="form-floating mb-3" >
@@ -36,9 +46,10 @@
                 <label for="floatingInput" class="text-muted">E-Mail</label>
             </div>
             <div class="form-floating mb-3" >
-                {{form.indexnumber(class="form-control", placeholder="indexnumber")}}
+                {{form.indexnumber(class="form-control", placeholder="indexnumber" ) }}
                 <label for="floatingInput" class="text-muted">indexnumber</label>
             </div>
+            
                  
         </div>
 

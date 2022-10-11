@@ -7,34 +7,36 @@
     <h4 style="color: #992621;"><b>Advanced Search</b></h4>
     
 
-    <form style="margin-top: 2vh;">
+    <form style="margin-top: 2vh;" method='POST' action='{{url_for('newreport')}}' >
+      {{form.hidden_tag()}}
        <div class="row" style="text-align: center; justify-content: center; margin: auto;">
         <div class="col-3" >
-          <label for="inputPassword2" class="visually-hidden">Full Name</label>
-          <input type="text" class="form-control" id="inputPassword2" placeholder="Full Name">
+          <label for="inputPassword2" type='search' name='searched' class="visually-hidden">School</label>
+          <input type="text" class="form-control"  name='searched' id="inputPassword2" placeholder="Year Completed">
         </div>
+        
         <div class="col-3">
-            <label for="inputPassword2" class="visually-hidden">Index Number</label>
+            <label for="inputPassword2" name='searched' class="visually-hidden">Index Number</label>
             <input type="text" class="form-control" id="inputPassword2" placeholder="Index Number">
         </div>
         <div class="col-3">
-            <label for="inputPassword2" class="visually-hidden">Faculty/School</label>
+            <label for="inputPassword2"  name='searched'class="visually-hidden">Faculty/School</label>
             <input type="text" class="form-control" id="inputPassword2" placeholder="Faculty/School">
         </div>
         <div class="col-3">
-            <label for="inputPassword2" class="visually-hidden">Department</label>
+            <label for="inputPassword2"name='searched' class="visually-hidden">Department</label>
             <input type="text" class="form-control" id="inputPassword2" placeholder="Department">
         </div> 
         <div class="row" style="margin-top: 3vh;">
           <div class="col-auto" >
-            <button type="button" class="btn btn-light" style="background: #992621; color: #fff;">Search</button>
+            <button type="submit" class="btn btn-light" style="background: #992621; color: #fff;">Search</button>
           </div> 
         </div>  
         </div>
     </form>
 
-        
-       
+    
+
   </div>
       <div style="display: flex; justify-content: space-between; margin: 10px 12px 0 12px; margin-top: 3vh;"> 
           <h4 style="color: #992621;  text-align: center;"><b>Results</b></h4>
@@ -44,61 +46,31 @@
         <br>
           <div class="dashboard-item" >
             <table class="table">
+              {% for post in posts %}
                 <thead style="text-align: center; color: #992621;">
                 <tr >
                     <th scope="col">Full Name</th>
                     <th scope="col">Index Number</th>
-                    <th scope="col">Faculty/School</th>
+                    <th scope="col">Year Completed</th>
                     <th scope="col">Department</th>
                     <th scope="col-1">View</th>
                 </tr>
                 </thead>
                 <tbody style="text-align: center;">
                 <tr>
-                    <td scope="row">Lebron James</th>
-                    <td>INT/19/01/5837</td>
-                    <td>School of Engineering and Technology</td>
-                    <td>Computer Science $ Information Technology</td>
+                    <td scope="row">{{post.fullname}}</th>
+                    <td>{{post.indexnumber}}</td>
+                    <td>{{post.completed}}</td>
+                    <td>{{post.department}}</td>
                     <td>
                       <a href="" class="table-#" style="height: 4vh; border-radius: 5px; width: 2vw; align-items: center; color: black;" >
                         <i class='bx bxs-show bx-border icon'></i>
                       </a>
                     </td>
                 </tr>
-                <tr>
-                    <td scope="row">Steph Curry</th>
-                    <td>Cbs/19/01/3301</td>
-                    <td>Central Business School</td>
-                    <td>Accounting</td>
-                    <td>
-                      <a href="" class="table-#" style="height: 4vh; border-radius: 5px; width: 2vw; align-items: center; color: black;" >
-                        <i class='bx bxs-show bx-border icon'></i>
-                      </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td scope="row">Anthony Davis</th>
-                    <td>Nur/19/01/2211</td>
-                    <td>SCHOOL OF MEDICINE AND HEALTH SCIENCES </td>
-                    <td>NURSING</td>
-                    <td>
-                      <a href="" class="table-#" style="height: 4vh; border-radius: 5px; width: 2vw; align-items: center; color: black;" >
-                        <i class='bx bxs-show bx-border icon'></i>
-                      </a>
-                    </td>
-                </tr>
-                <tr>
-                  <td scope="row">Chris Paul</th>
-                  <td>Arc/19/01/4190</td>
-                  <td>SCHOOL OF ARCHITECTURE AND DESIGN</td>
-                  <td>ARCHITECTURE</td>
-                  <td>
-                    <a href="" class="table-#" style="height: 4vh; border-radius: 5px; width: 2vw; align-items: center; color: black;" >
-                      <i class='bx bxs-show bx-border icon'></i>
-                    </a>
-                  </td>
-              </tr>
+               
                 </tbody>
+                {% endfor %}  
             </table>
           </div>
         </div>
@@ -107,5 +79,4 @@
 
   </div>
 
-
-{% endblock body %}
+  {% endblock body %}
