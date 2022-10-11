@@ -13,26 +13,36 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   </head>
   <body>
-
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger mb-3" role="alert">
+            {{ message }}  {{current_user.name}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
 
 <div class="container" style=" border-radius: 5px;  background: white; height: 100vh;">
     
       <div >
         <form action=" " class="form" method="POST"> 
             {{form.hidden_tag()}}
-        <img src="static/img/user.jpeg" alt="" width="100%" style="height: 50vh; max-height: 50vh; object-fit: cover;" >
-      </div>
+            <img src="static/img/man.gif" alt="" width="100%" style="height: 50vh; max-height: 50vh; border-radius: 50%; object-fit: contain;" >
+          </div>
       <div style="text-align: center; margin-top: 5vh; ">
         <h2 style=" margin-bottom: 2vh;"> Welcome Back</h2>
         
 
         <div style="margin-top: 5vh;">
             <div class="form-floating mb-3" >
-                <input type="name" class="form-control" id="floatingInput" placeholder="John Doe">
-                <label for="floatingInput" class="text-muted">Username</label>
+              {{form.email(class="form-control")}}
+                <label for="floatingInput" class="text-muted">Email</label>
             </div> 
             <div class="form-floating mb-3" >
-                <input type="name" class="form-control" id="floatingInput" placeholder="John Doe">
+              {{form.password(class="form-control")}}
                 <label for="floatingInput" class="text-muted">Password</label>
             </div>
                   
@@ -45,12 +55,15 @@
 
 
         <div style="margin-top: 5vh;">
-          <a href="/useryeargroup">
-            <button type="button" class="btn btn-lg" style="width: 90%; background: #992621; color: #fff; padding: 12px 20px; font-weight: 300; border: none; border-radius: 10px; font-weight: bold;">SIGN IN</button>       
+          {{form.submit(class="btn btn-lg", style="width: 90%; background: #992621; color: #fff; padding: 12px 20px; font-weight: 300; border: none; border-radius: 10px; font-weight: bold;") }} 
+                
           </a>
         </div>
 
-        
+       
+  
+
+  
     
       
 </div>

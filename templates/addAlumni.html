@@ -104,19 +104,65 @@
 
   
 
-  <div class="form-floating mb-3">
-    {{form.picture(class="form-control",id="floatingInput" )}}
 
-  </div>
-  
 
-  <button class="btn" style="color: #fff; background: #992621; border: none;" type="submit">Register</button>
+
+
+
+
+  <button class="btn" style="color: #fff; background: #992621; border: none;" type="submit ">Register</button>
               
 </form>
 
 
 
+  
+<script>
 
+  
+  
+  // Push batch images to storage and store references in the database
+  var pushImage = function (file) {
+   document.getElementById('submitButton').innerHTML = `
+         <button class="button" style="background-color: #7272F2;"><i class="fa fa-pause-circle-o" aria-hidden="true" style="color:'white'"></i>Uploading</button>
+         `
+     // var uid = firebase.auth().currentUser.uid;
+     // Create storage reference
+     var ref = firebase.storage().ref(`/alumni/`).child(file.name + ".jpg");
+     //var ref = firebase.storage().ref(``).child(file.name + ".jpg");
+ 
+     // Upload file and get task
+     var task = ref.put(file, {contentType: file.type});
+  
+     // Monitor task for progress
+     task.on('state_changed',
+         // Shows progress of task
+         function progress(snapshot) {
+             var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+             console.log(percentage);
+         },
+         // Shows any errors occurring during progress
+         function error(err) {
+             // Handle unsuccessful uploads
+             console.log(err.message);
+ 
+         },
+         // Shows when task is completed
+         );  
+ };
+ 
+ 
+   function changeimagesss(event) {
+     console.log(event)
+     // console.log(event.target.files[0])
+     // var uploadItem = event.target.files[0]
+     // console.log(uploadItem)
+     pushImage(event)
+ 
+     
+   }
+ 
+  </script>
 
 
 {% endblock body %}

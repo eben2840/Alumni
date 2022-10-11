@@ -1,6 +1,6 @@
 
 import os
-from PIL import Image
+
 import secrets
 import urllib.request, urllib.parse
 from flask_sqlalchemy import SQLAlchemy
@@ -14,7 +14,6 @@ from flask import(
 Flask,g,redirect,render_template,request,session,url_for,flash,jsonify
 )
 from flask_cors import CORS
-#from flask_uploads import UploadSet,IMAGES, configure_uploads
 
 
 
@@ -86,8 +85,28 @@ class Person(db.Model, UserMixin):
     faculty= db.Column(db.String(200), nullable=True)
     hallofresidence= db.Column(db.String(200), nullable=True)
     password= db.Column(db.String(20))
+    school= db.Column(db.String(20))
     email= db.Column(db.String(20), nullable=True)
     phone= db.Column(db.String(10), nullable=True )
+    indexnumber=db.Column(db.String())
+    password=db.Column(db.String)
+    gender= db.Column(db.String()    )
+    department= db.Column(db.String()    )
+    program= db.Column(db.String()   )
+    telephone= db.Column(db.String()   )
+    admitted= db.Column(db.Integer()  )
+    address= db.Column(db.String()   )
+    work= db.Column(db.String()  )
+    guardian= db.Column(db.String()  )
+    kin= db.Column(db.String()   )
+    relationship= db.Column(db.String()  )
+    marital= db.Column(db.String()   )
+    health= db.Column(db.String()    )
+    form=db.Column(db.String())
+    extra= db.Column(db.String()     )
+    image_file = db.Column(db.String(20))
+    
+    
    
     def __repr__(self):
         return f"Person('{self.id}', {self.name}', {self.yearCompleted})"
@@ -99,6 +118,8 @@ class alumni(db.Model, UserMixin):
     password= db.Column(db.String(200) )
     email= db.Column(db.String(20) )
     indexnumber= db.Column(db.String(10)  )
+    telephone= db.Column(db.String(10)  )
+    
   
     
     
@@ -113,7 +134,7 @@ class User(db.Model,UserMixin):
     completed= db.Column(db.Integer()     )
     admitted= db.Column(db.Integer()  )
     email= db.Column(db.String()     )
-    telephone= db.Column(db.Integer()     )
+    telephone= db.Column(db.String()     )
     hall= db.Column(db.String()  )
     nationality= db.Column(db.String()   )
     address= db.Column(db.String()   )
@@ -130,7 +151,7 @@ class User(db.Model,UserMixin):
 @login_required
 def dashboard():
     if current_user == None:
-        # flash("Welcome to the CentralAlumina " + current_user.email, "Success")
+        flash("Welcome to the CentralAlumina " + current_user.email, "Success")
         flash(f"There was a problem")
     return render_template('dashboard.html', title='dashboard')
 
@@ -175,26 +196,62 @@ def addalumni():
 def department():
     return render_template('department.html')
 
-@app.route('/newreport')
+
+@app.route('/current', methods=['GET', 'POST'])
 @login_required
-def newreport():
-    return render_template('newreport.html', title="newreport")
+def current():
+    return render_template('current.html')
+
+
+
+@app.route('/newreport')
+
+def upload_image():
+    return render_template('newreport.html')
+
+
+@app.route('/')
+def index():    
+    return render_template('index.html')
+
+
+@app.route('/userprofile', methods=['GET', 'POST'])
+def userprofile():
+    form=RegistrationForm()
+    if form.validate_on_submit():
+  
+            new=Person(name=form.name.data,
+                 indexnumber=form.indexnumber.data,
+                   gender=form.gender.data, 
+                    school=form.school.data,
+                    department=form.department.data,
+                   yearCompleted=form.yearCompleted.data,
+                   admitted=form.admitted.data,
+                   email=form.email.data,  
+                   telephone=form.telephone.data,  
+                   hallofresidence=form.hallofresidence.data,  
+                   nationality=form.nationality.data,  
+                   address=form.address.data,  
+                   work=form.work.data,  
+                   guardian=form.guardian.data,  
+                  marital=form.marital.data,
+                  extra=form.extra.data,    
+            
+                  )
+       
+            db.session.add(new)
+            db.session.commit()
+            flash("New Alumni Added", "success")
+            return redirect('information')
+    print(form.errors)
+    return render_template("userprofile.html", form=form, title='addalumni')
+ 
+
 
 @app.context_processor
 def base():
     form=Search()
     return dict(form=form)
-
-@app.route('/newreport')
-def upload_image():
-    return render_template('newreport.html')
-
-@app.route('/')
-def land():
-    return render_template('land.html')
-
-
-
 
 
 @app.route('/search', methods=[ 'POST'])
@@ -211,10 +268,28 @@ def search():
     return render_template("search.html", form=form, searched =postsearched, posts=posts)
 
 
+
+@app.route('/newreport', methods=[ 'POST'])
+@login_required
+def newreport():
+    form= Adsearch()
+    if request.method == 'POST': 
+        posts =User.query
+        if form.validate_on_submit():
+            postsearched=form.searched.data
+            # posts =posts.filter(User.fullname.like('%'+ postsearched + '%') )
+            #posts =posts.filter(User.indexnumber.like('%'+ postsearched + '%') )
+            posts =posts.filter(User.completed.like('%'+ postsearched + '%') )
+            # posts =posts.filter(User.department.like('%'+ postsearched + '%') )
+            posts =posts.order_by(User.indexnumber).all() 
+            flash("You searched for "+ postsearched, "success")  
+            print(posts)   
+    return render_template("newreport.html", form=form, searched =postsearched, posts=posts)
+
 #search for user
 @app.route('/usersearch', methods=[ 'POST'])
 def usersearch():
-    form= Search()
+    form= UserSearch()
     if request.method == 'POST': 
         posts =User.query
         if form.validate_on_submit():
@@ -223,11 +298,9 @@ def usersearch():
             posts =posts.order_by(User.indexnumber).all() 
             flash("You searched for "+ postsearched, "success")  
             print(posts)   
-    return render_template("usersearch.html", form=form, posts=posts)
+    return render_template("usersearch.html", form=form, searched =postsearched, posts=posts, header="Year Group", smalltitle="Central Alumni Platform", name="", numberofentries="16 entries")
 
-@app.route('/userlogin')
-def userlogin():
-    return render_template('userlogin.html', title="userlogin")
+
 
 @app.route('/year', methods=['GET', 'POST'])
 @login_required
@@ -347,11 +420,11 @@ def information():
     print(persons)
     return render_template("information.html", persons=persons)
  
- 
+
 
 
 #CRUD(update and delete routes)
-@app.route("/update/<int:id>")
+@app.route("/update/<int:id>", methods=['POST', 'GET'])
 def update(id):
     form=Adduser()
     user=User.query.get_or_404(id)
@@ -397,8 +470,59 @@ def update(id):
             db.session.commit()
             return redirect(url_for('list')) 
         except:
-            return"errrrror"
+            return render_template("dashboard.html")
     return render_template("addAlumni.html", form=form)
+    
+    
+#CRUD(update and delete routes)
+@app.route("/updateuser/<int:id>", methods=['POST', 'GET'])
+def updateuser(id):
+    form=RegistrationForm()
+    user=Person.query.get_or_404(id)
+    if request.method== 'GET':
+        form.name.data = user.name
+        form.indexnumber.data = user.indexnumber
+        form.gender.data = user.gender
+        form.school.data = user.school
+        form.department.data = user.department
+        form.yearCompleted.data = user.yearCompleted
+        form.admitted.data = user.admitted
+        form.email.data = user.email   
+        form.telephone.data = user.telephone  
+        form.hallofresidence.data = user.hallofresidence  
+        form.nationality.data = user.nationality   
+        form.address.data = user.address  
+        form.work.data = user.work 
+        form.guardian.data = user.guardian   
+        form.marital.data = user.marital   
+        form.extra.data = user.extra  
+        form.image_file.data = user.image_file 
+    if request.method== 'POST':
+        new=Person(name=form.name.data,
+                 indexnumber=form.indexnumber.data,
+                   gender=form.gender.data, 
+                    school=form.school.data,
+                    department=form.department.data,
+                   yearCompleted=form.yearCompleted.data,
+                   admitted=form.admitted.data,
+                   email=form.email.data,  
+                   telephone=form.telephone.data,  
+                   hallofresidence=form.hallofresidence.data,  
+                   nationality=form.nationality.data,  
+                   address=form.address.data,  
+                   work=form.work.data,  
+                   guardian=form.guardian.data,  
+                  marital=form.marital.data,
+                  extra=form.extra.data,    
+               image_file=form.image_file.data
+                  )
+        try:    
+            db.session.add(new)
+            db.session.commit()
+            return redirect(url_for('information')) 
+        except:
+            return "errror"
+    return render_template("userprofile.html", form=form)
     
     
 #delete route
@@ -444,17 +568,21 @@ def login():
         print("form Validated successfully")
         user = Person.query.filter_by(email = form.email.data).first()
         print("user:" + user.email + "found")
+      
         print(user.password)
         if user and form.password.data == user.password:
             print(user.email + "validored successfully")
+            if user == None:
+                flash(f"There was a problem")   
             login_user(user)
-           # flash (f' ' + user.email + ',You have been logged in successfully ' ,'success')
+            flash (f' ' + user.email + ',Welcome Admin ' ,'success')
             return redirect(url_for('dashboard'))
             # next = request.args.get('next')
         else:
-            flash (f'The account cant be found', 'success')
+            flash (f'Wrong Password ', 'success')
+   
     return render_template('login.html', form=form)
-
+ 
 
 #signup route
 @app.route('/signup', methods=['POST','GET'])
@@ -487,7 +615,7 @@ def userlanding():
 
 @app.route('/usersignup', methods=['POST','GET'])
 def usersignup():
-    form = AlumniSignin()
+    form = Registration()
     print(form.indexnumber.data)
     print(form.email.data)
     print(form.name.data)
@@ -495,69 +623,107 @@ def usersignup():
     if request.method == "POST": 
         if form.validate_on_submit():
             print('Success')
-            user =alumni(password="central@123", email=form.email.data, indexnumber=form.indexnumber.data, name=form.name.data)
+            user =Person(password="central@123", email=form.email.data, indexnumber=form.indexnumber.data, name=form.name.data)
             db.session.add(user)
             db.session.commit()
             login_user(user, remember=True)
             print(current_user)
-            flash(f'' + user.email +', your account has been created ', 'success')
-            return redirect(url_for('userlogin'))
+         
+            return redirect(url_for('ulogin'))
         else:
             print(form.errors)
             
     return render_template('usersignup.html', form=form)
+   
 
 @app.route('/userlogin', methods=['POST','GET'])
 def ulogin():
-    form = Alumni()
+    form = LoginForm()
+    print ('try')
     print(form.email.data)
     print(form.password.data)
     
     if form.validate_on_submit():
         print("form Validated successfully")
-        user = alumni.query.filter_by(email = form.email.data).first()
+        user = Person.query.filter_by(email = form.email.data).first()
         print("user:" + user.email + "found")
         print(user.password)
         if user and form.password.data == user.password:
             print(user.email + "validored successfully")
             login_user(user)
-            #flash (f' ' + user.email + ',You have been logged in successfully ' ,'success')
+            flash ('Welcome, Finish Setting up your profile ' ,'success')
             return redirect(url_for('useryeargroup'))
             # next = request.args.get('next')
         else:
-                flash (f'The account cant be found', 'danger')
+            flash (f'Wrong Password', 'success')
     return render_template('userlogin.html', form=form)
 
+   
 
-@app.route('/useryeargroup')
+
+
+
+
+@app.route('/useryeargroup', methods=['GET', 'POST'])
 @login_required
-def useryeargroup():
-    flash("Welcome to   CentralAlumina ", "success")
-    return render_template('useryeargroup.html')
+def useryeargroup():  
+    
+    return render_template("useryeargroup.html", header="Year Group", smalltitle="Central Alumni Platform", name="", numberofentries="16 entries")
+ 
 
 
 @app.route('/usernewform')
 @login_required
 def usernewform():
-    return render_template('usernewform.html')
+    return render_template('usernewform.html', header="Schools / Faculty", smalltitle="2021", name="", numberofentries="16 entries")
 
 
 @app.route('/userschool')
 @login_required
 def userschool():
-    return render_template('userschool.html')
+    return render_template('userschool.html', header="Department", smalltitle="2021", name="- CCSITA", numberofentries="16 entries")
+
+
+# @app.route('/userdisplay')
+# @login_required
+# def userdisplay(userid):
+#     profile=User.query.get_or_404(userid)
+#     print(current_user)
+#     return render_template("userdisplay.html",current_user=current_user, profile=profile)
+ 
+ 
+@app.route('/userdisplay/<int:userid>', methods=['GET', 'POST'])
+@login_required
+def userdisplay(userid):
+  
+    profile=User.query.get_or_404(userid)
+    print(current_user)
+    return render_template("userdisplay.html",current_user=current_user, profile=profile, title="list")
+ 
+   
 
 
 @app.route('/userbase')
 @login_required
 def userbase():
-    return render_template('userbase.html')
+    print("Fetching all")
+    users=User.query.order_by(User.id.desc()).all()
+    print(users)
+    print(current_user)
+    return render_template("userbase.html", users=users, current_user=current_user, header="Information Technology", smalltitle="2021", name="- CCSITA", numberofentries="16 entries")
+ 
+
+  
 
 
-@app.route('/userinformation')
+@app.route('/userinformation/<int:userid>', methods=['GET', 'POST'])
 @login_required
-def userinformation():
-    return render_template('userinformation.html')
+def userinformation(userid):
+    profile=User.query.get_or_404(userid)
+    print(current_user)
+    return render_template("userinformation.html",current_user=current_user, profile=profile, title="list")
+ 
+   
 #ending user
 
 
