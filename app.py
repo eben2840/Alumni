@@ -19,8 +19,14 @@ from flask_cors import CORS
 app=Flask(__name__)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+<<<<<<< HEAD
 #app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin@eligibility.central.edu.gh:5431/alumni'
 app.config['SECRET_KEY'] =" thisismysecretkey"
+=======
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin@eligibility.central.edu.gh:5432/elDb'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://admin:password@eligibility.central.edu.gh:5432/elDb'
+app.config['SECRET_KEY'] =" thisismysecretkey"  
+>>>>>>> f354b37 (dead)
 app.config['UPLOADED_PHOTOS_DEST'] ='uploads'
 
 # photos=UploadSet('photos', IMAGES)
@@ -616,7 +622,7 @@ def userlanding():
 @app.route('/usersignup', methods=['POST','GET'])
 def usersignup():
     form = Registration()
-    print(form.indexnumber.data)
+    # print(form.indexnumber.data)
     print(form.email.data)
     print(form.name.data)
     
