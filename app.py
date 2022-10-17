@@ -16,10 +16,10 @@ Flask,g,redirect,render_template,request,session,url_for,flash,jsonify
 from flask_cors import CORS
 
 
-
 app=Flask(__name__)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin@eligibility.central.edu.gh:5431/alumni'
 app.config['SECRET_KEY'] =" thisismysecretkey"
 app.config['UPLOADED_PHOTOS_DEST'] ='uploads'
 
