@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+
+
+<!--{{searched}}--> 
+
+
+
+<div class="row">
+  {%if posts|length < 1 %}
+  
+  <h4 class="text-muted">No result for the {{searched}}</h4>
+  {%else %}
+  
+  {% for post in posts %}
+  
+        <div class="department-item" data-aos="fade-down-left">
+            <h1 class="text-muted">{{post.fullname}}</h1>
+            <h6 class="text-muted">{{post.indexnumber}}</h6>
+        </div>
+  
+      {% endfor %}  
+    {%endif%}
+    </div>
+      </div>
+    {% endblock body %}

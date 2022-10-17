@@ -18,7 +18,8 @@
     <div class="info" style="margin-top: 2vh; text-align: center;">
       <div class="info-pic">
         {% if profile.image_file %}
-          {{profile.image_file}}
+         
+          <img src= {{profile.image_file}}  style="width: 300px;  height:120px;background: #992621; border-radius: 30%;" > 
           {% else %}
           <img src="https://www.pngitem.com/pimgs/m/30-307416_profile-icon-png-image-free-download-searchpng-employee.png" style="  width: 20%; background: #992621; border-radius: 70%;" > 
         {% endif %}

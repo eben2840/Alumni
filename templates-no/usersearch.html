@@ -1,0 +1,45 @@
+
+
+
+{% extends 'userlayout.html' %}
+{% block body %}
+
+  <div class="row">
+    {%if posts|length < 1 %}
+    
+    <h4 class="text-muted">No result for the {{searched}}</h4>
+    {%else %}
+
+
+
+
+
+<div style="display: flex; border-bottom: 3px solid #f2f2f2;">
+  <div class="user-pic" style="padding-right: 10px;">
+      <img src="static/img/memoji.png" >
+  </div>
+  <div class="user-text" style="display: flex; justify-content: space-between; width: 100%; margin-top: 15px;">
+        <div>
+         
+          {% for post in posts %}
+          <div>
+                <h4 class="names"><b> {{post.fullname}}</h4>
+              <h6 class="text-muted">{{post.indexnumber}}</h6><br><br>
+          </a>
+          </div>
+    
+          {% endfor %}
+          {%endif%}
+            
+
+  </div>
+</div>
+      </div>
+      
+  </div>
+ 
+</div>
+
+
+</div>
+    {% endblock body %}

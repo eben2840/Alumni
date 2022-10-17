@@ -9,6 +9,18 @@
 <form action='' method="post" enctype="multipart/form-data">
   {{form.hidden_tag()}}
 
+  <label for="image-picker">
+    <div>
+        {% if editCandidate %}
+        <img id="image-preview" style="height: 30vh; object-fit:contain" src={{candidate.testField}} alt="your image" />
+        {% else %}
+        <img id="image-preview" style="height: 30vh; object-fit:contain" src="{{url_for('static', filename='img/ig.png')}}" alt="your image" />
+        {% endif %}
+    </div>      
+    <h6 id="error" style="color: red; display: none;">Please upload an image to continue</h6>
+</label>
+
+<input style="display:none" id="image-picker" type="file" required="required" accept="image/*" />
 
 
   <div class="form-floating mb-3" >
@@ -103,18 +115,38 @@
   </div>
 
   
+  <div class="form-floating mb-3" >
+    {{form.image_file (class="form-control", id="firebaseLink" )}}
+   
+  </div>
 
-
-
-
-
-
-
-  <button class="btn" style="color: #fff; background: #992621; border: none;" type="submit ">Register</button>
+  <button class="btn" style="color: #fff; background: #992621; border: none;" type="submit" id="submitButton">Register</button>
               
 </form>
 
+<script>
 
+$("#image-picker").change(function (event) {
+  readURL(this);
+  console.log ('touch image')
+    document.getElementById('error').style.display = 'none';
+
+});
+    function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        pushImage(input.files[0])
+
+        reader.onload = function (e) {
+            $('#image-preview').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+
+
+    }
+}
+</script>
 
   
 <script>
@@ -163,6 +195,80 @@
    }
  
   </script>
+
+  <script>
+
+    var firebaseLink = document.getElementById("firebaseLink").innerText
+    // Push batch images to storage and store references in the database
+    var pushImage = function (file) {
+        document.getElementById('submitButton').innerHTML = `
+        <button class="button" style="background-color: #da2d2770;"><i class="fa fa-pause-circle-o" aria-hidden="true" style="color:'white'"></i>Please wait while we upload your image</button>
+        `
+
+       // var uid = firebase.auth().currentUser.uid;
+       // Create storage reference
+       var ref = firebase.storage().ref(`/ineruu-142dc-default-rtdb/Images/`).child(file.name + ".jpg");
+   
+       // Upload file and get task
+       var task = ref.put(file, {contentType: file.type});
+    
+       // Monitor task for progress
+       task.on('state_changed',
+           // Shows progress of task
+           function progress(snapshot) {
+               var percentage = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+               console.log(percentage);
+           },
+           // Shows any errors occurring during progress
+           function error(err) {
+               // Handle unsuccessful uploads
+               console.log(err.message);
+   
+           },
+           // Shows when task is completed
+           function complete() {
+               // Handle successful uploads on complete
+               var image = task.snapshot.downloadUrl;
+               var secondImage = task.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+           console.log('File available at', downloadURL);
+        //    firebaseLink = downloadURL
+           document.getElementById("firebaseLink").value = downloadURL
+        //    console.log("Firebase Link: " + firebaseLink)
+            document.getElementById('submitButton').innerHTML = `{{form.submit (class="button")}}`
+
+         });
+            //    console.log(task);
+            //    console.log(image);
+            //    console.log(secondImage.PromiseResult).then(res => {
+            //        console.log("THis is" + res)
+                   
+            //    });
+   
+               // Data model to be uploaded to the database
+               var data = {
+                   imageUrl: image
+               };
+               
+               // var db = firebase.database().ref(/GHotelBookMan/Hotels/${uid}/Images).push();
+               // db.set(data).then(() => {
+               //     row.empty();
+               //     loadCurrentHotel(uid);
+               // });
+           });  
+   };
+   
+   
+     function changeimagesss(event) {
+       console.log(event)
+       // console.log(event.target.files[0])
+       // var uploadItem = event.target.files[0]
+       // console.log(uploadItem)
+       pushImage(event)
+   
+       
+     }
+   
+    </script> 
 
 
 {% endblock body %}

@@ -1,0 +1,49 @@
+{% extends 'userlayout.html' %}
+{% block body %}
+
+<div class="ade" style="display: flex; justify-content: space-between;">
+  <p class="text-muted">Graduant List</p>
+  <a href="" style="text-decoration: none; color: #992621;">
+    <h6> See all</h6>
+  </a>
+</div>
+</div>
+<br>
+
+  
+
+<div style="display: flex; border-bottom: 3px solid #f2f2f2;">
+  <div class="user-pic" style="padding-right: 10px;">
+      <img src="static/img/memoji.png" >
+  </div>
+  <div class="user-text" style="display: flex; justify-content: space-between; width: 100%; margin-top: 15px;">
+        <div>
+         
+
+          {%for user in users%} 
+
+          <div>
+            <a href="{{url_for("userinformation", userid=user.id)}}" style="text-decoration: none; color: #992621;">
+              <h4 class="names"><b> {{user.fullname}}</h4><!--<a href="/delete/{{user.id}}"class="btn"><i class="fa fa-trash" aria-hidden="true">delete</i>  </i></a></b>-->
+              <h6 class="text-muted">{{user.indexnumber}}</h6><br><br>
+          </a>
+          </div>
+    
+        {% endfor %} 
+            
+      </div>
+      
+  </div>
+ 
+</div>
+
+
+</div>
+{% endblock body %}
+  
+   
+
+
+
+
+x
