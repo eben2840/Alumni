@@ -37,7 +37,7 @@ class Adduser(FlaskForm):
     picture = FileField('Add a picture', validators=[ FileAllowed(['jpg', 'png','jpeg'])])
     extra= StringField('extra')
     submit = SubmitField('Register')
-    image_file = FileField('image_file', validators=[FileAllowed(['jpg', 'png'])])
+    image_file = StringField('image_file', validators=[FileAllowed(['jpg', 'png'])])
     
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired()])
@@ -45,9 +45,9 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Login')
  
 class Registration(FlaskForm):
-    indexnumber= StringField('indexNumber', validators=[DataRequired()])
+    indexnumber= StringField('indexNumber')
     email = StringField('Email', validators=[DataRequired()])
-    # phone = StringField('Phone', validators=[DataRequired()])
+    phone = StringField('Phone', validators=[DataRequired()])
     name = StringField('Name', validators=[DataRequired()])
     
     submit = SubmitField('SignUp')  

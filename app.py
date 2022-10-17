@@ -191,6 +191,7 @@ class Program(db.Model,UserMixin):
 @app.route('/dashboard')
 @login_required
 def dashboard():
+    # flash(f"There was a problem", 'success')
     if current_user == None:
         flash("Welcome to the CentralAlumina " + current_user.email, "Success")
         flash(f"There was a problem")
@@ -675,7 +676,7 @@ def login():
             if user == None:
                 flash(f"There was a problem")   
             login_user(user)
-            flash (f' ' + user.email + ',Welcome Admin ' ,'success')
+            flash (f' ' + user.email + ',Welcome Admin!!! ' ,'success')
             return redirect(url_for('dashboard'))
             # next = request.args.get('next')
         else:
