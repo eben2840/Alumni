@@ -161,7 +161,9 @@ class User(db.Model,UserMixin):
 class Department(db.Model,UserMixin):
     id= db.Column(db.Integer, primary_key=True)
     name= db.Column(db.String())
-    school= db.Column(db.String()) 
+    school= db.Column(db.String())
+    slug= db.Column(db.String())
+
     
     def __repr__(self):
         return f"Department('{self.id}', {self.name}'"
@@ -169,8 +171,11 @@ class Department(db.Model,UserMixin):
 class School(db.Model,UserMixin):
     id= db.Column(db.Integer, primary_key=True)
     name=db.Column(db.String)
+    slug =db.Column(db.String)
+    departments = db.Column(db.String)
+
     def __repr__(self):
-        return f"School('{self.id}', {self.name}'"
+        return f"School('{self.id}', {self.slug}')"
     
         
 class Year(db.Model,UserMixin):
@@ -184,10 +189,13 @@ class Program(db.Model,UserMixin):
     name=db.Column(db.String) 
     school =db.Column(db.String) 
     department =db.Column(db.String) 
+    slug =db.Column(db.String) 
     def __repr__(self):
         return f"Program('{self.id}', {self.name}'"
     
     
+
+
 @app.route('/dashboard')
 @login_required
 def dashboard():
@@ -203,6 +211,98 @@ def getstudent():
     return render_template('getstudent.html')
 
 
+
+@app.route('/years', methods=['GET', 'POST'])
+def years():
+    responseBody = {
+        "Year":{
+            "year":2001,
+            "graduats":12
+            }
+    }
+    return responseBody
+
+@app.route('/api/schools', methods=['GET', 'POST'])
+def schoolsapi():
+    responseBody = {
+        "entries":15,
+        "year":2023,
+        "schools":[
+            {
+                "schoolName": "School Of Pharmacy",
+                "active": True,
+                "year":2023,
+                "graduants":2000,
+                "image":"googleimage.com",
+                "departments": [
+                    {
+                        "name":"IT",
+                        "students":2000
+                     }
+                    ]
+            }
+            ]
+        }
+    return jsonify(responseBody)
+
+@app.route('/api/departments', methods=['GET', 'POST'])
+def departmentsapi():
+    responseBody = {
+        "entries":15,
+        "year":2023,
+        "school":"School Of Pharmacy",
+        "schoolSlug":"GPSU",
+        "schoolId":12,
+        "departments": [
+            {
+                "name":"Information Technology",
+                "graduants":2000,
+                "slug":"IT"
+            }
+            ]
+        }
+    return jsonify(responseBody)
+
+@app.route('/privacypolicy', methods=['GET', 'POST'])
+def privacypolicy():
+    return render_template('privacypolicy.html')
+
+@app.route('/api/graduants', methods=['GET', 'POST'])
+def graduantsapi():
+    responseBody = {
+        "entries":15,
+        "year":2023,
+        "school":"School Of Pharmacy",
+        "schoolSlug":"GPSU",
+        "schoolId":12,
+        "departmentId":20,
+        "graduants": [
+            {
+                "name":"Information Technology",
+                "graduants":2000,
+                "image":"googleimagecom",
+                "description":"A lot of text",
+                "msisdn":["0545977791", "0244342642"],
+                "classification":"1st Class Upper",
+                "slug":"IT",
+                "placeOfWork":[{
+                    "name":"Ghana Water",
+                    "role":"MD",
+                    "startYear":2020,
+                    "endYear":2023
+                }],
+                "socials":
+                    {
+                        "facebook":"nanakweku",
+                        "instagram":"nanakweku",
+                        "twitter":"nanakweku",
+                        "whatsapp":"nanakweku",
+                        "linkedIn":"nanakweku"
+                    }
+            }
+        ]
+        }
+    return jsonify(responseBody)
 
 @app.route('/addalumni', methods=['GET', 'POST'])
 @login_required
@@ -255,14 +355,15 @@ def current():
 def upload_image():
     return render_template('newreport.html')
 
-
 @app.route('/')
 def index():    
+    session['selectedYear'] = "2022"
+    sendtelegram('Current selected Year: ' + session['selectedYear'])
     return render_template('index.html')
 
 @app.route('/addschool' , methods=['GET', 'POST'])
 def addschool():    
-    form=Addschool()
+    form=AddSchool()
     schools=School.query.order_by(School.id.desc()).all()
     if form.validate_on_submit():
         centralschool= School(name=form.name.data)
@@ -276,7 +377,7 @@ def addschool():
 
 @app.route('/adddepartment' , methods=['GET', 'POST'])
 def adddepartment():    
-    form=Adddepartment()
+    form=AddDepartment()
     departments=Department.query.order_by(Department.id.desc()).all()
     if form.validate_on_submit():
         centralschool= Department(name=form.name.data,school=form.school.data)
@@ -290,12 +391,12 @@ def adddepartment():
 
 @app.route('/addprogram' , methods=['GET', 'POST'])
 def addprogram():    
-    form=Addprogram()
-    programs=Program.query()
+    form=AddProgram()
+    programs=Program.query.all()
     print(programs)
     if form.validate_on_submit():
-        centrals= Program(name=form.name.data)
-        db.session.add(centrals)
+        newProgram= Program(name=form.name.data, department = form.department.data, school = form.school.data)
+        db.session.add(newProgram)
         db.session.commit()
         flash("New Program Added", "success")
         return redirect('addprogram')
@@ -426,7 +527,7 @@ def lists():
 
 @app.route('/<int:year>/newschools', methods=['GET', 'POST'])
 def newschools(year ):
-    form=Addschool()
+    form=AddSchool()
     schools=School.query.all()
     if request.method== 'POST':
         schools=School(name=form.data)
@@ -774,15 +875,55 @@ def ulogin():
 @app.route('/useryeargroup', methods=['GET', 'POST'])
 @login_required
 def useryeargroup():  
-    
+    # fetch all departments
     return render_template("useryeargroup.html", header="Year Group", smalltitle="Central Alumni Platform", name="", numberofentries="16 entries")
- 
 
-
-@app.route('/usernewform')
+@app.route('/allschools')
 @login_required
 def usernewform():
-    return render_template('usernewform.html', header="Schools / Faculty", smalltitle="2021", name="", numberofentries="16 entries")
+    print(session['selectedYear'])
+    sendtelegram(current_user.name + " selected Year: " + session['selectedYear'])
+    # flash(f'Sample form', 'success')
+    schools = School.query.all()
+    return render_template('usernewform.html', items=schools, header="Schools / Faculty", smalltitle="2021", name="", numberofentries="16 entries")
+
+@app.route('/departments/<string:schoolSlug>')
+@login_required
+def departments(schoolSlug):
+    school = School.query.filter_by(slug = schoolSlug).first()
+    departments = Department.query.filter_by(school = school.slug).all() 
+    print(departments)
+    print(school)
+    print(session['selectedYear'])
+    sendtelegram(current_user.name + " selected Year: " + session['selectedYear'] + " Department " + school.name + ". Found: " + str(len(departments)) + " result(s) ")
+    return render_template('userdepartment.html', items=departments, header=school.name, smalltitle="2021", name="", numberofentries="16 entries")
+
+@app.route('/programs/<string:departmentSlug>')
+@login_required
+def programs(departmentSlug):
+    departmentSlug = departmentSlug.lower()
+    department = Department.query.filter_by(slug = departmentSlug).first()
+    programs = Program.query.filter_by(department = departmentSlug).all()
+    # school = department.school
+    # print(school)
+    print(programs)
+    print(department)
+    print(session['selectedYear'])
+    # sendtelegram(current_user.name + " selected Year: " + session['selectedYear'] + " Department " + school.name + ". Found: " + str(len(departments)) + " result(s) ")
+    return render_template('userprograms.html', items=programs, header=department.name, smalltitle="2021", name="", numberofentries="16 entries")
+
+@app.route('/alumni/<string:programSlug>')
+@login_required
+def alumni(programSlug):
+    program = Program.query.filter_by()
+    programs = Program.query.all()
+    school = department.school
+    print(school)
+    print(programs)
+    print(department)
+    print(session['selectedYear'])
+    # sendtelegram(current_user.name + " selected Year: " + session['selectedYear'] + " Department " + school.name + ". Found: " + str(len(departments)) + " result(s) ")
+    return render_template('userprograms.html', items=programs, header=department.name, smalltitle="2021", name="", numberofentries="16 entries")
 
 
 @app.route('/userschool')
@@ -790,14 +931,13 @@ def usernewform():
 def userschool():
     return render_template('userschool.html', header="Department", smalltitle="2021", name="- CCSITA", numberofentries="16 entries")
 
-
-# @app.route('/userdisplay')
+# @app.route('/userdisplay')=
 # @login_required
 # def userdisplay(userid):
 #     profile=User.query.get_or_404(userid)
 #     print(current_user)
 #     return render_template("userdisplay.html",current_user=current_user, profile=profile)
- 
+
  
 @app.route('/userdisplay/<int:userid>', methods=['GET', 'POST'])
 @login_required

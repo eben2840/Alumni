@@ -28,7 +28,7 @@ class Adduser(FlaskForm):
     admitted=SelectField('admitted',choices=[(2021,2021), (2022,2022)])
     email= StringField('email')
     telephone= StringField('telephone')
-    hall= SelectField('hall', choices=[('Faculty/School','Faculty/School'),('Joy Otabil', 'Joy Otabil'), ('Faith','Faith'), ('Freedom','Freedom'), ('Kathryl Kuhlman ', 'Kathryl Kuhlman '), ('Justice','Justice'), ('Billy Graham','Billy Graham'),('Billy Graham','Billy Graham'),  ('Chancellor', 'Chancellor'),('Integerity','Integerity'), ], default=None )
+    hall= SelectField('hall', choices=[('Facult/School','Faculty/School'),('Joy Otabil', 'Joy Otabil'), ('Faith','Faith'), ('Freedom','Freedom'), ('Kathryl Kuhlman ', 'Kathryl Kuhlman '), ('Justice','Justice'), ('Billy Graham','Billy Graham'),('Billy Graham','Billy Graham'),  ('Chancellor', 'Chancellor'),('Integerity','Integerity'), ], default=None )
     nationality= SelectField('nationality',choices=[('Faculty/School','Faculty/School'),('Joy Otabil', 'Joy Otabil'), ('Faith','Faith'), ('Freedom','Freedom'), ('Kathryl Kuhlman ', 'Kathryl Kuhlman '), ('Justice','Justice'), ('Billy Graham','Billy Graham'),('Billy Graham','Billy Graham'),  ('Chancellor', 'Chancellor'),('Integerity','Integerity'), ], default=None )
     address= StringField('address')
     work= StringField('work')
@@ -58,23 +58,34 @@ class Registration(FlaskForm):
     #Program = SelectField('programs', choices=[("one", "one"),("two", "two"),("three", "three")])
     submit =SubmitField('submit')
     
+
+class AddDepartment(FlaskForm):
+    name = StringField('Department', validators=[DataRequired()])
+    school = StringField('School', validators=[DataRequired()])
+    
+
+class AddProgram(FlaskForm):
+    name = StringField('Program Name', validators=[DataRequired()])
+    department = StringField('Department', validators=[DataRequired()])
+    school = StringField('School', validators=[DataRequired()])
+    
+class AddSchool(FlaskForm):
+    name = StringField('Department', validators=[DataRequired()])
+    # school = StringField('School', validators=[DataRequired()])
+
 # create a search form
 class Search(FlaskForm):
     searched = StringField('Searched', validators=[DataRequired()])
     submit = SubmitField('Search') 
-    
-    
     
 class Alumni(FlaskForm):
     email= StringField('email', validators=[DataRequired()])
     password = StringField('password', validators=[DataRequired()])
     submit = SubmitField('SignUp')  
     
-
 class AlumniSignin(FlaskForm):
     email = StringField('email', validators=[DataRequired()])
     indexnumber = StringField('indexnumber', validators=[DataRequired()])
     name = StringField('name', validators=[DataRequired()])
-    
     submit = SubmitField('SignUp')  
     

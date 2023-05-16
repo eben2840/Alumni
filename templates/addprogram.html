@@ -15,6 +15,16 @@
     <label for="floatingInput" class="text-muted">Add Program</label>
   </div>
 
+  <div class="form-floating mb-3" >
+    {{form.department(class="form-control",placeholder="addschool",id="floatingInput")}}
+    <label for="floatingInput" class="text-muted">{{form.department.label}}</label>
+  </div>
+
+  <div class="form-floating mb-3" >
+    {{form.school(class="form-control",placeholder="addschool",id="floatingInput")}}
+    <label for="floatingInput" class="text-muted">{{form.school.label}}</label>
+  </div>
+
   <button class="btn" style="color: #fff; background: #992621; border: none;" type="submit" id="submitButton">Register</button>
     <br><br>
   {% for program in programs %}

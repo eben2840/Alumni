@@ -41,6 +41,11 @@ h4 {
 .side-nav-button-active a:hover {
     color: #fff;
 }
+
+.spaceout{
+    justify-content: space-between;
+    display: flex;
+}
 .dashboard-item {
     background-color: #fff;
     padding: 30px;

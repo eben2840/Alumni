@@ -17,18 +17,19 @@
 
 <div class="container" style=" border-radius: 5px; padding: 20px; background: #fff;">
 
-  <div class="row">
-    <div class="col" style="display: flex; justify-content: space-between;">
+  <div class="spaceout">
+    <div>
       <h6 class="text-muted">{{smalltitle}}  {{name}}</h6>
-   
+      <h1>{{header}}</h1>
+      <h6 class="text-muted">{{numberofentries}}</h6>
+    </div>  
+
+    <div>
       <a href="/information" style="color:#000;"> <i class='bx bxs-user bx-md icon' ></i></a>
       </a>     
+    </div>
+  </div>
 
-
-    </div>  
-    <h1>{{header}}</h1>
-    <h6 class="text-muted">{{numberofentries}}</h6>
-    
 
     {% with messages = get_flashed_messages() %}
     {% if messages %}
@@ -42,7 +43,7 @@
     {% endif %}
 {% endwith %}
     
-    Hello {{current_user.name}}
+    <!-- Hello {{current_user.name}} -->
 
     <form class="d-flex " role="search" style="margin-top: 3vh; margin-bottom: 5vh;"  method='POST' action='{{url_for('usersearch')}}'>
       {{form.hidden_tag()}}
@@ -56,14 +57,14 @@
 
    
 
+    
+    
+    
+    {% block body %}
+    {% endblock body %}
+    
   </div>
   <br>
-
-
-
-  {% block body %}
-  {% endblock body %}
-
   
 
 

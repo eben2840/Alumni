@@ -10,11 +10,9 @@
   </div>
   <div class="user-text">
       <div>
-        {% if item.slug %}
-            <a href="{{ url_for('departments', schoolSlug=item.slug) }}" style="text-decoration: none;">
-                <h4>{{item.name}} </h4>
-            </a>
-        {% endif %}
+          <a href="/userschool" style="text-decoration: none;">
+              <h4>{{item.name}} </h4>
+          </a>
           <h6 class="text-muted">20 departments</h6>
       </div>
       <div>
